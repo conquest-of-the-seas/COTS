@@ -4,6 +4,7 @@ let router = express.Router();
 let timeModel = require('../models/TimeModel');
 let ShipElement = require('../models/ShipModel').shipElement;
 
+
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
 let db = mongoose.connection;
@@ -25,7 +26,7 @@ let PlayerModel = require("../models/PlayerModel")
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-    PlayerModel.findOne({nickname: 'test1'}, (err, obj) => {
+    PlayerModel.findOne({nickname: 'test4'}, (err, obj) => {
         obj.hangar.push(new ShipElement(2, 'mast'),
             new ShipElement(2, 'cabins'),
             new ShipElement(5, 'oars'),

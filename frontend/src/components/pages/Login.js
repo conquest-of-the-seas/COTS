@@ -11,7 +11,7 @@ export default class Login extends Component {
     }
 
     register() {
-        fetch('http://192.168.1.3:4004/login', {
+        fetch(`http://${window.location.hostname}:4004/login`, {
             method: "POST",
             data: this.state
         }).then(res => res.text()).then(t => console.log(t))

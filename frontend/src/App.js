@@ -5,11 +5,20 @@ import Router from "./components/partials/Router";
 import Header from "./components/partials/Header";
 
 class App extends Component {
+    constructor(){
+        super();
+        this.state = {
+            cookie: '12312'
+        }
+    }
+    componentWillMount(){
+        //logic
+    }
     render() {
         return (
             <div className="App">
                 <Header/>
-                <Router/>
+                <Router cookie={this.state.cookie}/>
             </div>
         );
     }

@@ -8,7 +8,7 @@ import ClickingDemo from "../pages/ClickingDemo";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Articles from "../pages/Articles";
-import Shipyard from "../pages/Shipyard";
+import Hangar from "../pages/Hangar";
 
 
 export default class Router extends Component {
@@ -23,7 +23,7 @@ export default class Router extends Component {
                 <Route path="/register" exact component={Register} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/articles" exact component={Articles}/>
-                <Route path="/shipyard" exact component={Shipyard}/>
+                <Route path="/hangar" exact component={Hangar}/>
             </div>
         );
     }

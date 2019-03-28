@@ -12,7 +12,7 @@ export default class ArticleEditor extends Component {
     }
 
     postArticle() {
-        fetch('http://192.168.1.3:4004/articles', {
+        fetch(`http://${window.location.hostname}:4004/articles`, {
             method: "post",
             body: JSON.stringify({
                 text:this.state.text,

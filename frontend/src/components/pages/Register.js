@@ -26,7 +26,7 @@ export default class Register extends Component {
             this.setState({errMsg: "Invalid e-mail"})
         }
         else if (isValid) {
-            fetch('http://192.168.1.3:4004/register', {
+            fetch(`http://${window.location.hostname}:4004/register`, {
                 method: "post",
                 body: JSON.stringify({
                     nickname: this.state.nickname,
@@ -50,7 +50,7 @@ export default class Register extends Component {
 
     handleChange(input, value) {
         let obj = {};
-        obj[input] = value
+        obj[input] = value;
         this.setState(obj)
     }
 
@@ -65,8 +65,7 @@ export default class Register extends Component {
                 <h5>Short Description:</h5>
                 One of the best things about this faction is the surplus of money. Players from this faction have lots
                 of options to easily earn local currency, and the main problem is inflation of its currency on the
-                global market. As a
-                result trading with other factions may get harder in the future.
+                global market. As a result trading with other factions may get harder in the future.
 
                 <h5>Hierarchy:</h5>
                 The faction leaders are changed weekly. The new leader is the player with most funds in the faction
@@ -75,8 +74,7 @@ export default class Register extends Component {
 
                 <h5>Weaknesses:</h5>
                 If this faction loses an important resource island, based on the currency inflation it may be impossible
-                for them
-                even to protect their main islands.
+                for them even to protect their main islands.
 
             </div>)
         }
