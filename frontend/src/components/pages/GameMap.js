@@ -11,7 +11,9 @@ export default class GameMap extends Component {
     }
 
     componentWillMount() {
-        fetch('http://192.168.1.3:4004/data').then(res => res.json()).then(j => this.setState({data: j}))
+        fetch(`http://${window.location.hostname}:4004/data`)
+            .then(res => res.json())
+            .then(j =>this.setState({data: j}))
     }
     render() {
 

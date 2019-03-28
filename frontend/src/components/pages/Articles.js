@@ -14,7 +14,7 @@ export default class Articles extends Component {
         this.fetchArticles()
     }
 
-    fetchArticles = () => fetch('http://192.168.1.3:4004/articles').then(res => res.json()).then(j => this.setState({articleList: j}))
+    fetchArticles = () => fetch(`http://${window.location.hostname}:4004/articles`).then(res => res.json()).then(j => this.setState({articleList: j}))
 
     render() {
 

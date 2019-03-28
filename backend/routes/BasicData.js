@@ -49,19 +49,22 @@ const defaultOceanConditions = {
 router.get('/', (req, res, next) => {
     // Displaying raw data from the DB
     ConditionModel.findOne({day: timeModel.getCurrentDay()}, (err, obj) => {
-        res.send(obj)
+        if (err) console.log(err);
+        console.log(timeModel.getCurrentDay());
+
+        res.send(obj);
     })
 
 });
 
 module.exports = router;
 
-
-setInterval(() => {
+let createCondition = () => {
+    console.log('creating condition')
     ConditionModel.find({}, (err, arr) => {
+        if (err) console.log(err)
         let items = arr.length;
-
-        if (timeModel.getCurrentDay() > items - 7) {
+        if (timeModel.getCurrentDay()> items - 7) {
             let condition = new ConditionModel();
             let yesterday = arr[arr.length - 1] || defaultOceanConditions;
             let plusOrMinusArr = [];
@@ -79,7 +82,12 @@ setInterval(() => {
             condition.visibility = 4;
             condition.day = items;
 
-            condition.save().then(() => console.log('New Conditions generated'));
+            if (items< timeModel.getCurrentDay()+7) setTimeout(createCondition,1000);
+            condition.save().then((err,obj) => {
+                    if (err) console.log(err);
+                    console.log(obj)
+                console.log('New Conditions generated')
+            });
         }
 
         function normaliseParameter(ydParam, pom, minValue, maxValue, step = 1) {
@@ -89,5 +97,7 @@ setInterval(() => {
             return param
         }
     })
-}, 1000 * 60 * 60 * 24);
+}
+createCondition()
+setInterval(createCondition, 1000 * 60 * 60 * 24);
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-const BackEndURL = '192.168.1.3:4004'
+const BackEndURL = `${window.location.hostname}:4004`
 
 
 export default class IndexPage extends Component {
