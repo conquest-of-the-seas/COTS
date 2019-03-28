@@ -5,3 +5,23 @@
   min-height: 100px ;
   border: 2px solid black;
 }
+
+.mx-auto{
+  margin:0px auto;
+}
+
+.w-30{
+  width: 30%;
+}
+
+.w-50{
+  width: 50%;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.m-20{
+  margin: 20px;
+}

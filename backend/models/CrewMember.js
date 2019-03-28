@@ -20,20 +20,24 @@ let crewMemberModelSchema = mongoose.Schema({
 });
 
 // a simple normal case to camel case converter function
-function toCamelCase(text){
-
+function camelize(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function (match, index) {
+        if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+        return index == 0 ? match.toLowerCase() : match.toUpperCase();
+    });
 }
 
 // declaring the skill object
 class Skill {
-    constructor(name, untrainable){
-            this.name = name,
-            this.untrainable = untrainable;
-            this.shortName = toCamelCase(name);
-            this.value = 0;
-        }
+    constructor(name, untrainable) {
+        this.name = name;
+        this.untrainable = untrainable;
+        this.shortName = camelize(name);
+        this.value = 0;
+    }
 }
 
+// Skills object
 const skillArray = {
     strategicSkill: new Skill("strategic skill", false),
     charm: new Skill("charm", false),
@@ -52,22 +56,65 @@ const skillArray = {
     ropeSwingSkills: new Skill("rope swing skills", false)
 }
 
-const pirateTypes = {
-    "Captain": [ skillArray.strategicSkill, skillArray.charm, skillArray.voiceStrength, skillArray.travelTime ],
-    "Quarter Master": [ skillArray.strategicSkill, skillArray.charm, skillArray.travelTime],
-    "Navigator": [],
-    "Boatswain": [],
-    "Carpenter": [],
-    "Surgeon": [],
-    "Master Gunner": [],
-    "Rigger": [],
-    "A.B.S.": []
-    };
+// Pirate types
+const pirateTypes = {  
+    "Captain":[  
+       skillArray.strategicSkill,
+       skillArray.charm,
+       skillArray.voiceStrength,
+       skillArray.travelTime
+    ],
+    "Quarter Master":[  
+       skillArray.strategicSkill,
+       skillArray.charm,
+       skillArray.travelTime
+    ],
+    "Navigator":[  
+       skillArray.knowledgeOfNatureLandmarks,
+       skillArray.sight,
+       skillArray.travelTime
+    ],
+    "Boatswain":[  
+       skillArray.sailsHandling,
+       skillArray.travelTime
+    ],
+    "Carpenter":[  
+       skillArray.carpentrySkill,
+       skillArray.totalRepairsCompleted
+    ],
+    "Surgeon":[  
+       skillArray.knowledgeOfMedicalBullshit,
+       skillArray.totalPeopleHealed
+    ],
+    "Master Gunner":[  
+       skillArray.knowledgeOfGunpowderUse,
+       skillArray.aimSkill
+    ],
+    "Rigger":[  
+       skillArray.strength,
+       skillArray.ropeSwingSkills,
+       skillArray.travelTime
+    ],
+    "A.B.S.":[  
+       skillArray.strength,
+       skillArray.travelTime
+    ]
+};
 
 // Declaring the CrewMember class
-class CrewMember{
-
+class CrewMember {
+    constructor(name, rank, age){
+        // Id is automatically created
+        this.name = name;
+        this.rank = rank;
+        this.age = age;
+        this.skills = skillArray[name];
+    }
 }
 
-// Exporting the object
-let CrewMember = module.exports = mongoose.model("CrewMember", crewMemberModelSchema);
+module.exports = {
+    crewMember: CrewMember,
+    pirateTypes: pirateTypes,
+    skillArrayObj: skillArray,
+    skill: Skill
+};
