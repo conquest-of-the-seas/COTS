@@ -37,7 +37,10 @@ export default class Register extends Component {
                 headers: {
                     "Content-Type": "application/json",
                 }
-            }).then(res => res.text()).then(t => this.setState({errMsg: t}))
+            }).then(res => res.json()).then(j => {
+                localStorage.setItem('nickname',j.nickname);
+                this.setState(j)
+            })
         }
 
 

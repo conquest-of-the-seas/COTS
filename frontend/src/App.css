@@ -5,3 +5,14 @@
   min-height: 100px ;
   border: 2px solid black;
 }
+
+.holder {
+  border: 1px solid blue;
+  width: fit-content;
+  margin: 0 auto;
+text-align: center;
+}
+
+.usedParts{
+  align-content: center;
+}

@@ -12,18 +12,31 @@ import Hangar from "../pages/Hangar";
 
 
 export default class Router extends Component {
+
+    constructor() {
+        super()
+        this.state = {
+            nickname: ''
+        }
+    }
+
+    componentWillMount() {
+        this.setState({nickname: localStorage.getItem('nickname')})
+    }
+
     render() {
+        console.log(this.state.nickname)
         return (
             <div>
-                <Route path="/" exact component={IndexPage} />
-                <Route path="/demo" exact component={ClickingDemo} />
-                <Route path="/gameMap" exact component={GameMap} />
-                <Route path="/train" exact component={TrainingGrounds} />
-                <Route path="/quests" exact component={Quests} />
-                <Route path="/register" exact component={Register} />
-                <Route path="/login" exact component={Login} />
+                <Route path="/" exact component={IndexPage}/>
+                <Route path="/demo" exact component={ClickingDemo}/>
+                <Route path="/gameMap" exact component={GameMap}/>
+                <Route path="/train" exact component={TrainingGrounds}/>
+                <Route path="/quests" exact component={Quests}/>
+                <Route path="/register" exact component={() => <Register/>}/>
+                <Route path="/login" exact component={() => <Login/>}/>
                 <Route path="/articles" exact component={Articles}/>
-                <Route path="/hangar" exact component={Hangar}/>
+                <Route path="/hangar" exact component={() => <Hangar/>}/>
             </div>
         );
     }

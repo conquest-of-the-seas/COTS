@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 //Setting up the Schema and the db columns
 let ShipElementSchema = mongoose.Schema({
-    number:{
-        type:Number,
+    number: {
+        type: Number,
         required: true
     },
     element: {
@@ -13,6 +13,17 @@ let ShipElementSchema = mongoose.Schema({
 });
 
 let ShipElementModel = mongoose.model("ShipElement", ShipElementSchema);
+
+
+let number = 0;
+
+calculateNumber()
+
+function calculateNumber() {
+    ShipElementModel.find({}, (err, arr) => {
+        number = arr.length
+    })
+}
 
 const parArr = [
     {
@@ -85,19 +96,18 @@ class ShipElement {
 
 
     constructor(tier, type) {
+        this.number = number;
         this.type = type;
         this.tier = tier;
         this.primary = new Parameter(tier);
         this.secondary = new Parameter(tier);
-
-    }
-
-    get id() {
-        return this._id;
-    }
-
-    set id(val) {
-        this._id = val;
+        let thisElement = new ShipElementModel();
+        thisElement.element = this;
+        thisElement.number = number;
+        number++;
+        thisElement.save().then((obj) => {
+            calculateNumber()
+        },(err)=>console.log(err))
     }
 }
 
@@ -116,21 +126,20 @@ class Ship {
 }
 
 //used for getting the number of the element
-async function createShipElement(tier,type){
+async function createShipElement(tier, type) {
     let se = new ShipElementModel();
-    await ShipElementModel.find({},  (err, arr) => {
+    await ShipElementModel.find({}, (err, arr) => {
         let items = arr.length;
         se.number = items;
         se.element = new ShipElement(tier, type)
         se.save().then(() => console.log('New Ship Element Created')).catch((err) => {
-           console.log('Failed creating ship element.')
+            console.log('Failed creating ship element.')
         });
     })
     console.log('awaiting')
     return se.element
 
 }
-
 
 
 module.exports = {

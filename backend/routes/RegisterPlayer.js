@@ -1,8 +1,10 @@
-let express = require('express');
-let mongoose = require('mongoose');
-let router = express.Router();
-let timeModel = require('../models/TimeModel');
-let Ship = require('../models/ShipModel').ship;
+const express = require('express');
+const mongoose = require('mongoose');
+const router = express.Router();
+const bcrypt = require('bcrypt');
+const timeModel = require('../models/TimeModel');
+const Ship = require('../models/ShipModel').ship;
+const SaltRounds = 10;
 
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
@@ -24,8 +26,8 @@ let PlayerModel = require("../models/PlayerModel")
 
 
 /* GET home page. */
-router.get('/',  (req, res, next) => {
-}).post('/',  (req, res, next) => {
+router.get('/', (req, res, next) => {
+}).post('/', (req, res, next) => {
     let newPlayer = new PlayerModel();
     newPlayer = Object.assign(newPlayer, req.body);
     newPlayer.registerDate = timeModel.getCurrentDay();
@@ -33,13 +35,23 @@ router.get('/',  (req, res, next) => {
     newPlayer.ips.push(req.headers['x-forwarded-for'] || req.connection.remoteAddress);
 
 
-    PlayerModel.find({},  (err, arr) => {
-        let items = arr.length;
-        newPlayer.number = items;
-        newPlayer.ship = new Ship(items);
-        newPlayer.save().then(() => res.send('New Player Created')).catch((err) => {
-            if (err.code === 11000) res.send('Such username already exists.')
+    PlayerModel.find({}, (err, arr) => {
+        let number = arr.length;
+        newPlayer.number = number;
+        newPlayer.ship = new Ship(number);
+        bcrypt.hash(newPlayer.password, SaltRounds, (err, hash) => {
+            if (err) console.log(err)
+            else {
+                newPlayer.password = hash
+                newPlayer.save().then(() => res.send({
+                    nickname: newPlayer.nickname,
+                    errMsg: 'New Player Created'
+                })).catch((err) => {
+                    if (err.code === 11000) res.send({errMsg: 'Such username already exists.'})
+                });
+            }
         });
+
     })
 
 });

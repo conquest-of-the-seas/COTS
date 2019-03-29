@@ -30,6 +30,8 @@ let basicDataRouter = require('./routes/BasicData');
 app.use('/data',basicDataRouter);
 let registerRouter = require('./routes/RegisterPlayer');
 app.use('/register',registerRouter);
+let loginRouter = require('./routes/LoginPlayer');
+app.use('/login',loginRouter);
 let articlesRouter = require('./routes/Articles');
 app.use('/articles',articlesRouter);
 let hangarRouter = require('./routes/Hangar');

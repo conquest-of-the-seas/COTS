@@ -25,20 +25,64 @@ let PlayerModel = require("../models/PlayerModel")
 
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-    PlayerModel.findOne({nickname: 'test4'}, (err, obj) => {
-        obj.hangar.push(new ShipElement(2, 'mast'),
-            new ShipElement(2, 'cabins'),
-            new ShipElement(5, 'oars'),
-            new ShipElement(4, 'sails'),
-            new ShipElement(3, 'hull'),
-            new ShipElement(2, 'deck'),
-            new ShipElement(3, 'wheel'));
-        res.send({ship: obj.ship, hangar: obj.hangar})
-    })
-}).post('/', (req, res, next) => {
-    let action = req.body.action
+router.post('/', (req, res, next) => {
+    new ShipElement(1, 'oars');
+    let reqData = req.body;
+    switch (reqData.action) {
+        case 'get':
+            PlayerModel.findOne({nickname: reqData.nickname}, (err, obj) => {
+                if (obj) res.send({ship: obj.ship, hangar: obj.hangar})
+                else res.send({errMsg: 'Invalid session!'})
+            })
+            break;
+        case 'use':
+            PlayerModel.findOne({nickname: reqData.nickname}, (err, obj) => {
+                if (obj) {
+                    let item = reqData.item;
+                    let oldObj = Object.assign({}, obj.ship[item.type]);
+                    if (obj.hangar.find(a => a.number === item.number)) {
+                        obj.ship[item.type] = item;
+                        obj.hangar.push(oldObj);
+                        obj.hangar = obj.hangar.filter(a => a.number !== item.number);
+                        delete obj._id
+                        PlayerModel.updateOne({nickname: reqData.nickname}, obj, (err) => {
+                            res.send({ship: obj.ship, hangar: obj.hangar})
 
-});
+                        })
+                    }
+                    else {
+                        res.send({errMsg: `You don't own Item #${item.number}`})
+                    }
+                }
+                else {
+                    res.send({errMsg: 'Invalid session!'})
+                }
+            })
+            break;
+        case 'addMeRandomItem':
+            PlayerModel.findOne({nickname: reqData.nickname}, (err, obj) => {
+                if (obj) {
+                    let partsArr = ['mast', 'cabins', 'oars', 'sails', 'hull', 'deck', 'wheel']
+                    obj.hangar.push(new ShipElement(Math.ceil(Math.random() * 5), partsArr[Math.floor(Math.random() * 7)]));
+                    delete obj._id
+                    console.log(obj._id)
+                    PlayerModel.updateOne({nickname: reqData.nickname}, obj, (err) => {
+                        if (err) console.log(err)
+                        else res.send({ship: obj.ship, hangar: obj.hangar})
+
+                    })
+
+                }
+                else {
+                    res.send({errMsg: 'Invalid session!'})
+                }
+
+            })
+            break
+    }
+
+
+})
 
 module.exports = router;
+
