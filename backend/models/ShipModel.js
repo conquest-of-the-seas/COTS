@@ -143,8 +143,9 @@ async function createShipElement(tier, type) {
 
 
 module.exports = {
-    ship: Ship,
-    shipElement: ShipElement,
+    Ship: Ship,
+    ShipElement: ShipElement,
+    ShipElementModel: ShipElementModel,
     parameter: Parameter,
     parArr: parArr
 };

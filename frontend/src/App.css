@@ -1,9 +1,14 @@
-.usedParts{
-  background: green;
-  width: 100%;
-  text-align: center;
-  min-height: 100px ;
-  border: 2px solid black;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.usedParts {
+    background: green;
+    width: 100%;
+    text-align: center;
+    min-height: 100px;
+    border: 2px solid black;
     align-content: center;
 }
 
@@ -15,22 +20,22 @@
 
 }
 
-.mx-auto{
-    margin:0px auto;
+.mx-auto {
+    margin: 0px auto;
 }
 
-.w-30{
+.w-30 {
     width: 30%;
 }
 
-.w-50{
+.w-50 {
     width: 50%;
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
-.m-20{
+.m-20 {
     margin: 20px;
 }

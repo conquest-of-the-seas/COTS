@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const timeModel = require('../models/TimeModel');
-const Ship = require('../models/ShipModel').ship;
+const PlayerModel = require("../models/PlayerModel")
+const {Ship} = require('../models/ShipModel');
+const {CrewMember, defaultCrew} = require('../models/CrewModel');
 const SaltRounds = 10;
 
 // Connecting to the Database
@@ -22,7 +24,7 @@ db.on("error", function (err) {
 });
 
 // Bringing in model
-let PlayerModel = require("../models/PlayerModel")
+
 
 
 /* GET home page. */
@@ -39,6 +41,7 @@ router.get('/', (req, res, next) => {
         let number = arr.length;
         newPlayer.number = number;
         newPlayer.ship = new Ship(number);
+        newPlayer.crew.push(...defaultCrew());
         bcrypt.hash(newPlayer.password, SaltRounds, (err, hash) => {
             if (err) console.log(err)
             else {

@@ -26,12 +26,11 @@ let PlayerModel = require("../models/PlayerModel")
 
 /* GET home page. */
 router.post('/', (req, res, next) => {
-    new ShipElement(1, 'oars');
     let reqData = req.body;
     switch (reqData.action) {
         case 'get':
             PlayerModel.findOne({nickname: reqData.nickname}, (err, obj) => {
-                if (obj) res.send({ship: obj.ship, hangar: obj.hangar})
+                if (obj) res.send({ship: obj.ship, hangar: obj.hangar});
                 else res.send({errMsg: 'Invalid session!'})
             })
             break;
@@ -44,7 +43,6 @@ router.post('/', (req, res, next) => {
                         obj.ship[item.type] = item;
                         obj.hangar.push(oldObj);
                         obj.hangar = obj.hangar.filter(a => a.number !== item.number);
-                        delete obj._id
                         PlayerModel.updateOne({nickname: reqData.nickname}, obj, (err) => {
                             res.send({ship: obj.ship, hangar: obj.hangar})
 
@@ -62,10 +60,8 @@ router.post('/', (req, res, next) => {
         case 'addMeRandomItem':
             PlayerModel.findOne({nickname: reqData.nickname}, (err, obj) => {
                 if (obj) {
-                    let partsArr = ['mast', 'cabins', 'oars', 'sails', 'hull', 'deck', 'wheel']
+                    let partsArr = ['mast', 'cabins', 'oars', 'sails', 'hull', 'deck', 'wheel'];
                     obj.hangar.push(new ShipElement(Math.ceil(Math.random() * 5), partsArr[Math.floor(Math.random() * 7)]));
-                    delete obj._id
-                    console.log(obj._id)
                     PlayerModel.updateOne({nickname: reqData.nickname}, obj, (err) => {
                         if (err) console.log(err)
                         else res.send({ship: obj.ship, hangar: obj.hangar})

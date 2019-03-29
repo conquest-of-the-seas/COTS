@@ -10,7 +10,7 @@ import {
     GiHealthIncrease
 } from 'react-icons/gi'
 
-import shipImg from '../../images/shipLayoutWithoutOars.png'
+import shipImg from '../../../images/shipLayoutWithoutOars.png'
 
 
 export default class Hangar extends Component {
@@ -163,13 +163,14 @@ export default class Hangar extends Component {
                     </div>
                     <div className={'col-2 usedParts'}>
                         {this.createItemHolder(this.state.ship.wheel, 'wheel')}
+                        {this.createItemHolder(this.state.ship.cabins, 'cabins')}
                     </div>
                     <div className={'col-8 usedParts'}>
                         <canvas id={'shipLayout'} width={this.state.canvWidth} height={this.state.canvHeight}/>
                         <img src={shipImg} alt={'shipImg'} style={{display: 'none'}} ref={'ship'}/>
                     </div>
                     <div className={'col-2 usedParts'}>
-                        {this.createItemHolder(this.state.ship.cabins, 'cabins')}
+
                         {this.createItemHolder(this.state.ship.oars, 'oars')}
                     </div>
                     <div className={'col-12 row usedParts'}>

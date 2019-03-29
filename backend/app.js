@@ -36,6 +36,8 @@ let articlesRouter = require('./routes/Articles');
 app.use('/articles',articlesRouter);
 let hangarRouter = require('./routes/Hangar');
 app.use('/hangar',hangarRouter);
+let cabinsRouter = require('./routes/Cabins');
+app.use('/cabins',cabinsRouter);
 
 
 // catch 404 and forward to error handler

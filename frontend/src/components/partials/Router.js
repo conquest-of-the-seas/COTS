@@ -1,31 +1,30 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
-import IndexPage from "../pages/IndexPage";
-import GameMap from "../pages/GameMap";
-import TrainingGrounds from "../pages/TrainingGrounds";
-import Quests from "../pages/Quests";
+import IndexPage from "../pages/basic/IndexPage";
+import GameMap from "../pages/gameRelated/GameMap";
+import TrainingGrounds from "../pages/myPlaces/TrainingGrounds";
+import Quests from "../pages/myPlaces/Quests";
 import ClickingDemo from "../pages/ClickingDemo";
-import Register from "../pages/Register";
-import Login from "../pages/Login";
-import Articles from "../pages/Articles";
-import Hangar from "../pages/Hangar";
-
+import Register from "../pages/basic/Register";
+import Login from "../pages/basic/Login";
+import Articles from "../pages/thePub/Articles";
+import Hangar from "../pages/myPlaces/Hangar";
+import Cabins from '../pages/myPlaces/Cabins';
 
 export default class Router extends Component {
 
     constructor() {
         super()
         this.state = {
-            nickname: ''
+
         }
     }
 
     componentWillMount() {
-        this.setState({nickname: localStorage.getItem('nickname')})
+
     }
 
     render() {
-        console.log(this.state.nickname)
         return (
             <div>
                 <Route path="/" exact component={IndexPage}/>
@@ -37,6 +36,7 @@ export default class Router extends Component {
                 <Route path="/login" exact component={() => <Login/>}/>
                 <Route path="/articles" exact component={Articles}/>
                 <Route path="/hangar" exact component={() => <Hangar/>}/>
+                <Route path="/cabins" exact component={() => <Cabins/>}/>
             </div>
         );
     }

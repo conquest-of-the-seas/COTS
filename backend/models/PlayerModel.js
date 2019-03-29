@@ -62,7 +62,8 @@ let playerModelSchema = mongoose.Schema({
         type: Ship
     },
     crew: {
-        type: {}
+        type: [],
+        default: []
     }
 });
 

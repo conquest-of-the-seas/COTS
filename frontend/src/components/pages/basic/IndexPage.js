@@ -17,7 +17,7 @@ export default class IndexPage extends Component {
 
         return (
             <div>
-                {JSON.stringify(this.state.data)}
+                Index Page
             </div>
         );
     }

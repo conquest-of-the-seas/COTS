@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 
 
-export default class MyShip extends Component {
+export default class Ship extends Component {
     constructor(){
         super()
         this.state={
@@ -13,7 +13,7 @@ export default class MyShip extends Component {
 
         return (
             <div>
-                PageTest
+                my ship
             </div>
         );
     }
