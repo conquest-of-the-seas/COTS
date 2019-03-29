@@ -4,15 +4,32 @@
   text-align: center;
   min-height: 100px ;
   border: 2px solid black;
+    align-content: center;
 }
 
 .holder {
-  border: 1px solid blue;
-  width: fit-content;
-  margin: 0 auto;
-text-align: center;
+    border: 1px solid blue;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.usedParts{
-  align-content: center;
+.mx-auto{
+    margin:0px auto;
+}
+
+.w-30{
+    width: 30%;
+}
+
+.w-50{
+    width: 50%;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.m-20{
+    margin: 20px;
 }
