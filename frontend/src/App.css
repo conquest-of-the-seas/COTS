@@ -8,10 +8,11 @@
 }
 
 .holder {
-    border: 1px solid blue;
+    border: 2px solid blue;
     width: fit-content;
     margin: 0 auto;
     text-align: center;
+
 }
 
 .mx-auto{
