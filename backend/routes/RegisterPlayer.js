@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const timeModel = require('../models/TimeModel');
-const PlayerModel = require("../models/PlayerModel")
-const {Ship} = require('../models/ShipModel');
-const {CrewMember, defaultCrew} = require('../models/CrewModel');
+const {PlayerModel} = require("../models/PlayerModel");
+const {Ship, updateParameters} = require('../models/ShipModel');
+const {multiplyParameters, defaultCrew} = require('../models/CrewModel');
 const SaltRounds = 10;
 
 // Connecting to the Database
@@ -26,12 +26,20 @@ db.on("error", function (err) {
 // Bringing in model
 
 
-
 /* GET home page. */
 router.get('/', (req, res, next) => {
 }).post('/', (req, res, next) => {
+    console.time('start');
     let newPlayer = new PlayerModel();
-    newPlayer = Object.assign(newPlayer, req.body);
+
+    let registerData = {
+        nickname: req.body.nickname,
+        password: req.body.password,
+        faction: req.body.faction,
+        email: req.body.email
+    }
+
+    newPlayer = Object.assign(newPlayer, registerData);
     newPlayer.registerDate = timeModel.getCurrentDay();
     newPlayer.lastSeen = timeModel.getCurrentDay();
     newPlayer.ips.push(req.headers['x-forwarded-for'] || req.connection.remoteAddress);
@@ -42,19 +50,26 @@ router.get('/', (req, res, next) => {
         newPlayer.number = number;
         newPlayer.ship = new Ship(number);
         newPlayer.crew.push(...defaultCrew());
+        multiplyParameters(newPlayer.parameters, newPlayer.crew);
+        updateParameters(newPlayer.parameters, newPlayer.ship);
+
+
         bcrypt.hash(newPlayer.password, SaltRounds, (err, hash) => {
-            if (err) console.log(err)
+            if (err) console.log(err);
             else {
-                newPlayer.password = hash
-                newPlayer.save().then(() => res.send({
-                    nickname: newPlayer.nickname,
-                    errMsg: 'New Player Created'
-                })).catch((err) => {
+                newPlayer.password = hash;
+                newPlayer.save().then(() => {
+                    console.timeEnd('start');
+                    res.send({
+                        nickname: newPlayer.nickname,
+                        errMsg: 'New Player Created'
+                    })
+                }).catch((err) => {
                     if (err.code === 11000) res.send({errMsg: 'Such username already exists.'})
                 });
             }
         });
-
+//
     })
 
 });

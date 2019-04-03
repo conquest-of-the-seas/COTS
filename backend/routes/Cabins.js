@@ -3,7 +3,7 @@ let mongoose = require('mongoose');
 let router = express.Router();
 let timeModel = require('../models/TimeModel');
 let {pirateTypeNames, CrewMember} = require('../models/CrewModel');
-
+const {PlayerModel} = require("../models/PlayerModel");
 
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
@@ -20,8 +20,7 @@ db.on("error", function (err) {
     console.log(err);
 });
 
-// Bringing in model
-let PlayerModel = require("../models/PlayerModel")
+
 
 
 /* GET home page. */

@@ -2,8 +2,8 @@ let express = require('express');
 let mongoose = require('mongoose');
 let router = express.Router();
 let timeModel = require('../models/TimeModel');
-let ShipElement = require('../models/ShipModel').shipElement;
-
+let {ShipElement, updateParameters} = require('../models/ShipModel');
+let {PlayerModel} = require("../models/PlayerModel");
 
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
@@ -20,16 +20,15 @@ db.on("error", function (err) {
     console.log(err);
 });
 
-// Bringing in model
-let PlayerModel = require("../models/PlayerModel")
-
 
 /* GET home page. */
 router.post('/', (req, res, next) => {
     let reqData = req.body;
     switch (reqData.action) {
         case 'get':
+
             PlayerModel.findOne({nickname: reqData.nickname}, (err, obj) => {
+                if (err) console.log(err)
                 if (obj) res.send({ship: obj.ship, hangar: obj.hangar});
                 else res.send({errMsg: 'Invalid session!'})
             })
@@ -41,6 +40,7 @@ router.post('/', (req, res, next) => {
                     let oldObj = Object.assign({}, obj.ship[item.type]);
                     if (obj.hangar.find(a => a.number === item.number)) {
                         obj.ship[item.type] = item;
+                        updateParameters(obj.parameters, obj.ship);
                         obj.hangar.push(oldObj);
                         obj.hangar = obj.hangar.filter(a => a.number !== item.number);
                         PlayerModel.updateOne({nickname: reqData.nickname}, obj, (err) => {

@@ -38,6 +38,10 @@ let hangarRouter = require('./routes/Hangar');
 app.use('/hangar',hangarRouter);
 let cabinsRouter = require('./routes/Cabins');
 app.use('/cabins',cabinsRouter);
+let playerDataRouter = require('./routes/PlayerData');
+app.use('/player',playerDataRouter);
+let trainingRouter = require('./routes/TrainingGrounds');
+app.use('/train',trainingRouter);
 
 
 // catch 404 and forward to error handler

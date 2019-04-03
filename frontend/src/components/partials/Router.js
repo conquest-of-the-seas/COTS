@@ -10,6 +10,7 @@ import Login from "../pages/basic/Login";
 import Articles from "../pages/thePub/Articles";
 import Hangar from "../pages/myPlaces/Hangar";
 import Cabins from '../pages/myPlaces/Cabins';
+import Player from "../pages/myPlaces/Player";
 
 export default class Router extends Component {
 
@@ -37,7 +38,9 @@ export default class Router extends Component {
                 <Route path="/articles" exact component={Articles}/>
                 <Route path="/hangar" exact component={() => <Hangar/>}/>
                 <Route path="/cabins" exact component={() => <Cabins/>}/>
+                <Route path="/player" exact component={() => <Player/>}/>
             </div>
+
         );
     }
 }

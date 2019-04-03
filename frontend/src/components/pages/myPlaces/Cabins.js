@@ -1,19 +1,6 @@
 import React, {Component} from 'react';
-import {
-    GiArcheryTarget,
-    GiWindsock,
-    GiWoodCanoe,
-    GiCannon,
-    GiSwimfins,
-    GiCardboardBox,
-    GiHumanPyramid,
-    GiHealthIncrease
-} from 'react-icons/gi'
 
-import shipImg from '../../../images/shipLayoutWithoutOars.png'
-
-
-export default class Hangar extends Component {
+export default class Cabins extends Component {
     constructor() {
         super()
         this.state = {
@@ -62,7 +49,7 @@ export default class Hangar extends Component {
 
     createItemHolder(crewmember) {
         let skills = crewmember.skills.map((s, i) => {
-            return (<div>
+            return (<div key={'skill'+i}>
                 {s.name}: {s.value}
             </div>)
         })
@@ -76,7 +63,7 @@ export default class Hangar extends Component {
 
     render() {
         let crew = this.state.crew.map((cm, i) => {
-            return <div key={i}>{this.createItemHolder(cm)}</div>
+            return <div className={'col-2'} key={'cm'+i}>{this.createItemHolder(cm)}</div>
         })
 
         return (

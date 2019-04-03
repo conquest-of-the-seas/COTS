@@ -1,0 +1,23 @@
+﻿Ship Elements: The ship must be rendered from an angle where every component visible (you are free to choose the angle, based on your imagination and how you think looks the best). The time period of the game is 13-16 century. 
+
+You can start by make the Ship Element Templates (the shape of the Ship Element) and then attach different skins to each of them (5 tiers), so they are identical, and this leaves space for future improovement, adding extra variety and more... 
+
+All elements must be compatible with one another. 
+for example: tier 3 hull, tier 5 cabins/bridge tier 4 deck, tier 2 mast, tier 5 sails and tier 1 oars, must attach perfectly. One element may render on top of another, this is not a problem. A problem is for example if different Hulls have the holes for the Oars in different locations.
+
+This is the list of the elements required: 
+
+* Hull (Body of the ship, must have holes for oars on same positions for each tier)
+* Deck (Top part of the hull, you may add different decorations for every tier for example barrels, chests, ropes, anchor /it can be drawn on the side of the hull too/)
+* Oars (Atached to the hull, coming out of holes in the ship hull)
+* Mast (On top of the Deck the ship will have 3 masts where the 1st and 3rd will be the same, rendered on different locations of the Deck, the middle one will be taller - it will be rendered 2 times by attaching the texture 2 times with differect Y coordinate) 
+* Sails (Attached to the masts) 
+* Bridge/Cabins (the back part of the ship. The bridge is where the captain controls the ship and the Wheel will be rendered, the cabins are just the holes in the Hull which are windows. :D)
+* Wheel (on top of the bridge it will be hardly visible, so make them look as cool and detailed as you want, different shapes are also allowed.) 
+
+
+Comments:
+=> Пращам и screenshot-и за наименоването на файловете.
+=> След като написах цялата задачка, я обмислих по-добре от първоначално което ти обясних и общо взето имаш повече свобода. 
+=> Можеш и да гледаш горе долу от рисунката на Paint, кое къде се намира и ако решиш ъгъла може и да е от страни, тъй като волана няма да се вижда. отделно мостика на капитана на снимката е много висок може би е по-добре да е по-нисък в случай че избереш ъгъла да е леко отзад да не се закрива полубата.
+=> Каквито и въпроси да имаш неяснотии и т.н. задавай по всяко едно време, дори и да работя по друго ако съм на компютъра ще ти отговарям. Нямам определено работно време и затова не мога да ти кажа кога съм активен, но има равен шанс да ме има какъвто е и да ме няма в даден момент на деня/седмицата.

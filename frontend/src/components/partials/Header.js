@@ -29,6 +29,7 @@ export default class Header extends Component {
                             <NavDropdown.Item onClick={()=>this.setState({redirect:'/quests'})}> Quests </NavDropdown.Item>
                             <NavDropdown.Item onClick={()=>this.setState({redirect:'/hangar'})}> Hangar </NavDropdown.Item>
                             <NavDropdown.Item onClick={()=>this.setState({redirect:'/cabins'})}> Cabins </NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>this.setState({redirect:'/player'})}> Player Data </NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={()=>this.setState({redirect:'/donate'})}> Donate </NavDropdown.Item>
                         </NavDropdown>
