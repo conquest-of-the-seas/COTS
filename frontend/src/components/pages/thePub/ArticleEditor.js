@@ -1,24 +1,24 @@
 import React, {Component} from 'react';
-import { FaBold } from "react-icons/fa";
-import { FaItalic } from "react-icons/fa";
-import { FaImage } from "react-icons/fa";
-import { FaLink } from "react-icons/fa";
-import { FaHeading } from "react-icons/fa";
-import { FaUnderline } from "react-icons/fa";
-import { FaQuoteRight } from "react-icons/fa";
-import { FaTable } from "react-icons/fa";
+import {FaBold} from "react-icons/fa";
+import {FaItalic} from "react-icons/fa";
+import {FaImage} from "react-icons/fa";
+import {FaLink} from "react-icons/fa";
+import {FaHeading} from "react-icons/fa";
+import {FaUnderline} from "react-icons/fa";
+import {FaQuoteRight} from "react-icons/fa";
+import {FaTable} from "react-icons/fa";
 
 export default class ArticleEditor extends Component {
     constructor(props) {
         super(props)
         this.state = {
             text: '',
-            title:'',
-            requestMsg:''
+            title: '',
+            requestMsg: ''
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         document.querySelectorAll("button.emote").forEach((el) => {
             el.addEventListener("click", (e) => {
                 emoteInTextarea(document.getElementById("Description"), e.currentTarget.value);
@@ -26,11 +26,11 @@ export default class ArticleEditor extends Component {
         });
 
         function emoteInTextarea(el, newText) {
-            var start = el.selectionStart;
-            var end = el.selectionEnd;
-            var text = el.value;
-            var before = text.substring(0, start);
-            var after = text.substring(end, text.length);
+            let start = el.selectionStart;
+            let end = el.selectionEnd;
+            let text = el.value;
+            let before = text.substring(0, start);
+            let after = text.substring(end, text.length);
             el.value = (before + newText + after);
             el.selectionEnd = start + newText.length;
             el.focus();
@@ -43,11 +43,11 @@ export default class ArticleEditor extends Component {
         });
 
         function typeInTextarea(el, newText) {
-            var start = el.selectionStart;
-            var end = el.selectionEnd;
-            var text = el.value;
-            var before = text.substring(0, start);
-            var after = text.substring(end, text.length);
+            let start = el.selectionStart;
+            let end = el.selectionEnd;
+            let text = el.value;
+            let before = text.substring(0, start);
+            let after = text.substring(end, text.length);
             el.value = (before + newText + after);
             el.selectionEnd = start + (newText.indexOf("]") + 1);
             el.focus();
@@ -58,15 +58,15 @@ export default class ArticleEditor extends Component {
         fetch(`http://${window.location.hostname}:4004/articles`, {
             method: "post",
             body: JSON.stringify({
-                text:this.state.text,
-                title:this.state.title
+                text: this.state.text,
+                title: this.state.title
             }),
             headers: {
                 "Content-Type": "application/json",
             }
         }).then(res => res.text()).then(t => {
-            this.setState({requestMsg:t})
-            this.props.refetch()
+            this.setState({requestMsg: t})
+            //this.props.refetch()
         })
     }
 
@@ -76,7 +76,8 @@ export default class ArticleEditor extends Component {
             <div className="text-center">
                 <h5>{this.state.requestMsg}</h5>
                 <div className="m-20">
-                    <input placeholder={'title'} value={this.state.title} onChange={(e) => this.setState({title:e.target.value})}/><br/>
+                    <input placeholder={'title'} value={this.state.title}
+                           onChange={(e) => this.setState({title: e.target.value})}/><br/>
                 </div>
                 <div>
                     <button className="text" title="bold" value="[b][/b]"><FaBold/></button>
@@ -88,13 +89,15 @@ export default class ArticleEditor extends Component {
                     <button className="text" title="image" value="[img=URL][/img]"><FaImage/></button>
                     {/* table needs more thinking */}
                     <button className="text" title="table" value="[table][/table]"><FaTable/></button>
-                    <button className="emote" value="😃">😃</button>
-                    <button className="emote" value="🙂">🙂</button>
-                    <button className="emote" value="☹">☹</button>
-                    <button className="emote" value="😮">😮</button>
+                    <button className="emote" value="😃"><span role="img" aria-label={'emoji'}>😃 </span></button>
+                    <button className="emote" value="🙂"><span role="img" aria-label={'emoji'}>🙂 </span></button>
+                    <button className="emote" value="☹"><span role="img" aria-label={'emoji'}>☹ </span></button>
+                    <button className="emote" value="😮"><span role="img" aria-label={'emoji'}>😮 </span></button>
                 </div>
                 <div className="m-20">
-                <textarea id="Description" cols="60" rows="8" onChange={(e) => this.setState({text:e.target.value})} value={this.state.text} placeholder={'write your articles here'}/><br/>
+                    <textarea id="Description" cols="60" rows="8"
+                              onChange={(e) => this.setState({text: e.target.value})} value={this.state.text}
+                              placeholder={'write your articles here'}/><br/>
                 </div>
                 <button onClick={this.postArticle.bind(this)}>Submit</button>
             </div>
