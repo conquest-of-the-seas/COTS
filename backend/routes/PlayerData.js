@@ -4,7 +4,7 @@ let router = express.Router();
 let timeModel = require('../models/TimeModel');
 let {ShipElement, updateParameters} = require('../models/ShipModel');
 let {PlayerModel} = require("../models/PlayerModel");
-
+let {decryptCookie} = require('../models/AuthModel');
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
 let db = mongoose.connection;
@@ -24,12 +24,13 @@ db.on("error", function (err) {
 /* GET home page. */
 router.post('/', (req, res, next) => {
     let reqData = req.body;
+    let playerData = decryptCookie(reqData.cookie);
+    console.log(playerData);
     switch (reqData.action) {
         case 'get':
-
-            PlayerModel.findOne({nickname: reqData.nickname}, (err, obj) => {
+            PlayerModel.findOne({nickname: playerData.username}, (err, obj) => {
                 if (err) console.log(err);
-                if (obj) res.send(obj);
+                if (obj) res.send({player: obj});
                 else res.send({errMsg: 'Invalid session!'})
             })
             break;

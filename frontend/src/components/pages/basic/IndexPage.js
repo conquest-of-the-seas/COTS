@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import RequestModel from "../../RequestModel";
 
 //const BackEndURL = `${window.location.hostname}:4004`
 
 
-export default class IndexPage extends Component {
+export default class IndexPage extends RequestModel {
     constructor() {
         super()
         this.state = {

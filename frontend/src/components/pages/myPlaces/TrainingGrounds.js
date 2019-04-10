@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import RequestModel from "../../RequestModel";
 
-export default class TrainingGrounds extends Component {
+export default class TrainingGrounds extends RequestModel {
     constructor() {
         super()
         this.state = {
@@ -10,66 +11,29 @@ export default class TrainingGrounds extends Component {
     }
 
     componentWillMount() {
-
-        fetch(`http://${window.location.hostname}:4004/cabins`, {
-            method: "post",
-            body: JSON.stringify({
-                action: 'get',
-                nickname: localStorage.getItem('nickname'),
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }).then(res => res.json())
-            .then(j => {
-                console.log(j);
-                this.setState(j);
-            })
+        this.fetchRequest('cabins', {action: 'get'})
     }
 
     componentDidMount() {
 
     }
 
-
     addRandom() {
-        fetch(`http://${window.location.hostname}:4004/cabins`, {
-            method: "post",
-            body: JSON.stringify({
-                action: 'addMeRandomItem',
-                nickname: localStorage.getItem('nickname'),
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }).then(res => res.json()).then(j => {
-            this.setState(j);
-        })
+        this.fetchRequest('cabins', {action: 'addMeRandomItem'})
     }
 
-    trainSkill(skill,cm){
-        console.log(skill);
-        console.log(cm);
-        fetch(`http://${window.location.hostname}:4004/train`, {
-            method: "post",
-            body: JSON.stringify({
-                crewMember:cm,
-                skill:skill,
-                nickname: localStorage.getItem('nickname'),
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }).then(res => res.json()).then(j => {
-            this.setState(j);
+    trainSkill(skill, cm) {
+        this.fetchRequest('train', {
+            crewMember: cm,
+            skill: skill
         })
     }
 
     createItemHolder(crewmember) {
         let skills = crewmember.skills.map((s, i) => {
             let trainButton
-            if (!s.untrainable) trainButton =  <button onClick={()=>this.trainSkill(s,crewmember)}>Train</button>
-            return (<div key={'skill'+i}>
+            if (!s.untrainable) trainButton = <button onClick={() => this.trainSkill(s, crewmember)}>Train</button>
+            return (<div key={'skill' + i}>
                 {s.name}: {s.value} {trainButton}
             </div>)
         })
@@ -83,7 +47,7 @@ export default class TrainingGrounds extends Component {
 
     render() {
         let crew = this.state.crew.map((cm, i) => {
-            return <div className={'col-2'} key={'cm'+i}>{this.createItemHolder(cm)}</div>
+            return <div className={'col-2'} key={'cm' + i}>{this.createItemHolder(cm)}</div>
         })
 
         return (

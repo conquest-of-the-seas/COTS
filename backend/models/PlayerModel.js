@@ -51,6 +51,7 @@ let playerModelSchema = mongoose.Schema({
         unique: true,
         dropDups: true
     },
+    cookie:{type:String},
     number: {
         type: Number,
         required: true

@@ -19,7 +19,6 @@ const nameArray = ['The unnamed ', 'Mystic ', 'The invincible ', 'Random ', 'Shi
 //pirate type names
 const typeArray = ["captain", "qm", "navigator", "boatswain", "carpenter", "surgeon", "gunner", "rigger", "abs"];
 
-let skillArray;
 
 
 //used for creating a new crew member
@@ -110,7 +109,7 @@ class Skill {
             case "strength":
                 return new SkillEffect('force', 1.005);
             case "swing":
-                return new SkillEffect('windEff', 1.01)
+                return new SkillEffect('windEff', 1.002)
         }
     }
 }

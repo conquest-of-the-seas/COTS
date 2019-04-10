@@ -8,6 +8,7 @@ let {updateParameters} = require('../models/ShipModel')
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
 let db = mongoose.connection;
+let {decryptCookie} = require("../models/AuthModel");
 
 // Check connection to db
 db.once("open", function () {
@@ -24,24 +25,24 @@ db.on("error", function (err) {
 /* GET home page. */
 router.post('/', (req, res, next) => {
     let reqData = req.body;
-    PlayerModel.findOne({nickname: reqData.nickname}, (err, obj) => {
+    let playerData = decryptCookie(reqData.cookie);
+    PlayerModel.findOne({nickname: playerData.nickname}, (err, obj) => {
         if (obj) {
-            let skillToTrain = obj.crew.find(a => a.number === reqData.crewMember.number).skills.find(a => a.shortName === reqData.skill.shortName);
-            skillToTrain.value++;
-            multiplyParameters(obj.parameters, obj.crew);
-            updateParameters(obj.parameters, obj.ship);
+            if (obj.cookie === reqData.cookie) {
+                let skillToTrain = obj.crew.find(a => a.number === reqData.crewMember.number).skills.find(a => a.shortName === reqData.skill.shortName);
+                skillToTrain.value++;
+                multiplyParameters(obj.parameters, obj.crew);
+                updateParameters(obj.parameters, obj.ship);
 
-            PlayerModel.updateOne({nickname: reqData.nickname}, obj, (err) => {
-                if (err) console.log(err);
-                else res.send({crew: obj.crew})
+                PlayerModel.updateOne({nickname: playerData.nickname}, obj, (err) => {
+                    if (err) console.log(err);
+                    else res.send({crew: obj.crew})
 
-            })
-
+                })
+            }
+            else res.send({errMsg: 'Invalid session!', session: true});
         }
-        else {
-            res.send({errMsg: 'Invalid session!'})
-        }
-
+        else res.send({errMsg: 'Invalid session!', session: true});
     })
 
 

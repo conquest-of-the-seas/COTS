@@ -7,6 +7,7 @@ const {PlayerModel} = require("../models/PlayerModel");
 const {Ship, updateParameters} = require('../models/ShipModel');
 const {multiplyParameters, defaultCrew} = require('../models/CrewModel');
 const SaltRounds = 10;
+const {createCookie} = require('../models/AuthModel');
 
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
@@ -43,7 +44,7 @@ router.get('/', (req, res, next) => {
     newPlayer.registerDate = timeModel.getCurrentDay();
     newPlayer.lastSeen = timeModel.getCurrentDay();
     newPlayer.ips.push(req.headers['x-forwarded-for'] || req.connection.remoteAddress);
-
+    newPlayer.cookie = createCookie(newPlayer.nickname,newPlayer._id);
 
     PlayerModel.find({}, (err, arr) => {
         let number = arr.length;
@@ -61,7 +62,7 @@ router.get('/', (req, res, next) => {
                 newPlayer.save().then(() => {
                     console.timeEnd('start');
                     res.send({
-                        nickname: newPlayer.nickname,
+                        cookie: newPlayer.cookie,
                         errMsg: 'New Player Created'
                     })
                 }).catch((err) => {

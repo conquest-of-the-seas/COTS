@@ -3,6 +3,7 @@ import './App.css';
 import Router from "./components/partials/Router";
 import Header from "./components/partials/Header";
 
+
 class App extends Component {
     constructor(){
         super();
@@ -17,7 +18,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Header/>
-                <Router cookie={this.state.cookie}/>
+                <Router/>
             </div>
         );
     }

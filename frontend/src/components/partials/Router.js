@@ -11,14 +11,14 @@ import Articles from "../pages/thePub/Articles";
 import Hangar from "../pages/myPlaces/Hangar";
 import Cabins from '../pages/myPlaces/Cabins';
 import Player from "../pages/myPlaces/Player";
+import RequestModel from "../RequestModel";
 
-export default class Router extends Component {
+
+export default class Router extends RequestModel {
 
     constructor() {
         super()
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     componentWillMount() {

@@ -7,8 +7,9 @@ import {FaHeading} from "react-icons/fa";
 import {FaUnderline} from "react-icons/fa";
 import {FaQuoteRight} from "react-icons/fa";
 import {FaTable} from "react-icons/fa";
+import RequestModel from "../../RequestModel";
 
-export default class ArticleEditor extends Component {
+export default class ArticleEditor extends RequestModel {
     constructor(props) {
         super(props)
         this.state = {

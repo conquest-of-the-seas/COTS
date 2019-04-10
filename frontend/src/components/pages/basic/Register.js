@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 
+import { withCookies, Cookies } from 'react-cookie';
+import RequestModel from "../../RequestModel";
 
-export default class Register extends Component {
-    constructor() {
-        super()
+export default class Register extends RequestModel {
+
+
+    constructor(props) {
+        super(props);
+
         this.state = {
             nickname: '',
             password: '',
@@ -15,32 +20,23 @@ export default class Register extends Component {
     }
 
     register() {
-        let isValid = true
-
+        let isValid = true;
         if (this.state.password !== this.state.repPw) {
-            isValid = false
+            isValid = false;
             this.setState({errMsg: "Passwords don't match"})
         }
         else if (!this.validateEmail(this.state.email)) {
-            isValid = false
+            isValid = false;
             this.setState({errMsg: "Invalid e-mail"})
         }
         else if (isValid) {
-            fetch(`http://${window.location.hostname}:4004/register`, {
-                method: "post",
-                body: JSON.stringify({
-                    nickname: this.state.nickname,
-                    password: this.state.password,
-                    faction: this.state.faction,
-                    email: this.state.email
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            }).then(res => res.json()).then(j => {
-                localStorage.setItem('nickname',j.nickname);
-                this.setState(j)
-            })
+            let regObj = {
+                nickname: this.state.nickname,
+                password: this.state.password,
+                faction: this.state.faction,
+                email: this.state.email
+            }
+            this.fetchRequest('register',regObj,()=>console.log('works :D'));
         }
 
 

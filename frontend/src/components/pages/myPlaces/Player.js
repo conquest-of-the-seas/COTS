@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import RequestModel from "../../RequestModel";
 
-export default class Player extends Component {
+export default class Player extends RequestModel {
     constructor() {
         super()
         this.state = {
@@ -10,21 +11,7 @@ export default class Player extends Component {
     }
 
     componentWillMount() {
-
-        fetch(`http://${window.location.hostname}:4004/player`, {
-            method: "post",
-            body: JSON.stringify({
-                action: 'get',
-                nickname: localStorage.getItem('nickname'),
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }).then(res => res.json())
-            .then(j => {
-                console.log(j);
-                this.setState({player: j});
-            })
+        this.fetchRequest('player', {action: 'get'})
     }
 
     componentDidMount() {

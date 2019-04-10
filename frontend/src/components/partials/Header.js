@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom'
 import {Navbar, NavDropdown,Nav} from 'react-bootstrap'
+import RequestModel from "../RequestModel";
 
-export default class Header extends Component {
+export default class Header extends RequestModel {
     constructor(){
         super()
         this.state = {

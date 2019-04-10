@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
+import RequestModel from "../RequestModel";
 
 
 
-export default class defaultTemplate extends Component {
+export default class defaultTemplate extends RequestModel {
     constructor(){
         super()
         this.state={

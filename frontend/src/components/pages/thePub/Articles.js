@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import ArticleEditor from "./ArticleEditor";
+import RequestModel from "../../RequestModel";
 
 
-export default class Articles extends Component {
+export default class Articles extends RequestModel {
     constructor() {
         super()
         this.state = {
