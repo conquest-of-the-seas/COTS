@@ -5,6 +5,7 @@ let timeModel = require('../models/TimeModel');
 let {ShipElement, updateParameters} = require('../models/ShipModel');
 let {PlayerModel} = require("../models/PlayerModel");
 let {decryptCookie} = require('../models/AuthModel');
+const {findPlayerInDbAndCheckCookie} = require('../models/RequestModel');
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
 let db = mongoose.connection;
@@ -28,11 +29,7 @@ router.post('/', (req, res, next) => {
     console.log(playerData);
     switch (reqData.action) {
         case 'get':
-            PlayerModel.findOne({nickname: playerData.username}, (err, obj) => {
-                if (err) console.log(err);
-                if (obj) res.send({player: obj});
-                else res.send({errMsg: 'Invalid session!'})
-            })
+            findPlayerInDbAndCheckCookie(req, res, (obj) => res.send({player: obj}));
             break;
     }
 

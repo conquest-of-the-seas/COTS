@@ -5,7 +5,7 @@ let timeModel = require('../models/TimeModel');
 let {pirateTypeNames, CrewMember} = require('../models/CrewModel');
 const {PlayerModel} = require("../models/PlayerModel");
 let {decryptCookie} = require("../models/AuthModel");
-
+const {findPlayerInDbAndCheckCookie} = require('../models/RequestModel');
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
 let db = mongoose.connection;
@@ -29,30 +29,15 @@ router.post('/', (req, res, next) => {
 
     switch (reqData.action) {
         case 'get':
-            PlayerModel.findOne({nickname: playerData.nickname}, (err, obj) => {
-                if (obj) {
-                    if (obj.cookie === reqData.cookie) {
-                        res.send({crew: obj.crew});
-                    }
-                    else res.send({errMsg: 'Invalid session!', session: true})
-                }
-                else res.send({errMsg: 'Invalid session!', session: true})
-            })
+            findPlayerInDbAndCheckCookie(req, res, (obj) => res.send({crew: obj.crew}));
             break;
         case 'addMeRandomItem':
-            PlayerModel.findOne({nickname: playerData.nickname}, (err, obj) => {
-                if (obj) {
-                    if (obj.cookie === reqData.cookie) {
-                        obj.crew.push(new CrewMember(pirateTypeNames[Math.floor(Math.random() * pirateTypeNames.length)]));
-                        PlayerModel.updateOne({nickname: playerData.nickname}, obj, (err) => {
-                            if (err) console.log(err);
-                            else res.send({crew: obj.crew})
-                        })
-                    }
-                    else res.send({errMsg: 'Invalid session!', session: true})
-                }
-                else res.send({errMsg: 'Invalid session!', session: true})
-
+            findPlayerInDbAndCheckCookie(req,res,(obj)=>{
+                obj.crew.push(new CrewMember(pirateTypeNames[Math.floor(Math.random() * pirateTypeNames.length)]));
+                PlayerModel.updateOne({nickname: playerData.nickname}, obj, (err) => {
+                    if (err) console.log(err);
+                    else res.send({crew: obj.crew})
+                })
             })
             break
     }

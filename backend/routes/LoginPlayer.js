@@ -6,7 +6,7 @@ const timeModel = require('../models/TimeModel');
 const Ship = require('../models/ShipModel').ship;
 const SaltRounds = 10;
 const {createCookie} = require('../models/AuthModel');
-
+const {findPlayerInDbAndCheckCookie} = require('../models/RequestModel');
 
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
@@ -32,18 +32,10 @@ router.get('/', (req, res, next) => {
 }).post('/', (req, res, next) => {
     let loginData = req.body;
 
-
-    //newPlayer.lastSeen = timeModel.getCurrentDay();
-    //wPlayer.ips.push(req.headers['x-forwarded-for'] || req.connection.remoteAddress);
-    console.log(loginData)
-    console.log('XD')
     PlayerModel.findOne({nickname: loginData.nickname}, (err, obj) => {
-        console.log('matching lol')
         if (err) console.log(err);
         if (obj !== null) {
-            console.log('matching')
             bcrypt.compare(loginData.password, obj.password, (err, match) => {
-                console.log('matching kk')
                 if (err) console.log(err);
                 if (match) {
                     obj.cookie = createCookie(obj.nickname, obj._id);
