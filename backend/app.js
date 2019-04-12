@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 /* routers */
-let basicDataRouter = require('./routes/BasicData');
+let basicDataRouter = require('./routes/MapData');
 app.use('/data',basicDataRouter);
 let registerRouter = require('./routes/RegisterPlayer');
 app.use('/register',registerRouter);

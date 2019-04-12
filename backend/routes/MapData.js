@@ -7,6 +7,7 @@ let timeModel = require('../models/TimeModel');
 mongoose.connect("mongodb://localhost/CotSdb", {useNewUrlParser: true});
 let db = mongoose.connection;
 
+let map = JSON.parse(require('fs').readFileSync('./models/jsonSettings/map2.json', 'utf8'));
 // Check connection to db
 db.once("open", function () {
     console.log("Connected to MongoDb",);
@@ -52,7 +53,8 @@ router.get('/', (req, res, next) => {
         if (err) console.log(err);
         console.log(timeModel.getCurrentDay());
 
-        res.send(obj);
+
+        res.send({conditions:obj,map:map});
     })
 
 });
@@ -64,7 +66,7 @@ let createCondition = () => {
     ConditionModel.find({}, (err, arr) => {
         if (err) console.log(err)
         let items = arr.length;
-        if (timeModel.getCurrentDay()> items - 7) {
+        if (timeModel.getCurrentDay() > items - 7) {
             let condition = new ConditionModel();
             let yesterday = arr[arr.length - 1] || defaultOceanConditions;
             let plusOrMinusArr = [];
@@ -82,10 +84,10 @@ let createCondition = () => {
             condition.visibility = 4;
             condition.day = items;
 
-            if (items< timeModel.getCurrentDay()+7) setTimeout(createCondition,1000);
-            condition.save().then((err,obj) => {
-                    if (err) console.log(err);
-                    console.log(obj)
+            if (items < timeModel.getCurrentDay() + 7) setTimeout(createCondition, 1000);
+            condition.save().then((err, obj) => {
+                if (err) console.log(err);
+                console.log(obj)
                 console.log('New Conditions generated')
             });
         }

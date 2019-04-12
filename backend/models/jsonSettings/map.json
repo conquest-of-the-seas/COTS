@@ -1,0 +1,1590 @@
+{
+  "key0": [
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "gold"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    0,
+    0
+  ],
+  "key1": [
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "stone"
+    },
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    0
+  ],
+  "key2": [
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    {
+      "usage": "food"
+    },
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "stone"
+    },
+    0,
+    0
+  ],
+  "key3": [
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    {
+      "usage": "stone"
+    },
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "stone"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "gold"
+    },
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "metal"
+    },
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    0
+  ],
+  "key4": [
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "food"
+    },
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "stone"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "wood"
+    }
+  ],
+  "key5": [
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "food"
+    },
+    0,
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "metal"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "wood"
+    }
+  ],
+  "key6": [
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "food"
+    }
+  ],
+  "key7": [
+    {
+      "usage": "gold"
+    },
+    {
+      "usage": "stone"
+    },
+    0,
+    {
+      "usage": "food"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "gold"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "island"
+    }
+  ],
+  "key8": [
+    {
+      "usage": "island"
+    },
+    0,
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "food"
+    }
+  ],
+  "key9": [
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "wood"
+    },
+    0
+  ],
+  "key10": [
+    {
+      "usage": "wood"
+    },
+    0,
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    0
+  ],
+  "key11": [
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0
+  ],
+  "key12": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key13": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "gold"
+    },
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key14": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    {
+      "usage": "food"
+    },
+    0,
+    0,
+    {
+      "usage": "metal"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key15": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key16": [
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "food"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key17": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "stone"
+    },
+    0,
+    0,
+    {
+      "usage": "metal"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "metal"
+    },
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0
+  ],
+  "key18": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    {
+      "usage": "stone"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key19": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "gold"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key20": [
+    0,
+    0,
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "wood"
+    },
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key21": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key22": [
+    0,
+    {
+      "usage": "metal"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key23": [
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "food"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "gold"
+    },
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "island"
+    }
+  ],
+  "key24": [
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "metal"
+    },
+    0,
+    {
+      "usage": "gold"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "food"
+    }
+  ],
+  "key25": [
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "gold"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "key26": [
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0
+  ],
+  "key27": [
+    0,
+    0,
+    {
+      "usage": "food"
+    },
+    0,
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "food"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0
+  ],
+  "key28": [
+    {
+      "usage": "stone"
+    },
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "food"
+    }
+  ],
+  "key29": [
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    {
+      "usage": "food"
+    },
+    0,
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "food"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "food"
+    },
+    0,
+    0,
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "metal"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    {
+      "usage": "food"
+    },
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "food"
+    }
+  ],
+  "key30": [
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    0,
+    0,
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "wood"
+    },
+    0,
+    0,
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "stone"
+    },
+    0,
+    {
+      "usage": "island"
+    },
+    0,
+    {
+      "usage": "island"
+    }
+  ],
+  "key31": [
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "island"
+    },
+    0,
+    {
+      "usage": "food"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "stone"
+    },
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "island"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "wood"
+    },
+    {
+      "usage": "stone"
+    },
+    {
+      "usage": "stone"
+    },
+    0,
+    {
+      "usage": "island"
+    },
+    0
+  ]
+}
