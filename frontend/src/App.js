@@ -12,7 +12,8 @@ class App extends Component {
         }
     }
     componentWillMount(){
-        //logic
+       //todo cookie logic on first load
+        //attach prop to the header
     }
     render() {
         return (

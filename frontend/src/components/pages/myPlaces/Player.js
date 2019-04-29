@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import RequestModel from "../../RequestModel";
+import Redirect from "react-router/es/Redirect";
 
 export default class Player extends RequestModel {
     constructor() {
@@ -20,7 +21,7 @@ export default class Player extends RequestModel {
 
 
     render() {
-
+        if (this.state.errMsg==='/login') return <Redirect to={'/login'}/>
         let params = this.state.player.parameters;
         if (params) {
             return (

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import RequestModel from "../../RequestModel";
+import Redirect from "react-router/es/Redirect";
 
 export default class Cabins extends RequestModel {
     constructor() {
@@ -39,6 +40,7 @@ export default class Cabins extends RequestModel {
 
 
     render() {
+        if (this.state.errMsg==='/login') return <Redirect to={'/login'}/>;
         let crew = this.state.crew.map((cm, i) => {
             return <div className={'col-2'} key={'cm' + i}>{this.createItemHolder(cm)}</div>
         })

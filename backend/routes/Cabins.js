@@ -25,7 +25,6 @@ db.on("error", function (err) {
 /* GET home page. */
 router.post('/', (req, res, next) => {
     let reqData = req.body;
-    let playerData = decryptCookie(reqData.cookie);
 
     switch (reqData.action) {
         case 'get':
@@ -34,7 +33,7 @@ router.post('/', (req, res, next) => {
         case 'addMeRandomItem':
             findPlayerInDbAndCheckCookie(req,res,(obj)=>{
                 obj.crew.push(new CrewMember(pirateTypeNames[Math.floor(Math.random() * pirateTypeNames.length)]));
-                PlayerModel.updateOne({nickname: playerData.nickname}, obj, (err) => {
+                PlayerModel.updateOne({nickname: obj.nickname}, obj, (err) => {
                     if (err) console.log(err);
                     else res.send({crew: obj.crew})
                 })

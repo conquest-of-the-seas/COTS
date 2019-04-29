@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-
-import { withCookies, Cookies } from 'react-cookie';
+import {Redirect} from 'react-router-dom';
 import RequestModel from "../../RequestModel";
 
 export default class Register extends RequestModel {
@@ -15,7 +14,8 @@ export default class Register extends RequestModel {
             repPw: '',
             email: '',
             faction: '',
-            errMsg: ""
+            errMsg: "",
+            redirect: ''
         }
     }
 
@@ -36,7 +36,10 @@ export default class Register extends RequestModel {
                 faction: this.state.faction,
                 email: this.state.email
             }
-            this.fetchRequest('register',regObj,()=>console.log('works :D'));
+            let loginCB = (res) => {
+                if (res.cookie) this.setState({redirect: true})
+            }
+            this.fetchRequest('register', regObj, loginCB);
         }
 
 
@@ -54,6 +57,7 @@ export default class Register extends RequestModel {
     }
 
     render() {
+        if (this.state.redirect) return <Redirect to={'/'}/>;
 
 
         let factionInfo
@@ -82,9 +86,9 @@ export default class Register extends RequestModel {
                 <h2>Democrats</h2>
 
                 <h5>Short Description:</h5>
-                One of the best things about this faction is the equality of players. Players from this faction have the
-                right to vote most of their leader actions. The problem here is the delayed reaction of this faction in
-                times of war.
+                As you may have guessed this faction is all about the equality of players. Players from this faction
+                have the right to vote most of their leader actions. The problem here is the delayed reaction of this
+                faction in times of war.
 
                 <h5>Hierarchy:</h5>
                 The faction leaders are elected monthly. The new leader is the player with most votes on the elections.
@@ -99,7 +103,47 @@ export default class Register extends RequestModel {
 
             </div>)
         }
+        else if (this.state.faction === 'communists') {
+            factionInfo = (<div>
+                <h2>Communists</h2>
 
+                <h5>Short Description:</h5>
+                We all joke about communism, but we have never experienced it. The truth is that this faction is more
+                about equality than the democrats. Players from this faction never get affected by most of the bad
+                modifiers. They have no problems, no crime and no cheaters.
+
+                <h5>Hierarchy:</h5>
+                The faction leaders are chosen by the communist party. To join the party you need to have influence in
+                any game sphere ( The Pub ). The leader can be chosen between any player in the faction.
+
+                <h5>Weaknesses:</h5>
+                Advancing forward is harder if other players are behind. Reaching top tier ship elements may be
+                impossible.
+
+            </div>)
+        }
+        else if (this.state.faction === 'anarchists') {
+            return (<div>
+                <h2>Anarchists</h2>
+
+                <h5>Short Description:</h5>
+                Nobody can tell you what to do! You are always free to choose to create a sub-faction or choose who to
+                follow.
+
+                <h5>Hierarchy:</h5>
+                There may be multiple sub-factions in this faction. Everyone is free to do whatever he feels like. This
+                may sound destructive, but it brings tons of benefits overall. Every sub-faction has a percentage of the
+                global influence and can achieve control over other players and swallow their factions
+
+
+                <h5>Weaknesses:</h5>
+                The anarchy is the birth of many successes but it may also be the reason for epic collapses. Players
+                from this faction only see the areas explored by their sub-faction players. And if in the wrong mood,
+                can
+                hurt each other if they meet in open seas.
+
+            </div>)
+        }
         return (
             <div>
                 <form>

@@ -26,7 +26,7 @@ db.on("error", function (err) {
 /* GET home page. */
 router.post('/', (req, res, next) => {
     let reqData = req.body;
-    let playerData = decryptCookie(reqData.cookie);
+
 
     switch (reqData.action) {
         case 'get':
@@ -41,7 +41,7 @@ router.post('/', (req, res, next) => {
                     updateParameters(obj.parameters, obj.ship);
                     obj.hangar.push(oldObj);
                     obj.hangar = obj.hangar.filter(a => a.number !== item.number);
-                    PlayerModel.updateOne({nickname: playerData.nickname}, obj, (err) => {
+                    PlayerModel.updateOne({nickname: obj.nickname}, obj, (err) => {
                         res.send({ship: obj.ship, hangar: obj.hangar})
                     })
                 }
@@ -51,7 +51,7 @@ router.post('/', (req, res, next) => {
             findPlayerInDbAndCheckCookie(req, res, (obj) => {
                 let partsArr = ['mast', 'cabins', 'oars', 'sails', 'hull', 'deck', 'wheel'];
                 obj.hangar.push(new ShipElement(Math.ceil(Math.random() * 5), partsArr[Math.floor(Math.random() * 7)]));
-                PlayerModel.updateOne({nickname: playerData.nickname}, obj, (err) => {
+                PlayerModel.updateOne({nickname: obj.nickname}, obj, (err) => {
                     if (err) console.log(err)
                     else res.send({ship: obj.ship, hangar: obj.hangar})
                 })

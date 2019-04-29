@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
+
 import IndexPage from "../pages/basic/IndexPage";
 import GameMap from "../pages/gameRelated/GameMap";
 import TrainingGrounds from "../pages/myPlaces/TrainingGrounds";
@@ -24,6 +25,7 @@ export default class Router extends RequestModel {
     componentWillMount() {
 
     }
+
 
     render() {
         return (

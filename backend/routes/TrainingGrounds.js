@@ -26,14 +26,14 @@ db.on("error", function (err) {
 /* GET home page. */
 router.post('/', (req, res, next) => {
     let reqData = req.body;
-    let playerData = decryptCookie(reqData.cookie);
+
     findPlayerInDbAndCheckCookie(req, res, (obj) => {
         let skillToTrain = obj.crew.find(a => a.number === reqData.crewMember.number).skills.find(a => a.shortName === reqData.skill.shortName);
         skillToTrain.value++;
         multiplyParameters(obj.parameters, obj.crew);
         updateParameters(obj.parameters, obj.ship);
 
-        PlayerModel.updateOne({nickname: playerData.nickname}, obj, (err) => {
+        PlayerModel.updateOne({nickname: obj.nickname}, obj, (err) => {
             if (err) console.log(err);
             else res.send({crew: obj.crew})
 

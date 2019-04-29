@@ -31,7 +31,8 @@ db.on("error", function (err) {
 function findPlayerInDbAndCheckCookie(req, res, callback) {
     let reqData = req.body;
     let playerData = decryptCookie(reqData.cookie)
-    PlayerModel.findOne({nickname: playerData.nickname}, (err, obj) => {
+
+    if (typeof playerData === 'Object' && playerData.nickname) PlayerModel.findOne({nickname: playerData.nickname}, (err, obj) => {
         if (err) res.send({errMsg: 'An Error occurred trying to fetch your player data from DB'})
         else if (obj) {
             if (obj.cookie === reqData.cookie) {
@@ -42,6 +43,7 @@ function findPlayerInDbAndCheckCookie(req, res, callback) {
         }
         else res.send({errMsg: 'Invalid session!', session: true})
     })
+    else res.send({errMsg: 'Invalid session!', session: true})
 }
 
 /** functions above */

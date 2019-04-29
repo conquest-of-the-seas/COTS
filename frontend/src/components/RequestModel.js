@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import cookie from 'react-cookies'
+import {Redirect} from 'react-router-dom'
 
 class RequestModel extends Component {
     constructor(props) {
         super(props);
+        this.redirect = false;
     }
 
     componentWillMount() {
@@ -14,7 +16,7 @@ class RequestModel extends Component {
         console.log('unmounting')
     }
 
-    fetchRequest(path, additionalBody = {},callback) {
+    fetchRequest(path, additionalBody = {}, callback) {
         let defaultBody = {
             cookie: cookie.load('cots')
         };
@@ -27,14 +29,21 @@ class RequestModel extends Component {
                 "Content-Type": "application/json",
             }
         }).then(res => res.json()).then(j => {
-            if (j.session) return cookie.remove('cots');
+            if (j.session) {
+                this.setState({redirect:'/login'});
+                return cookie.remove('cots');
+            }
             console.log(j)
-            if (j.cookie) cookie.save('cots', j.cookie);
-            delete j.cookie;
+            if (j.cookie) {
+                cookie.save('cots', j.cookie);
+                j.cookie = true;
+            }
             this.setState(j);
-            if (callback) callback();
+            if (callback) callback(j);
         })
     }
+
+
 }
 
 

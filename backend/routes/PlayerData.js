@@ -25,8 +25,7 @@ db.on("error", function (err) {
 /* GET home page. */
 router.post('/', (req, res, next) => {
     let reqData = req.body;
-    let playerData = decryptCookie(reqData.cookie);
-    console.log(playerData);
+
     switch (reqData.action) {
         case 'get':
             findPlayerInDbAndCheckCookie(req, res, (obj) => res.send({player: obj}));

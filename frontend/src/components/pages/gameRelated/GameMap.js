@@ -10,13 +10,14 @@ import foodImg from '../../../images/mapImages/foodIsland.png'
 import Konva from 'konva';
 import useImage from 'use-image'
 import {Stage, Layer, Image, Text, Group, Rect} from 'react-konva';
+import Redirect from "react-router/es/Redirect";
 
 
 export default class GameMap extends RequestModel {
     constructor() {
         super()
         this.state = {
-
+errMsg:'',
             conditions: {},
             drag: {x: 0, y: 0},
             //stores click data
@@ -53,6 +54,7 @@ export default class GameMap extends RequestModel {
     }
 
     render() {
+        if (this.state.errMsg==='/login') return <Redirect to={'/login'}/>;
         if (this.state.map) {
             let islandsLayerDrag = {
                 start: (e) => {

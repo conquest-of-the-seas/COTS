@@ -21,9 +21,18 @@ function createCookie(nickname, id) {
 }
 
 function decryptCookie(cookie){
-    let bytes = cryptoJS.AES.decrypt(cookie, secretKey);
-    let jsonStr = bytes.toString(cryptoJS.enc.Utf8);
-    return JSON.parse(jsonStr)
+
+
+    let jsonObj;
+    try{
+        let bytes = cryptoJS.AES.decrypt(cookie, secretKey);
+        let jsonStr = bytes.toString(cryptoJS.enc.Utf8);
+        jsonObj = JSON.parse(jsonStr);
+    }
+    catch(e){
+        console.log('Invalid Cookie received');
+    }
+    return jsonObj;
 }
 
 function compareCookies(cookie1,cookie2){

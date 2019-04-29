@@ -12,6 +12,7 @@ import {
 
 import shipImg from '../../../images/shipLayoutWithoutOars.png'
 import RequestModel from "../../RequestModel";
+import Redirect from "react-router/es/Redirect";
 
 
 export default class Hangar extends RequestModel {
@@ -113,6 +114,7 @@ export default class Hangar extends RequestModel {
     }
 
     render() {
+        if (this.state.errMsg==='/login') return <Redirect to={'/login'}/>
         console.log('rendering')
         let items = this.state.hangar.map((item, index) => {
             return (<div className={'col-3'} key={index + 'item'}>

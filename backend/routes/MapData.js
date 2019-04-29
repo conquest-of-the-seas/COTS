@@ -51,9 +51,6 @@ router.get('/', (req, res, next) => {
     // Displaying raw data from the DB
     ConditionModel.findOne({day: timeModel.getCurrentDay()}, (err, obj) => {
         if (err) console.log(err);
-        console.log(timeModel.getCurrentDay());
-
-
         res.send({conditions:obj,map:map});
     })
 

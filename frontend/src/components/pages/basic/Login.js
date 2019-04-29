@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import RequestModel from "../../RequestModel";
-
+import {Redirect} from 'react-router-dom';
 
 export default class Login extends RequestModel {
     constructor() {
@@ -8,12 +8,16 @@ export default class Login extends RequestModel {
         this.state = {
             nickname: '',
             password: '',
-            errMsg: ''
-        }
+            errMsg: '',
+            redirect: false
+    }
     }
 
     login() {
-        this.fetchRequest('login',{nickname: this.state.nickname, password: this.state.password})
+        let loginCB = (res) => {
+           if (res.cookie) this.setState({redirect: true})
+        }
+        this.fetchRequest('login', {nickname: this.state.nickname, password: this.state.password}, loginCB)
     }
 
     handleChange(input, value) {
@@ -23,6 +27,7 @@ export default class Login extends RequestModel {
     }
 
     render() {
+        if (this.state.redirect) return <Redirect to={'/'}/>;
 
         return (
             <div>
