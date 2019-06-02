@@ -8,6 +8,9 @@ import {FaUnderline} from "react-icons/fa";
 import {FaQuoteRight} from "react-icons/fa";
 import {FaTable} from "react-icons/fa";
 import RequestModel from "../../RequestModel";
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker } from 'emoji-mart';
+import {isMobile} from 'react-device-detect';
 
 export default class ArticleEditor extends RequestModel {
     constructor(props) {
@@ -15,27 +18,44 @@ export default class ArticleEditor extends RequestModel {
         this.state = {
             text: '',
             title: '',
-            requestMsg: ''
+            requestMsg: '',
+            customIcons: {
+                categories: {
+                  custom: () => <img alt="pirate-category" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnC7UBwZuPJIyHIFW96WEPcJAQzFHTjMwyU7vN-oCgaEd0F9u_-A' />
+                }
+              },
+            customEmojis: [
+                {          
+                    // TODO: FIX THE CUSTOM EMOJIS
+                    name: 'Octocat',
+                    short_names: ['octocat'],
+                    text: '',
+                    emoticons: [],
+                    keywords: ['github'],
+                    imageUrl: 'https://github.githubassets.com/images/icons/emoji/octocat.png'
+                }
+              ]
         }
+    }
+
+    emoteInTextarea(el, newText) {
+        debugger;
+        let start = el.selectionStart;
+        let end = el.selectionEnd;
+        let text = el.value;
+        let before = text.substring(0, start);
+        let after = text.substring(end, text.length);
+        el.value = (before + newText + after);
+        el.selectionEnd = start + newText.length;
+        el.focus();
     }
 
     componentDidMount() {
         document.querySelectorAll("button.emote").forEach((el) => {
             el.addEventListener("click", (e) => {
-                emoteInTextarea(document.getElementById("Description"), e.currentTarget.value);
+                this.emoteInTextarea(document.getElementById("Description"), e.currentTarget.value);
             });
         });
-
-        function emoteInTextarea(el, newText) {
-            let start = el.selectionStart;
-            let end = el.selectionEnd;
-            let text = el.value;
-            let before = text.substring(0, start);
-            let after = text.substring(end, text.length);
-            el.value = (before + newText + after);
-            el.selectionEnd = start + newText.length;
-            el.focus();
-        }
 
         document.querySelectorAll("button.text").forEach((el) => {
             el.addEventListener("click", (e) => {
@@ -72,7 +92,6 @@ export default class ArticleEditor extends RequestModel {
     }
 
     render() {
-
         return (
             <div className="text-center">
                 <h5>{this.state.requestMsg}</h5>
@@ -80,25 +99,29 @@ export default class ArticleEditor extends RequestModel {
                     <input placeholder={'title'} value={this.state.title}
                            onChange={(e) => this.setState({title: e.target.value})}/><br/>
                 </div>
-                <div>
-                    <button className="text" title="bold" value="[b][/b]"><FaBold/></button>
-                    <button className="text" title="italic" value="[i][/i]"><FaItalic/></button>
-                    <button className="text" title="heading" value="[h2][/h2]"><FaHeading/></button>
-                    <button className="text" title="underline" value="[u][/u]"><FaUnderline/></button>
-                    <button className="text" title="quote" value="[quote][/quote]"><FaQuoteRight/></button>
-                    <button className="text" title="link" value="[link=URL][/link]"><FaLink/></button>
-                    <button className="text" title="image" value="[img=URL][/img]"><FaImage/></button>
-                    {/* table needs more thinking */}
-                    <button className="text" title="table" value="[table][/table]"><FaTable/></button>
-                    <button className="emote" value="😃"><span role="img" aria-label={'emoji'}>😃 </span></button>
-                    <button className="emote" value="🙂"><span role="img" aria-label={'emoji'}>🙂 </span></button>
-                    <button className="emote" value="☹"><span role="img" aria-label={'emoji'}>☹ </span></button>
-                    <button className="emote" value="😮"><span role="img" aria-label={'emoji'}>😮 </span></button>
-                </div>
-                <div className="m-20">
-                    <textarea id="Description" cols="60" rows="8"
-                              onChange={(e) => this.setState({text: e.target.value})} value={this.state.text}
-                              placeholder={'write your articles here'}/><br/>
+                <div className="article-textarea-container">
+                    <div>
+                        <div className="m-20">
+                            <button className="text" title="bold" value="[b][/b]"><FaBold/></button>
+                            <button className="text" title="italic" value="[i][/i]"><FaItalic/></button>
+                            <button className="text" title="heading" value="[h2][/h2]"><FaHeading/></button>
+                            <button className="text" title="underline" value="[u][/u]"><FaUnderline/></button>
+                            <button className="text" title="quote" value="[quote][/quote]"><FaQuoteRight/></button>
+                            <button className="text" title="link" value="[link=URL][/link]"><FaLink/></button>
+                            <button className="text" title="image" value="[img=URL][/img]"><FaImage/></button>
+                        </div>
+                        <textarea id="Description" cols="60" rows="8" 
+                                onChange={(e) => this.setState({text: e.target.value})} value={this.state.text}
+                                placeholder={'write your articles here'}/>
+                        <br/>
+                    </div>
+                    <div id="Emoji-Container">
+                        <Picker 
+                            icons={this.state.customIcons}
+                            custom={this.state.customEmojis}
+                            set='messenger' 
+                            onSelect={(el) => this.emoteInTextarea.call(this, document.querySelector("#Description"), el.native)}/>
+                    </div>
                 </div>
                 <button onClick={this.postArticle.bind(this)}>Submit</button>
             </div>
