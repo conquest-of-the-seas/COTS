@@ -1,33 +1,35 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
+import connect from "react-redux/es/connect/connect";
 import {Redirect} from 'react-router-dom';
+import cookie from "react-cookies";
+import {loginPlayer} from "../../../REDUXactions/loginActions";
 
-export default class Login extends RequestModel {
+class Login extends Component {
     constructor() {
         super()
         this.state = {
             nickname: '',
             password: '',
-            errMsg: '',
-            redirect: false
-    }
+            errMsg: ''
+        }
     }
 
+    componentWillUnmount(){
+        delete this
+    }
     login() {
-        let loginCB = (res) => {
-           if (res.cookie) this.setState({redirect: true})
-        }
-        this.fetchRequest('login', {nickname: this.state.nickname, password: this.state.password}, loginCB)
+        this.props.loginPlayer({nickname: this.state.nickname, password: this.state.password})
     }
 
     handleChange(input, value) {
         let obj = {};
         obj[input] = value;
-        this.setState(obj)
+        this.setState(obj);
+        console.log('log')
     }
 
     render() {
-        if (this.state.redirect) return <Redirect to={'/'}/>;
+        if (cookie.load('cots')) return <Redirect to={'/'}/>
 
         return (
             <div>
@@ -44,3 +46,8 @@ export default class Login extends RequestModel {
     }
 }
 
+const mapStateToProps = state => ({
+    loginState: state.loginState
+})
+
+export default connect(mapStateToProps, {loginPlayer})(Login)

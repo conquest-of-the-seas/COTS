@@ -44,7 +44,7 @@ router.get('/', (req, res, next) => {
     newPlayer.registerDate = timeModel.getCurrentDay();
     newPlayer.lastSeen = timeModel.getCurrentDay();
     newPlayer.ips.push(req.headers['x-forwarded-for'] || req.connection.remoteAddress);
-    newPlayer.cookie = createCookie(newPlayer.nickname,newPlayer._id);
+    newPlayer.cookie = createCookie(newPlayer.nickname, newPlayer._id);
 
     PlayerModel.find({}, (err, arr) => {
         let number = arr.length;
@@ -63,7 +63,7 @@ router.get('/', (req, res, next) => {
                     console.timeEnd('start');
                     res.send({
                         cookie: newPlayer.cookie,
-                        errMsg: 'New Player Created'
+                        errMsg: 'New Player Created', redirect: '/'
                     })
                 }).catch((err) => {
                     if (err.code === 11000) res.send({errMsg: 'Such username already exists.'})

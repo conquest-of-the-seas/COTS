@@ -37,6 +37,10 @@ export default class Header extends RequestModel {
                                     onClick={() => this.setState({redirect: '/cabins'})}> Cabins </NavDropdown.Item>
                                 <NavDropdown.Item onClick={() => this.setState({redirect: '/player'})}> Player
                                     Data </NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => {
+                                    cookie.remove('cots')
+                                    window.location.pathname = '/login'
+                                }}> Logout </NavDropdown.Item>
                                 <NavDropdown.Divider/>
                                 <NavDropdown.Item
                                     onClick={() => this.setState({redirect: '/donate'})}> Donate </NavDropdown.Item>
@@ -63,8 +67,8 @@ export default class Header extends RequestModel {
                         <Navbar.Brand href="/">CotS</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                         <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav.Link onClick={()=>this.setState({redirect:'/register'})}>Register</Nav.Link>
-                            <Nav.Link onClick={()=>this.setState({redirect:'/login'})}>Login</Nav.Link>
+                            <Nav.Link onClick={() => this.setState({redirect: '/register'})}>Register</Nav.Link>
+                            <Nav.Link onClick={() => this.setState({redirect: '/login'})}>Login</Nav.Link>
                         </Navbar.Collapse>
                     </Navbar>
                 </div>

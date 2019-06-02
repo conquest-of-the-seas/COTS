@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
-import Redirect from "react-router/es/Redirect";
 
-export default class Cabins extends RequestModel {
+import Redirect from "react-router/es/Redirect";
+import connect from "react-redux/es/connect/connect";
+import {addRandomCabins, getPlayerCabins} from "../../../REDUXactions/cabinsActions";
+
+class Cabins extends Component {
     constructor() {
         super()
         this.state = {
@@ -12,7 +14,7 @@ export default class Cabins extends RequestModel {
     }
 
     componentWillMount() {
-        this.fetchRequest('cabins', {action: 'get'})
+        this.props.getPlayerCabins()
     }
 
     componentDidMount() {
@@ -21,8 +23,7 @@ export default class Cabins extends RequestModel {
 
 
     addRandom() {
-
-        this.fetchRequest('cabins', {action: 'addMeRandomItem'})
+        this.props.addRandomCabins()
     }
 
     createItemHolder(crewmember) {
@@ -40,14 +41,14 @@ export default class Cabins extends RequestModel {
 
 
     render() {
-        if (this.state.errMsg==='/login') return <Redirect to={'/login'}/>;
-        let crew = this.state.crew.map((cm, i) => {
+        if (this.state.redirect) return <Redirect to={this.state.redirect}/>;
+        let crew = this.props.cabinsState.crew.map((cm, i) => {
             return <div className={'col-2'} key={'cm' + i}>{this.createItemHolder(cm)}</div>
         })
 
         return (
             <div className={''}>
-                {this.state.errMsg}
+                {this.props.cabinsState.errMsg}
                 <div className={'crew row'}>
                     {crew}
                 </div>
@@ -58,3 +59,8 @@ export default class Cabins extends RequestModel {
     }
 }
 
+const mapStateToProps = state => ({
+    cabinsState: state.cabinsState
+})
+
+export default connect(mapStateToProps, {getPlayerCabins, addRandomCabins})(Cabins)

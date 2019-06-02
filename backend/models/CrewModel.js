@@ -145,7 +145,7 @@ class CrewMember {
         this.number = number;
         this.skills = this.setSkills();
         let thisMember = new CrewMemberModel();
-        thisMember.crewMember = this;
+        thisMember.member = this;
         thisMember.number = number;
         number++;
         thisMember.save().then((obj) => {

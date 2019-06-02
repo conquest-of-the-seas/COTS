@@ -29,10 +29,10 @@ router.post('/', (req, res, next) => {
 
 
     switch (reqData.action) {
-        case 'get':
+        case 'GET_PLAYER_HANGAR':
             findPlayerInDbAndCheckCookie(req, res, (obj) => res.send({ship: obj.ship, hangar: obj.hangar}));
             break;
-        case 'use':
+        case 'USE_ITEM_HANGAR':
             findPlayerInDbAndCheckCookie(req, res, (obj) => {
                 let item = reqData.item;
                 let oldObj = Object.assign({}, obj.ship[item.type]);
@@ -47,7 +47,7 @@ router.post('/', (req, res, next) => {
                 }
             })
             break;
-        case 'addMeRandomItem':
+        case 'ADD_RANDOM_HANGAR':
             findPlayerInDbAndCheckCookie(req, res, (obj) => {
                 let partsArr = ['mast', 'cabins', 'oars', 'sails', 'hull', 'deck', 'wheel'];
                 obj.hangar.push(new ShipElement(Math.ceil(Math.random() * 5), partsArr[Math.floor(Math.random() * 7)]));

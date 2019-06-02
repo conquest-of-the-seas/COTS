@@ -39,7 +39,7 @@ router.get('/', (req, res, next) => {
                 if (err) console.log(err);
                 if (match) {
                     obj.cookie = createCookie(obj.nickname, obj._id);
-                    res.send({cookie: obj.cookie, errMsg: 'Login successful!'});
+                    res.send({cookie: obj.cookie, errMsg: 'Login successful!',redirect:'/'});
                     let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
                     if (obj.ips.indexOf(ip) === -1) obj.ips.push(ip);
                     //delete obj._id

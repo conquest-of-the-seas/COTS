@@ -57,7 +57,7 @@ export default class Register extends RequestModel {
     }
 
     render() {
-        if (this.state.redirect) return <Redirect to={'/'}/>;
+        if (this.state.redirect) return <Redirect to={this.state.redirect}/>;
 
 
         let factionInfo
@@ -123,7 +123,7 @@ export default class Register extends RequestModel {
             </div>)
         }
         else if (this.state.faction === 'anarchists') {
-            return (<div>
+            factionInfo = (<div>
                 <h2>Anarchists</h2>
 
                 <h5>Short Description:</h5>
@@ -144,6 +144,7 @@ export default class Register extends RequestModel {
 
             </div>)
         }
+
         return (
             <div>
                 <form>

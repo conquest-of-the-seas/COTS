@@ -4,7 +4,7 @@ import RequestModel from "../../RequestModel";
 //const BackEndURL = `${window.location.hostname}:4004`
 
 
-export default class IndexPage extends RequestModel {
+export default class IndexPage extends Component {
     constructor() {
         super()
         this.state = {
