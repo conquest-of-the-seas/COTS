@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
+
+import * as actionFunctions from "../../../REDUXactions/thePub/marketActions";
+import connect from "react-redux/es/connect/connect";
 
 
-
-export default class Market extends RequestModel {
+//todo change component name
+class Market extends Component {
     constructor(){
         super()
-        this.state={
-
-        }
     }
-    render() {
 
+    //todo add component functionality
+
+    render() {
+//todo add component view
         return (
             <div>
                 PageTest
@@ -20,3 +22,10 @@ export default class Market extends RequestModel {
     }
 }
 
+//todo change names of variables
+const mapStateToProps = state => ({
+    marketState: state.marketState
+})
+
+
+export default connect(mapStateToProps, actionFunctions)(Market)

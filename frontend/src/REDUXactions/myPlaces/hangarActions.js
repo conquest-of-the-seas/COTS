@@ -1,4 +1,4 @@
-import {fetchRequest} from "./mainFunctions";
+import {fetchRequest} from "../.partials/mainFunctions";
 
 export const getPlayerHangar = (fetchBody = {}) => dispatch => {
     let action = 'GET_PLAYER_HANGAR';

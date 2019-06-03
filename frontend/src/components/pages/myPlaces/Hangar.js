@@ -13,7 +13,7 @@ import {
 import shipImg from '../../../images/shipLayoutWithoutOars.png'
 import Redirect from "react-router/es/Redirect";
 import connect from "react-redux/es/connect/connect";
-import {getPlayerHangar,useItemHangar,addRandomHangar} from "../../../REDUXactions/hangarActions"
+import * as actionFunctions from "../../../REDUXactions/myPlaces/hangarActions"
 
 
 class Hangar extends Component {
@@ -114,10 +114,8 @@ class Hangar extends Component {
     }
 
     render() {
-        if (this.state.redirect) {
-            if(this.timeout) clearTimeout(this.timeout)
-            return <Redirect to={this.state.redirect}/>;
-        }
+        if (this.props.hangarState.redirect==='/login') window.location.pathname = '/login'
+        else if (this.props.hangarState.redirect) return <Redirect to={this.props.hangarState.redirect}/>;
         console.log('rendering')
         console.log(this.props.hangarState)
         let items = this.props.hangarState.hangar.map((item, index) => {
@@ -169,4 +167,4 @@ const mapStateToProps = state => ({
     hangarState: state.hangarState
 })
 
-export default connect(mapStateToProps, {getPlayerHangar,useItemHangar,addRandomHangar})(Hangar)
+export default connect(mapStateToProps, actionFunctions)(Hangar)

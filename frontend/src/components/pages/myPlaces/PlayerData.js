@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
-import Redirect from "react-router/es/Redirect";
 
-export default class Player extends RequestModel {
+import Redirect from "react-router/es/Redirect";
+import * as actionFunctions from "../../../REDUXactions/myPlaces/playerDataActions";
+import connect from "react-redux/es/connect/connect";
+
+class PlayerData extends Component {
     constructor() {
         super()
         this.state = {
@@ -12,7 +14,7 @@ export default class Player extends RequestModel {
     }
 
     componentWillMount() {
-        this.fetchRequest('player', {action: 'get'})
+       this.props.getPlayerData()
     }
 
     componentDidMount() {
@@ -21,8 +23,10 @@ export default class Player extends RequestModel {
 
 
     render() {
-        if (this.state.errMsg==='/login') return <Redirect to={'/login'}/>
-        let params = this.state.player.parameters;
+        if (this.props.playerDataState.redirect==='/login') window.location.pathname = '/login'
+        else if (this.props.playerDataState.redirect) return <Redirect to={this.props.playerDataState.redirect}/>;
+
+        let params = this.props.playerDataState.player.parameters;
         if (params) {
             return (
                 <div className={''}>
@@ -45,3 +49,8 @@ export default class Player extends RequestModel {
     }
 }
 
+const mapStateToProps = state => ({
+    playerDataState: state.playerDataState
+})
+
+export default connect(mapStateToProps, actionFunctions)(PlayerData)

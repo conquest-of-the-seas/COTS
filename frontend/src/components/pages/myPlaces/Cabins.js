@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import Redirect from "react-router/es/Redirect";
 import connect from "react-redux/es/connect/connect";
-import {addRandomCabins, getPlayerCabins} from "../../../REDUXactions/cabinsActions";
+import * as actionFunctions from "../../../REDUXactions/myPlaces/cabinsActions";
 
 class Cabins extends Component {
     constructor() {
@@ -41,7 +41,8 @@ class Cabins extends Component {
 
 
     render() {
-        if (this.state.redirect) return <Redirect to={this.state.redirect}/>;
+        if (this.props.cabinsState.redirect==='/login') window.location.pathname = '/login'
+        else if (this.props.cabinsState.redirect) return <Redirect to={this.props.cabinsState.redirect}/>;
         let crew = this.props.cabinsState.crew.map((cm, i) => {
             return <div className={'col-2'} key={'cm' + i}>{this.createItemHolder(cm)}</div>
         })
@@ -62,5 +63,4 @@ class Cabins extends Component {
 const mapStateToProps = state => ({
     cabinsState: state.cabinsState
 })
-
-export default connect(mapStateToProps, {getPlayerCabins, addRandomCabins})(Cabins)
+export default connect(mapStateToProps, actionFunctions)(Cabins)

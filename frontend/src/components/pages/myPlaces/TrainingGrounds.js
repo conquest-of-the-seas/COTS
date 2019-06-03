@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import RequestModel from "../../RequestModel";
 import Redirect from "react-router/es/Redirect";
 import connect from "react-redux/es/connect/connect";
-import {getPlayerTraining, addRandomTraining, trainCrewMember} from "../../../REDUXactions/trainingGroundsActions";
+import * as actionFunctions from "../../../REDUXactions/myPlaces/trainingGroundsActions";
 
  class TrainingGrounds extends RequestModel {
     constructor() {
@@ -49,7 +49,8 @@ import {getPlayerTraining, addRandomTraining, trainCrewMember} from "../../../RE
 
 
     render() {
-        if (this.props.trainingState.errMsg==='/login') return <Redirect to={'/login'}/>
+        if (this.props.trainingState.redirect==='/login') window.location.pathname = '/login'
+        else if (this.props.trainingState.redirect) return <Redirect to={this.props.trainingState.redirect}/>;
         let crew = this.props.trainingState.crew.map((cm, i) => {
             return <div className={'col-2'} key={'cm' + i}>{this.createItemHolder(cm)}</div>
         })
@@ -68,7 +69,7 @@ import {getPlayerTraining, addRandomTraining, trainCrewMember} from "../../../RE
 }
 
 const mapStateToProps = state => ({
-    trainingState: state.trainingState.items
+    trainingState: state.trainingState
 })
 
-export default connect(mapStateToProps, {getPlayerTraining, addRandomTraining, trainCrewMember})(TrainingGrounds)
+export default connect(mapStateToProps, actionFunctions)(TrainingGrounds)

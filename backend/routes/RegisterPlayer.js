@@ -63,7 +63,7 @@ router.get('/', (req, res, next) => {
                     console.timeEnd('start');
                     res.send({
                         cookie: newPlayer.cookie,
-                        errMsg: 'New Player Created', redirect: '/'
+                        errMsg: 'New PlayerData Created', redirect: '/'
                     })
                 }).catch((err) => {
                     if (err.code === 11000) res.send({errMsg: 'Such username already exists.'})

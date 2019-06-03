@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
-import RequestModel from "../RequestModel";
+
+import * as actionFunctions from "../../../REDUXactions";
+import connect from "react-redux/es/connect/connect";
 
 
-
-export default class defaultTemplate extends RequestModel {
+//todo change component name
+class DefaultTemplate extends Component {
     constructor(){
         super()
-        this.state={
-
-        }
     }
 
+    //todo add component functionality
 
     render() {
-
+//todo add component view
         return (
             <div>
             PageTest
@@ -22,3 +22,10 @@ export default class defaultTemplate extends RequestModel {
     }
 }
 
+//todo change names of variables
+const mapStateToProps = state => ({
+    defaultTemplateState: state.defaultTemplateState
+})
+
+
+export default connect(mapStateToProps, actionFunctions)(DefaultTemplate)

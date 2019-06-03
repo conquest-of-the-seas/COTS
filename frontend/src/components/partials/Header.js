@@ -65,11 +65,7 @@ export default class Header extends RequestModel {
                 <div>
                     <Navbar sticky="top">
                         <Navbar.Brand href="/">CotS</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav.Link onClick={() => this.setState({redirect: '/register'})}>Register</Nav.Link>
-                            <Nav.Link onClick={() => this.setState({redirect: '/login'})}>Login</Nav.Link>
-                        </Navbar.Collapse>
+
                     </Navbar>
                 </div>
             );

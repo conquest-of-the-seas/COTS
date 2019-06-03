@@ -11,7 +11,7 @@ import Login from "../pages/basic/Login";
 import Articles from "../pages/thePub/Articles";
 import Hangar from "../pages/myPlaces/Hangar";
 import Cabins from '../pages/myPlaces/Cabins';
-import Player from "../pages/myPlaces/Player";
+import PlayerData from "../pages/myPlaces/PlayerData";
 import RequestModel from "../RequestModel";
 
 
@@ -35,12 +35,12 @@ export default class Router extends RequestModel {
                 <Route path="/gameMap" exact component={GameMap}/>
                 <Route path="/train" exact component={TrainingGrounds}/>
                 <Route path="/quests" exact component={Quests}/>
-                <Route path="/register" exact component={() => <Register/>}/>
-                <Route path="/login" exact component={() => <Login/>}/>
+                <Route path="/register" exact component={() => <IndexPage/>}/>
+                <Route path="/login" exact component={() => <IndexPage/>}/>
                 <Route path="/articles" exact component={Articles}/>
                 <Route path="/hangar" exact component={() => <Hangar/>}/>
                 <Route path="/cabins" exact component={() => <Cabins/>}/>
-                <Route path="/player" exact component={() => <Player/>}/>
+                <Route path="/player" exact component={() => <PlayerData/>}/>
             </div>
 
         );

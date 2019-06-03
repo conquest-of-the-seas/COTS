@@ -160,8 +160,8 @@ function calculateNumber() {
 
 function updateParameters(playerParams, ship) {
 
-    //playerParams is the Player.parameters object, ship is the Ship class from above
-    /** Player.parameters = {
+    //playerParams is the PlayerData.parameters object, ship is the Ship class from above
+    /** PlayerData.parameters = {
             accuracy: new GlobalParameter(10, 80),
             windEff: new GlobalParameter(10, 80),
             oars: new GlobalParameter(4),
