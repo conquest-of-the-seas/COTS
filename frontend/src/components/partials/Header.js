@@ -4,7 +4,7 @@ import {Navbar, NavDropdown, Nav} from 'react-bootstrap'
 import RequestModel from "../RequestModel";
 import cookie from 'react-cookies'
 
-export default class Header extends RequestModel {
+export default class Header extends Component {
     constructor() {
         super()
         this.state = {

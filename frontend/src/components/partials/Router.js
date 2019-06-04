@@ -15,7 +15,7 @@ import PlayerData from "../pages/myPlaces/PlayerData";
 import RequestModel from "../RequestModel";
 
 
-export default class Router extends RequestModel {
+export default class Router extends Component {
 
     constructor() {
         super()

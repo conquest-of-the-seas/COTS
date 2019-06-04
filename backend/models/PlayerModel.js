@@ -104,6 +104,9 @@ let playerModelSchema = mongoose.Schema({
     ship: {
         type: {}
     },
+    shipLocation:{
+        type: {},
+    },
     crew: {
         type: [],
         default: []

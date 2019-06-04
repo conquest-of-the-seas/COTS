@@ -14,6 +14,7 @@ import marketReducer from "./thePub/marketReducer";
 import pubReducer from "./thePub/pubReducer";
 import statisticsReducer from "./thePub/statisticsReducer";
 import registerReducer from "./basic/registerReducer";
+import gameMapReducer from "./gameRelated/gameMapReducer";
 
 const partials = {
     footerState: footerReducer,
@@ -22,6 +23,10 @@ const partials = {
 const basic = {
     loginState: loginReducer,
     registerState:registerReducer
+}
+
+const gameRelated = {
+    gameMapState: gameMapReducer
 }
 
 const myPlaces = {
@@ -42,7 +47,7 @@ const thePub = {
 }
 
 
-export default combineReducers(Object.assign({},basic, myPlaces, thePub))
+export default combineReducers(Object.assign({},basic,gameRelated, myPlaces, thePub))
 
 
 

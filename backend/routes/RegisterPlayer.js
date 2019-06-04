@@ -4,7 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const timeModel = require('../models/TimeModel');
 const {PlayerModel} = require("../models/PlayerModel");
-const {Ship, updateParameters} = require('../models/ShipModel');
+const {Ship, updateParameters, ShipLocation} = require('../models/ShipModel');
 const {multiplyParameters, defaultCrew} = require('../models/CrewModel');
 const SaltRounds = 10;
 const {createCookie} = require('../models/AuthModel');
@@ -53,7 +53,23 @@ router.get('/', (req, res, next) => {
         newPlayer.crew.push(...defaultCrew());
         multiplyParameters(newPlayer.parameters, newPlayer.crew);
         updateParameters(newPlayer.parameters, newPlayer.ship);
+        newPlayer.shipLocation = new ShipLocation(newPlayer.faction);
+        switch (newPlayer.faction) {
+            case "capitalists":
 
+                break
+            case "democrats":
+
+                break
+            case "communists":
+
+                break
+            case "anarchists":
+
+                break
+            default:
+                break
+        }
 
         bcrypt.hash(newPlayer.password, SaltRounds, (err, hash) => {
             if (err) console.log(err);

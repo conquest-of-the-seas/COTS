@@ -16,7 +16,6 @@ class Register extends Component {
     render() {
         if (cookie.load('cots')) return <Redirect to={'/'}/>
 
-console.log(this.props.registerState.faction === 'communists')
         let factionInfo
         if (this.props.registerState.faction === 'capitalists') {
             factionInfo = (<div>

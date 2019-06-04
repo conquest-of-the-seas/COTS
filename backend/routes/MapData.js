@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
 let timeModel = require('../models/TimeModel');
+const {findPlayerInDbAndCheckCookie} = require('../models/RequestModel');
 // Connecting to the Database
 // Added { useNewUrlParser: true } because the old parser is going to be deprecated in newer versions
 mongoose.connect("mongodb://localhost/CotSdb", {useNewUrlParser: true});
@@ -47,12 +48,24 @@ const defaultOceanConditions = {
 
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-    // Displaying raw data from the DB
-    ConditionModel.findOne({day: timeModel.getCurrentDay()}, (err, obj) => {
-        if (err) console.log(err);
-        res.send({conditions:obj,map:map});
-    })
+router.post('/', (req, res, next) => {
+    let reqData = req.body
+
+    findPlayerInDbAndCheckCookie(req, res, (obj) => {
+
+
+        switch (reqData.action) {
+            case 'TRAVEL_ISLAND_MAP':
+
+                break;
+            case'GET_CONDITIONS_MAP':
+                // Displaying raw data from the DB
+                ConditionModel.findOne({day: timeModel.getCurrentDay()}, (err, obj) => {
+                    if (err) console.log(err);
+                    res.send({conditions: obj, map: map});
+                })
+        }
+    });
 
 });
 

@@ -13,6 +13,7 @@ export function fetchRequest(path, additionalBody = {},dispatch, callback) {
             "Content-Type": "application/json",
         }
     }).then(res => res.json()).then(j => {
+        console.log(j)
         if (j.session) {
             dispatch({
                 type: "INVALID_SESSION",

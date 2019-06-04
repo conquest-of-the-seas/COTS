@@ -150,6 +150,38 @@ class Ship {
     }
 }
 
+class ShipLocation {
+    constructor(faction) {
+        this.x = 0;
+        this.y = 0;
+        this.setLocation(faction)
+    }
+
+    setLocation(faction) {
+        switch (faction) {
+            case "capitalists":
+                this.x = 30;
+                this.y = 29;
+                break;
+            case "democrats":
+                this.x = 1;
+                this.y = 1;
+                break;
+            case "communists":
+                this.x = 29;
+                this.y = 1;
+                break;
+            case "anarchists":
+                this.x = 2;
+                this.y = 29;
+                break;
+            default:
+                break
+        }
+
+    }
+}
+
 /** classes above */
 /** functions below */
 function calculateNumber() {
@@ -192,7 +224,7 @@ function updateParameters(playerParams, ship) {
         addShipParameterModifier(secondParam, playerParams[secondShortName]);
     }
 
-    for (let i=0;i<parArr.length;i++){
+    for (let i = 0; i < parArr.length; i++) {
         setShipParameterValue(playerParams[parArr[i].shortName])
     }
 }
@@ -230,6 +262,7 @@ module.exports = {
     Ship: Ship,
     ShipElement: ShipElement,
     ShipElementModel: ShipElementModel,
+    ShipLocation:ShipLocation,
     ElementParameter: ElementParameter,
     parArr: parArr,
     updateParameters: updateParameters,

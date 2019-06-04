@@ -8,7 +8,7 @@ export const registerPlayer = (state) => dispatch => {
         isValid = false;
         dispatch({type:action,payload:{errMsg: "Passwords don't match"}})
     }
-    else if (validateEmail(state.email)) {
+    else if (!validateEmail(state.email)) {
         isValid = false;
         dispatch({type:action,payload:{errMsg: "Invalid e-mail"}})
     }
