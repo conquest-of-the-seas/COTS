@@ -123,7 +123,7 @@ export default class Register extends RequestModel {
             </div>)
         }
         else if (this.state.faction === 'anarchists') {
-            return (<div>
+            factionInfo = (<div>
                 <h2>Anarchists</h2>
 
                 <h5>Short Description:</h5>

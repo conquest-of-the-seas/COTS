@@ -1,7 +1,24 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+#Description{
+    resize: none;
+    border-radius: 5px;
+    padding: 1rem;
+}
+  
+.article-textarea-container {
+    display: flex;
+    margin: 0 auto;
+    width: 50rem;
+    padding: 1rem;
+    align-items: stretch;
+    justify-content: space-between;
+    flex: 1 1 auto;
+}  
 
 .usedParts {
     background: green;
@@ -38,4 +55,11 @@
 
 .m-20 {
     margin: 20px;
+}
+
+@media screen and (max-width: 600px) {
+
+    #Emoji-Container{
+        display: none;
+    }
 }
