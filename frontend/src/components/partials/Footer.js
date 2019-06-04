@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
-import RequestModel from "../RequestModel";
+
+import actionFunctions from "../../REDUXactions/.partials/footerActions";//todo add component actions
+import connect from "react-redux/es/connect/connect";
 
 
-
-export default class Footer extends RequestModel {
+//todo change component name
+class Footer extends Component {
     constructor(){
         super()
-        this.state={
-
-        }
     }
-    render() {
 
+    //todo add component functionality
+
+    render() {
+//todo add component view
         return (
             <div>
                 PageTest
@@ -20,3 +22,11 @@ export default class Footer extends RequestModel {
     }
 }
 
+//todo change names of variables
+const mapStateToProps = state => ({
+    footerState: state.footerState
+})
+
+//todo add action functions to
+
+export default connect(mapStateToProps, actionFunctions)(Footer)

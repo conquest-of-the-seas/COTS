@@ -145,7 +145,7 @@ class CrewMember {
         this.number = number;
         this.skills = this.setSkills();
         let thisMember = new CrewMemberModel();
-        thisMember.crewMember = this;
+        thisMember.member = this;
         thisMember.number = number;
         number++;
         thisMember.save().then((obj) => {
@@ -260,8 +260,8 @@ function calculateNumber() {
 }
 
 function multiplyParameters(playerParams, crew) {
-    //playerParams is the Player.parameters object
-    /** Player.parameters = {
+    //playerParams is the PlayerData.parameters object
+    /** PlayerData.parameters = {
             accuracy: new GlobalParameter(10, 80),
             windEff: new GlobalParameter(10, 80),
             oars: new GlobalParameter(4),

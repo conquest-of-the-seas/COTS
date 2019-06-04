@@ -1,22 +1,31 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
+
+import * as actionFunctions from "../../../REDUXactions/myPlaces/questsActions";
+import connect from "react-redux/es/connect/connect";
 
 
-
-export default class Quests extends RequestModel {
+//todo change component name
+class Quests extends Component {
     constructor(){
         super()
-        this.state={
-
-        }
     }
-    render() {
 
+    //todo add component functionality
+
+    render() {
+//todo add component view
         return (
             <div>
-                quests
+                PageTest
             </div>
         );
     }
 }
 
+//todo change names of variables
+const mapStateToProps = state => ({
+    questsState: state.questsState
+})
+
+
+export default connect(mapStateToProps, actionFunctions)(Quests)

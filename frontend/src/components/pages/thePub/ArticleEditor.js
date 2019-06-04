@@ -39,7 +39,7 @@ export default class ArticleEditor extends RequestModel {
     }
 
     emoteInTextarea(el, newText) {
-        debugger;
+
         let start = el.selectionStart;
         let end = el.selectionEnd;
         let text = el.value;

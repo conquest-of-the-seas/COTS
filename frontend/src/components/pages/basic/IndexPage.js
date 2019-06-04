@@ -1,26 +1,38 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
+import cookie from "react-cookies";
+import * as actionFunctions from "../../../REDUXactions/basic/indexPageActions";
+import connect from "react-redux/es/connect/connect";
+import Login from './Login'
+import Register from './Register'
 
-//const BackEndURL = `${window.location.hostname}:4004`
-
-
-export default class IndexPage extends RequestModel {
-    constructor() {
+//todo change component name
+class IndexPage extends Component {
+    constructor(){
         super()
-        this.state = {
-            data: {text:'this is an empty object'}
-        }
     }
 
-   
+    //todo add component functionality
 
     render() {
-
-        return (
-            <div>
-                Index Page
-            </div>
-        );
+//todo add component view
+        if (cookie.load('cots')){
+            return <div> Welcome!! </div>
+        }
+        else {
+            return (
+                <div>
+                    <Login/> <br/>
+                    <Register/>
+                </div>
+            );
+        }
     }
 }
 
+//todo change names of variables
+const mapStateToProps = state => ({
+    indexPageState: state.indexPageState
+})
+
+
+export default connect(mapStateToProps, actionFunctions)(IndexPage)

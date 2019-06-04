@@ -27,10 +27,10 @@ router.post('/', (req, res, next) => {
     let reqData = req.body;
 
     switch (reqData.action) {
-        case 'get':
+        case 'GET_PLAYER_CABINS':
             findPlayerInDbAndCheckCookie(req, res, (obj) => res.send({crew: obj.crew}));
             break;
-        case 'addMeRandomItem':
+        case 'ADD_RANDOM_CABINS':
             findPlayerInDbAndCheckCookie(req,res,(obj)=>{
                 obj.crew.push(new CrewMember(pirateTypeNames[Math.floor(Math.random() * pirateTypeNames.length)]));
                 PlayerModel.updateOne({nickname: obj.nickname}, obj, (err) => {

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import RequestModel from "../../RequestModel";
 import Redirect from "react-router/es/Redirect";
+import connect from "react-redux/es/connect/connect";
+import * as actionFunctions from "../../../REDUXactions/myPlaces/trainingGroundsActions";
 
-export default class TrainingGrounds extends RequestModel {
+ class TrainingGrounds extends RequestModel {
     constructor() {
         super()
         this.state = {
@@ -12,7 +14,7 @@ export default class TrainingGrounds extends RequestModel {
     }
 
     componentWillMount() {
-        this.fetchRequest('cabins', {action: 'get'})
+      this.props.getPlayerTraining()
     }
 
     componentDidMount() {
@@ -20,11 +22,11 @@ export default class TrainingGrounds extends RequestModel {
     }
 
     addRandom() {
-        this.fetchRequest('cabins', {action: 'addMeRandomItem'})
+        this.props.addRandomTraining();
     }
 
     trainSkill(skill, cm) {
-        this.fetchRequest('train', {
+        this.props.trainCrewMember({
             crewMember: cm,
             skill: skill
         })
@@ -47,14 +49,15 @@ export default class TrainingGrounds extends RequestModel {
 
 
     render() {
-        if (this.state.errMsg==='/login') return <Redirect to={'/login'}/>
-        let crew = this.state.crew.map((cm, i) => {
+        if (this.props.trainingState.redirect==='/login') window.location.pathname = '/login'
+        else if (this.props.trainingState.redirect) return <Redirect to={this.props.trainingState.redirect}/>;
+        let crew = this.props.trainingState.crew.map((cm, i) => {
             return <div className={'col-2'} key={'cm' + i}>{this.createItemHolder(cm)}</div>
         })
 
         return (
             <div className={''}>
-                {this.state.errMsg}
+                {this.props.trainingState.errMsg}
                 <div className={'crew row'}>
                     {crew}
                 </div>
@@ -65,3 +68,8 @@ export default class TrainingGrounds extends RequestModel {
     }
 }
 
+const mapStateToProps = state => ({
+    trainingState: state.trainingState
+})
+
+export default connect(mapStateToProps, actionFunctions)(TrainingGrounds)

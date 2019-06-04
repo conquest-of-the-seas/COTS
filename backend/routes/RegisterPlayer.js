@@ -4,7 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const timeModel = require('../models/TimeModel');
 const {PlayerModel} = require("../models/PlayerModel");
-const {Ship, updateParameters} = require('../models/ShipModel');
+const {Ship, updateParameters, ShipLocation} = require('../models/ShipModel');
 const {multiplyParameters, defaultCrew} = require('../models/CrewModel');
 const SaltRounds = 10;
 const {createCookie} = require('../models/AuthModel');
@@ -44,7 +44,7 @@ router.get('/', (req, res, next) => {
     newPlayer.registerDate = timeModel.getCurrentDay();
     newPlayer.lastSeen = timeModel.getCurrentDay();
     newPlayer.ips.push(req.headers['x-forwarded-for'] || req.connection.remoteAddress);
-    newPlayer.cookie = createCookie(newPlayer.nickname,newPlayer._id);
+    newPlayer.cookie = createCookie(newPlayer.nickname, newPlayer._id);
 
     PlayerModel.find({}, (err, arr) => {
         let number = arr.length;
@@ -53,7 +53,23 @@ router.get('/', (req, res, next) => {
         newPlayer.crew.push(...defaultCrew());
         multiplyParameters(newPlayer.parameters, newPlayer.crew);
         updateParameters(newPlayer.parameters, newPlayer.ship);
+        newPlayer.shipLocation = new ShipLocation(newPlayer.faction);
+        switch (newPlayer.faction) {
+            case "capitalists":
 
+                break
+            case "democrats":
+
+                break
+            case "communists":
+
+                break
+            case "anarchists":
+
+                break
+            default:
+                break
+        }
 
         bcrypt.hash(newPlayer.password, SaltRounds, (err, hash) => {
             if (err) console.log(err);
@@ -63,7 +79,7 @@ router.get('/', (req, res, next) => {
                     console.timeEnd('start');
                     res.send({
                         cookie: newPlayer.cookie,
-                        errMsg: 'New Player Created'
+                        errMsg: 'New PlayerData Created', redirect: '/'
                     })
                 }).catch((err) => {
                     if (err.code === 11000) res.send({errMsg: 'Such username already exists.'})

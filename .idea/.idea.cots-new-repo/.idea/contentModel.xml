@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\body-parser" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\bson" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\connect" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\express" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\express-serve-static-core" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\hoist-non-react-statics" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\mime" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\mongodb" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\mongoose" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\node" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\prop-types" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\range-parser" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\react" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\react-intl" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\react-intl-redux" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\react-redux" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\redux-action" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\config\javascript\extLibs\global-types\node_modules\@types\serve-static" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\vserv\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_cots-new-repo.2097429171.00" t="ExcludeRecursive" />
+    <e p="C:\Users\vserv\Desktop\desctop\cots-new-repo" t="IncludeFlat">
+      <e p="backend\node_modules" t="ExcludeRecursive">
+        <e p="bcrypt" t="IncludeRecursive" />
+        <e p="body-parser" t="IncludeRecursive" />
+        <e p="cookie-parser" t="IncludeRecursive" />
+        <e p="cors" t="IncludeRecursive" />
+        <e p="create-react-app" t="IncludeRecursive" />
+        <e p="crypto-js" t="IncludeRecursive" />
+        <e p="debug" t="IncludeRecursive" />
+        <e p="express" t="IncludeRecursive" />
+        <e p="express-fileupload" t="IncludeRecursive" />
+        <e p="hbs" t="IncludeRecursive" />
+        <e p="http-errors" t="IncludeRecursive" />
+        <e p="mongoose" t="IncludeRecursive" />
+        <e p="morgan" t="IncludeRecursive" />
+        <e p="nodemon" t="IncludeRecursive" />
+      </e>
+      <e p="frontend\node_modules" t="ExcludeRecursive">
+        <e p="@types" t="IncludeRecursive">
+          <e p="node" t="IncludeRecursive" />
+          <e p="unist" t="IncludeRecursive" />
+          <e p="vfile-message" t="IncludeRecursive" />
+        </e>
+        <e p="bootstrap" t="IncludeRecursive" />
+        <e p="emoji-mart" t="IncludeRecursive" />
+        <e p="konva" t="IncludeRecursive" />
+        <e p="react" t="IncludeRecursive" />
+        <e p="react-bootstrap" t="IncludeRecursive" />
+        <e p="react-cookies" t="IncludeRecursive" />
+        <e p="react-device-detect" t="IncludeRecursive" />
+        <e p="react-dom" t="IncludeRecursive" />
+        <e p="react-icons" t="IncludeRecursive" />
+        <e p="react-konva" t="IncludeRecursive" />
+        <e p="react-redux" t="IncludeRecursive" />
+        <e p="react-router" t="IncludeRecursive" />
+        <e p="react-router-dom" t="IncludeRecursive" />
+        <e p="react-scripts" t="IncludeRecursive" />
+        <e p="redux" t="IncludeRecursive" />
+        <e p="redux-devtools-extension" t="IncludeRecursive" />
+        <e p="redux-thunk" t="IncludeRecursive" />
+        <e p="remote-redux-devtools" t="IncludeRecursive" />
+        <e p="use-image" t="IncludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>

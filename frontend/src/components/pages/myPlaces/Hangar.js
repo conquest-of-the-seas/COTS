@@ -11,11 +11,12 @@ import {
 } from 'react-icons/gi'
 
 import shipImg from '../../../images/shipLayoutWithoutOars.png'
-import RequestModel from "../../RequestModel";
 import Redirect from "react-router/es/Redirect";
+import connect from "react-redux/es/connect/connect";
+import * as actionFunctions from "../../../REDUXactions/myPlaces/hangarActions"
 
 
-export default class Hangar extends RequestModel {
+class Hangar extends Component {
     constructor() {
         super()
         this.state = {
@@ -25,15 +26,14 @@ export default class Hangar extends RequestModel {
             canvWidth: 600,
             errMsg: ''
         }
+        this.timeout = undefined
     }
 
-    componentWillMount() {
-        this.fetchRequest('hangar', {action: 'get'})
-    }
 
     componentDidMount() {
-
+        this.props.getPlayerHangar()
     }
+
 
     setIcon(paramName) {
         switch (paramName) {
@@ -57,15 +57,14 @@ export default class Hangar extends RequestModel {
     }
 
     usePart(item) {
-        this.fetchRequest('hangar', {
-            action: 'use',
+        this.props.useItemHangar({
             item: item
         })
     }
 
 
     addRandom() {
-        this.fetchRequest('hangar', {action: 'addMeRandomItem'})
+        this.props.addRandomHangar()
     }
 
     createItemHolder(item, isUsed) {
@@ -106,45 +105,53 @@ export default class Hangar extends RequestModel {
         let canv = document.getElementById('shipLayout');
         let ctx = canv.getContext('2d');
         ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, this.state.canvWidth, this.state.canvHeight);
-        ctx.drawImage(this.refs.ship, 0, 0, this.state.canvWidth, this.state.canvHeight);
+        console.log(canv)
+        ctx.fillRect(0, 0, this.props.hangarState.canvWidth, this.props.hangarState.canvHeight);
+        ctx.drawImage(this.refs.ship, 0, 0, this.props.hangarState.canvWidth, this.props.hangarState.canvHeight);
         if (this.refs.oars) for (let i = 0; i < 6; i++) {
-            ctx.drawImage(this.refs.oars, 22 + i * 60, this.state.canvHeight - 105);
+            ctx.drawImage(this.refs.oars, 22 + i * 60, this.props.hangarState.canvHeight - 105);
         }
     }
 
     render() {
-        if (this.state.errMsg==='/login') return <Redirect to={'/login'}/>
+        if (this.props.hangarState.redirect==='/login') window.location.pathname = '/login'
+        else if (this.props.hangarState.redirect) return <Redirect to={this.props.hangarState.redirect}/>;
         console.log('rendering')
-        let items = this.state.hangar.map((item, index) => {
+        console.log(this.props.hangarState)
+        let items = this.props.hangarState.hangar.map((item, index) => {
             return (<div className={'col-3'} key={index + 'item'}>
                 {this.createItemHolder(item)}
             </div>)
         })
-        setTimeout(() => this.drawShip(), 200)
+        this.timeout = setTimeout(() => this.drawShip(), 200)
         return (
             <div className={''}>
-                {this.state.errMsg}
+                {this.props.hangarState.errMsg}
                 <div className={'ship row'}>
                     <div className={'col-12 row usedParts'}>
-                        <div className={'col-6'}>  {this.createItemHolder(this.state.ship.sails, 'sails')} </div>
-                        <div className={'col-6'}>  {this.createItemHolder(this.state.ship.mast, 'mast')} </div>
+                        <div
+                            className={'col-6'}>  {this.createItemHolder(this.props.hangarState.ship.sails, 'sails')} </div>
+                        <div
+                            className={'col-6'}>  {this.createItemHolder(this.props.hangarState.ship.mast, 'mast')} </div>
                     </div>
                     <div className={'col-2 usedParts'}>
-                        {this.createItemHolder(this.state.ship.wheel, 'wheel')}
-                        {this.createItemHolder(this.state.ship.cabins, 'cabins')}
+                        {this.createItemHolder(this.props.hangarState.ship.wheel, 'wheel')}
+                        {this.createItemHolder(this.props.hangarState.ship.cabins, 'cabins')}
                     </div>
                     <div className={'col-8 usedParts'}>
-                        <canvas id={'shipLayout'} width={this.state.canvWidth} height={this.state.canvHeight}/>
+                        <canvas id={'shipLayout'} width={this.props.hangarState.canvWidth}
+                                height={this.props.hangarState.canvHeight}/>
                         <img src={shipImg} alt={'shipImg'} style={{display: 'none'}} ref={'ship'}/>
                     </div>
                     <div className={'col-2 usedParts'}>
 
-                        {this.createItemHolder(this.state.ship.oars, 'oars')}
+                        {this.createItemHolder(this.props.hangarState.ship.oars, 'oars')}
                     </div>
                     <div className={'col-12 row usedParts'}>
-                        <div className={'col-6'}> {this.createItemHolder(this.state.ship.hull, 'hull')} </div>
-                        <div className={'col-6'}> {this.createItemHolder(this.state.ship.deck, 'deck')} </div>
+                        <div
+                            className={'col-6'}> {this.createItemHolder(this.props.hangarState.ship.hull, 'hull')} </div>
+                        <div
+                            className={'col-6'}> {this.createItemHolder(this.props.hangarState.ship.deck, 'deck')} </div>
                     </div>
                 </div>
                 <div className={'row'}>
@@ -156,3 +163,8 @@ export default class Hangar extends RequestModel {
     }
 }
 
+const mapStateToProps = state => ({
+    hangarState: state.hangarState
+})
+
+export default connect(mapStateToProps, actionFunctions)(Hangar)

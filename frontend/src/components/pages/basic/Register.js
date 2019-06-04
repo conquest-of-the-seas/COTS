@@ -1,67 +1,23 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
-import RequestModel from "../../RequestModel";
+import connect from "react-redux/es/connect/connect";
+import * as actionFunctions from '../../../REDUXactions/basic/registerActions'
+import cookie from "react-cookies";
 
-export default class Register extends RequestModel {
+class Register extends Component {
 
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            nickname: '',
-            password: '',
-            repPw: '',
-            email: '',
-            faction: '',
-            errMsg: "",
-            redirect: ''
-        }
+    constructor() {
+        super();
     }
 
-    register() {
-        let isValid = true;
-        if (this.state.password !== this.state.repPw) {
-            isValid = false;
-            this.setState({errMsg: "Passwords don't match"})
-        }
-        else if (!this.validateEmail(this.state.email)) {
-            isValid = false;
-            this.setState({errMsg: "Invalid e-mail"})
-        }
-        else if (isValid) {
-            let regObj = {
-                nickname: this.state.nickname,
-                password: this.state.password,
-                faction: this.state.faction,
-                email: this.state.email
-            }
-            let loginCB = (res) => {
-                if (res.cookie) this.setState({redirect: true})
-            }
-            this.fetchRequest('register', regObj, loginCB);
-        }
-
-
-    }
-
-    validateEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
-
-    handleChange(input, value) {
-        let obj = {};
-        obj[input] = value;
-        this.setState(obj)
-    }
+    
 
     render() {
-        if (this.state.redirect) return <Redirect to={'/'}/>;
-
+        if (cookie.load('cots')) return <Redirect to={'/'}/>
 
         let factionInfo
-        if (this.state.faction === 'capitalists') {
+        if (this.props.registerState.faction === 'capitalists') {
             factionInfo = (<div>
                 <h2>Capitalists</h2>
 
@@ -81,7 +37,7 @@ export default class Register extends RequestModel {
 
             </div>)
         }
-        else if (this.state.faction === 'democrats') {
+        else if (this.props.registerState.faction === 'democrats') {
             factionInfo = (<div>
                 <h2>Democrats</h2>
 
@@ -103,7 +59,7 @@ export default class Register extends RequestModel {
 
             </div>)
         }
-        else if (this.state.faction === 'communists') {
+        else if (this.props.registerState.faction === 'communists') {
             factionInfo = (<div>
                 <h2>Communists</h2>
 
@@ -122,7 +78,11 @@ export default class Register extends RequestModel {
 
             </div>)
         }
+<<<<<<< HEAD
         else if (this.state.faction === 'anarchists') {
+=======
+        else if (this.props.registerState.faction === 'anarchists') {
+>>>>>>> 127a8f524d829b8b34f1c11b824ffa63c0d4ea58
             factionInfo = (<div>
                 <h2>Anarchists</h2>
 
@@ -144,24 +104,26 @@ export default class Register extends RequestModel {
 
             </div>)
         }
+
         return (
             <div>
-                <form>
-                    <h4>{this.state.errMsg}</h4>
+                <form style={{textAlign: 'center'}}>
+                    <h1>Register</h1>
+                    <h4>{this.props.registerState.errMsg}</h4>
                     <label htmlFor='nick'>Nickname:</label><br/>
                     <input id='nick' type='text'
-                           onChange={(e) => this.handleChange('nickname', e.target.value)}/><br/>
+                           onChange={(e) => this.props.changeField('nickname', e)}/><br/>
                     <label htmlFor='pw'>Password:</label><br/>
                     <input id='pw' type='password'
-                           onChange={(e) => this.handleChange('password', e.target.value)}/><br/>
+                           onChange={(e) => this.props.changeField('password', e)}/><br/>
                     <label htmlFor='repPw'>Repeat password:</label><br/>
                     <input id='repPw' type='password'
-                           onChange={(e) => this.handleChange('repPw', e.target.value)}/><br/>
+                           onChange={(e) => this.props.changeField('repPw', e)}/><br/>
                     <label htmlFor='email'>E-mail:</label><br/>
                     <input id='email' type='text'
-                           onChange={(e) => this.handleChange('email', e.target.value)}/><br/>
+                           onChange={(e) => this.props.changeField('email', e)}/><br/>
                     <label htmlFor='fact'>Faction:</label><br/>
-                    <select id='fact' defaultValue={''} onChange={(e) => this.handleChange('faction', e.target.value)}>
+                    <select id='fact' defaultValue={''} onChange={(e) => this.props.changeField('faction', e)}>
                         <option value='' disabled>Select Faction</option>
                         <option value="democrats">Democrats</option>
                         <option value="anarchists">Anarchists</option>
@@ -170,10 +132,15 @@ export default class Register extends RequestModel {
                     </select><br/>
                     {factionInfo}
                     <br/>
-                    <input type="button" value={'register'} onClick={this.register.bind(this)}/>
+                    <input type="button" value={'register'} onClick={()=>this.props.registerPlayer(this.props.registerState)}/>
                 </form>
             </div>
         );
     }
 }
 
+const mapStateToProps = state => ({
+    registerState: state.registerState
+})
+
+export default connect(mapStateToProps, actionFunctions)(Register)

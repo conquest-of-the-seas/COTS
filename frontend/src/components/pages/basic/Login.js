@@ -1,46 +1,35 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
+import connect from "react-redux/es/connect/connect";
 import {Redirect} from 'react-router-dom';
+import cookie from "react-cookies";
+import * as actionFunctions from "../../../REDUXactions/basic/loginActions";
 
-export default class Login extends RequestModel {
+class Login extends Component {
     constructor() {
         super()
-        this.state = {
-            nickname: '',
-            password: '',
-            errMsg: '',
-            redirect: false
-    }
-    }
-
-    login() {
-        let loginCB = (res) => {
-           if (res.cookie) this.setState({redirect: true})
-        }
-        this.fetchRequest('login', {nickname: this.state.nickname, password: this.state.password}, loginCB)
-    }
-
-    handleChange(input, value) {
-        let obj = {};
-        obj[input] = value;
-        this.setState(obj)
     }
 
     render() {
-        if (this.state.redirect) return <Redirect to={'/'}/>;
+        if (cookie.load('cots')) return <Redirect to={'/'}/>
 
         return (
-            <div>
-                {this.state.errMsg}
-                <label htmlFor='nick'>Nickname:</label>
+            <div style={{textAlign:'center'}}>
+                <h1>Log In</h1>
+                {this.props.loginState.errMsg}<br/>
+                <label htmlFor='nick'>Nickname:</label><br/>
                 <input id='nick' type='text'
-                       onChange={(e) => this.handleChange('nickname', e.target.value)}/>
-                <label htmlFor='pw'>Password:</label>
+                       onChange={(e) => this.props.changeField('nickname', e)}/><br/>
+                <label htmlFor='pw'>Password:</label><br/>
                 <input id='pw' type='password'
-                       onChange={(e) => this.handleChange('password', e.target.value)}/>
-                <input type="button" value={'Log in'} onClick={this.login.bind(this)}/>
+                       onChange={(e) => this.props.changeField('password', e)}/><br/>
+                <input type="button" value={'Log in'} onClick={()=> this.props.loginPlayer({nickname: this.props.loginState.nickname, password: this.props.loginState.password})}/>
             </div>
         );
     }
 }
 
+const mapStateToProps = state => ({
+    loginState: state.loginState
+})
+
+export default connect(mapStateToProps, actionFunctions)(Login)

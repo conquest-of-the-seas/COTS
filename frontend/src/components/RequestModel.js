@@ -5,7 +5,6 @@ import {Redirect} from 'react-router-dom'
 class RequestModel extends Component {
     constructor(props) {
         super(props);
-        this.redirect = false;
     }
 
     componentWillMount() {
@@ -30,7 +29,8 @@ class RequestModel extends Component {
             }
         }).then(res => res.json()).then(j => {
             if (j.session) {
-                this.setState({redirect:'/login'});
+                console.log('session')
+                this.setState({redirect: '/login'});
                 return cookie.remove('cots');
             }
             console.log(j)

@@ -27,7 +27,7 @@ router.post('/', (req, res, next) => {
     let reqData = req.body;
 
     switch (reqData.action) {
-        case 'get':
+        case 'GET_PLAYER_DATA':
             findPlayerInDbAndCheckCookie(req, res, (obj) => res.send({player: obj}));
             break;
     }
