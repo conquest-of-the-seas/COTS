@@ -6,7 +6,7 @@ import * as actionFunctions from "../../../REDUXactions/basic/loginActions";
 
 class Login extends Component {
     constructor() {
-        super()
+        super();
     }
 
     render() {

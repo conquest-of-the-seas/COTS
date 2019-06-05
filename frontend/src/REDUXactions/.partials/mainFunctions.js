@@ -1,4 +1,4 @@
-import cookie from 'react-cookies'
+import cookie from 'react-cookies';
 
 export function fetchRequest(path, additionalBody = {},dispatch, callback) {
     let defaultBody = {
@@ -13,7 +13,7 @@ export function fetchRequest(path, additionalBody = {},dispatch, callback) {
             "Content-Type": "application/json",
         }
     }).then(res => res.json()).then(j => {
-        console.log(j)
+        console.log(j);
         if (j.session) {
             dispatch({
                 type: "INVALID_SESSION",
@@ -21,7 +21,7 @@ export function fetchRequest(path, additionalBody = {},dispatch, callback) {
             });
             return cookie.remove('cots');
         }
-        console.log(j)
+        console.log(j);
         if (j.cookie) {
             cookie.save('cots', j.cookie);
             j.cookie = true;

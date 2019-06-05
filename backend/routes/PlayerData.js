@@ -26,13 +26,12 @@ db.on("error", function (err) {
 router.post('/', (req, res, next) => {
     let reqData = req.body;
 
-    switch (reqData.action) {
-        case 'GET_PLAYER_DATA':
-            findPlayerInDbAndCheckCookie(req, res, (obj) => res.send({player: obj}));
-            break;
-    }
-
-
+    findPlayerInDbAndCheckCookie(req, res, (playerData) => {
+        switch (reqData.action) {
+            case 'GET_PLAYER_DATA':
+                res.send({player: playerData}); break;
+        }
+    })
 })
 
 module.exports = router;

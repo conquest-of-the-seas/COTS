@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import cookie from 'react-cookies'
-import {Redirect} from 'react-router-dom'
+import cookie from 'react-cookies';
+import {Redirect} from 'react-router-dom';
 
 class RequestModel extends Component {
     constructor(props) {
@@ -35,6 +35,7 @@ class RequestModel extends Component {
             }
             console.log(j)
             if (j.cookie) {
+                
                 cookie.save('cots', j.cookie);
                 j.cookie = true;
             }
@@ -47,4 +48,4 @@ class RequestModel extends Component {
 }
 
 
-export default RequestModel
+export default RequestModel;

@@ -78,11 +78,7 @@ class Register extends Component {
 
             </div>)
         }
-<<<<<<< HEAD
-        else if (this.state.faction === 'anarchists') {
-=======
         else if (this.props.registerState.faction === 'anarchists') {
->>>>>>> 127a8f524d829b8b34f1c11b824ffa63c0d4ea58
             factionInfo = (<div>
                 <h2>Anarchists</h2>
 

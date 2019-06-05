@@ -28,10 +28,10 @@ db.on("error", function (err) {
 /** classes above */
 /** functions below */
 
-function findPlayerInDbAndCheckCookie(req, res, callback) {
+function findPlayerInDbAndCheckCookie(req, res, callback) { 
     let reqData = req.body;
-    let playerData = decryptCookie(reqData.cookie)
-
+    let playerData = decryptCookie(reqData.cookie);
+    
     if (typeof playerData === 'object' && playerData.nickname) PlayerModel.findOne({nickname: playerData.nickname}, (err, obj) => {
         if (err) res.send({errMsg: 'An Error occurred trying to fetch your player data from DB'})
         else if (obj) {
