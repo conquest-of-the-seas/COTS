@@ -22,10 +22,6 @@ export const registerPlayer = (state) => dispatch => {
             email: state.email
         }
         fetchRequest('register', regObj,dispatch,json => {
-            dispatch({
-                type: action,
-                payload: json
-            })
         })
     }
 

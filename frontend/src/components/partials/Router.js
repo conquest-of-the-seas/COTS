@@ -30,11 +30,11 @@ export default class Router extends Component {
     render() {
         return (
             <div>
-                <Route path="/" exact component={IndexPage}/>
-                <Route path="/demo" exact component={ClickingDemo}/>
-                <Route path="/gameMap" exact component={GameMap}/>
-                <Route path="/train" exact component={TrainingGrounds}/>
-                <Route path="/quests" exact component={Quests}/>
+                <Route path="/" exact component={() => <IndexPage/>}/>
+                <Route path="/demo" exact component={()=><ClickingDemo/>}/>
+                <Route path="/gameMap" exact component={()=><GameMap/>}/>
+                <Route path="/train" exact component={()=><TrainingGrounds/>}/>
+                <Route path="/quests" exact component={()=><Quests/>}/>
                 <Route path="/register" exact component={() => <IndexPage/>}/>
                 <Route path="/login" exact component={() => <IndexPage/>}/>
                 <Route path="/articles" exact component={Articles}/>

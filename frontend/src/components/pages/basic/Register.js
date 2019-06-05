@@ -5,14 +5,6 @@ import * as actionFunctions from '../../../REDUXactions/basic/registerActions'
 import cookie from "react-cookies";
 
 class Register extends Component {
-
-
-    constructor() {
-        super();
-    }
-
-    
-
     render() {
         if (cookie.load('cots')) return <Redirect to={'/'}/>
 

@@ -16,6 +16,7 @@ import statisticsReducer from "./thePub/statisticsReducer";
 import registerReducer from "./basic/registerReducer";
 import gameMapReducer from "./gameRelated/gameMapReducer";
 
+
 const partials = {
     footerState: footerReducer,
 }
@@ -28,6 +29,8 @@ const basic = {
 const gameRelated = {
     gameMapState: gameMapReducer
 }
+
+
 
 const myPlaces = {
     cabinsState: cabinsReducer,

@@ -152,6 +152,7 @@ class Ship {
 
 class ShipLocation {
     constructor(faction) {
+        this.cords = []
         this.x = 0;
         this.y = 0;
         this.setLocation(faction)
@@ -160,18 +161,22 @@ class ShipLocation {
     setLocation(faction) {
         switch (faction) {
             case "capitalists":
+                this.cords = [30,29];
                 this.x = 30;
                 this.y = 29;
                 break;
             case "democrats":
+                this.cords = [1,1];
                 this.x = 1;
                 this.y = 1;
                 break;
             case "communists":
+                this.cords = [29,1];
                 this.x = 29;
                 this.y = 1;
                 break;
             case "anarchists":
+                this.cords = [2,29];
                 this.x = 2;
                 this.y = 29;
                 break;

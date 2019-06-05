@@ -4,17 +4,13 @@ export const getConditions = (fetchBody = {}) => dispatch => {
     let action = 'GET_CONDITIONS_MAP'
     fetchBody = Object.assign({action: action}, fetchBody)
     fetchRequest('map', fetchBody, dispatch, json => {
-        dispatch({type: action, payload: json})
     })
 }
 
+export const travelToIsland = (islandData = {}) => dispatch => {
+    let action = 'TRAVEL_ISLAND_MAP';
+    islandData = Object.assign({action: action}, islandData);
 
-export const changeField = (field, event) => dispatch => {
-    
-    let action = 'CHANGE_FIELD_LOGIN';
-    dispatch({
-        type: action,
-        payload: {field: field, value: event.target.value}
+    fetchRequest('map', islandData, dispatch, json => {
     })
 }
-
