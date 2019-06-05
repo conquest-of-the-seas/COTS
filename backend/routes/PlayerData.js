@@ -12,7 +12,7 @@ let db = mongoose.connection;
 
 // Check connection to db
 db.once("open", function () {
-    console.log("Connected to MongoDb");
+    console.log("Connected to MongoDb for route PlayerData");
 });
 
 // Check for db errors
@@ -25,13 +25,14 @@ db.on("error", function (err) {
 /* GET home page. */
 router.post('/', (req, res, next) => {
     let reqData = req.body;
+    findPlayerInDbAndCheckCookie(req, res, (playerData) => {
+        switch (reqData.action) {
+            case 'GET_PLAYER_DATA':
+                res.send({player: playerData})
 
-    switch (reqData.action) {
-        case 'GET_PLAYER_DATA':
-            findPlayerInDbAndCheckCookie(req, res, (obj) => res.send({player: obj}));
-            break;
-    }
-
+                break;
+        }
+    });
 
 })
 

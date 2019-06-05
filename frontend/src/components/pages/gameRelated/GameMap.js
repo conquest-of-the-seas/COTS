@@ -9,6 +9,7 @@ import foodImg from '../../../images/mapImages/foodIsland.png'
 import Konva from 'konva';
 import useImage from 'use-image'
 import {Stage, Layer, Image, Text, Group, Rect} from 'react-konva';
+import MapSideMenu from '../MapRelated/MapSideMenu'
 import Redirect from "react-router/es/Redirect";
 import connect from "react-redux/es/connect/connect";
 import * as actionFunctions from "../../../REDUXactions/gameRelated/gameMapActions";
@@ -46,8 +47,10 @@ class GameMap extends Component {
         return (number >= bottom && number <= top)
     }
 
-    calcDist(crd) {
-        let sel = this.state.selected.split(';');
+    calcDist(crd, fromShip = false) {
+        let sel
+        if (!fromShip) sel = this.state.selected.split(';');
+        else sel = this.props.gameMapState.shipLocation.cords
         return Math.sqrt((Math.pow(crd[0] - sel[0], 2) + Math.pow(crd[1] - sel[1], 2)))
     }
 
@@ -185,6 +188,7 @@ class GameMap extends Component {
                                 if (this.isWithin(x, 26, 31) && this.isWithin(y, 0, 5)) fillColor = 'green';
                                 if (this.isWithin(x, 0, 5) && this.isWithin(y, 26, 31)) fillColor = 'blue';
                                 if (this.isWithin(x, 26, 31) && this.isWithin(y, 26, 31)) fillColor = 'yellow';
+                                if (this.props.gameMapState.shipLocation.cords[0] === x && this.props.gameMapState.shipLocation.cords[1] === y) fillColor = 'magenta'
                             }
 
                             return (
@@ -221,9 +225,14 @@ class GameMap extends Component {
             </Layer>
 
             let islandCords = this.state.mouseOver.split(';');
+            let selectedCords = this.state.selected.split(';');
             let islandData = this.props.gameMapState.map[islandCords[0]][islandCords[1]];
+            let selectedData 
+            if (this.state.selected) selectedData= this.props.gameMapState.map[selectedCords[0]][selectedCords[1]];
             let dataLayer
             let islandDist = (this.state.selected) ? (this.calcDist.bind(this)(islandCords)) : ('No Island Selected');
+            let shipDist = this.calcDist.bind(this)(islandCords, true)
+            if (shipDist === 0) shipDist = 'Your ship is here'
             if (islandData) dataLayer = <Layer x={this.state.mousePos.x + 5} y={this.state.mousePos.y + 5}>
                 <Group>
                     <Rect width={200} height={130} fill={'#fff'} opacity={0.5}/>
@@ -237,17 +246,20 @@ class GameMap extends Component {
                     <Text
                         text={(islandData.resource.type !== 'none') ? `Storage : ${islandData.resource.storage}; Decay: ${(100 * (1 - islandData.resource.multiplier)).toFixed(2)}% per hour` : ''}
                         x={10} y={75}/>
-                    <Text text={`Distance: ${islandDist}`} x={10} y={85}/>
-                    <Text text={`this popup will hide in 5 seconds, \nright click to freeze, left to select`} x={10} y={100} fontSize={11}/>
+                    <Text text={`Distance:\n From Selected: ${islandDist}\n From Your Ship: ${shipDist}`} x={10}
+                          y={85}/>
+
                 </Group>
             </Layer>
             return (<div>
+                <MapSideMenu selectedData={selectedData} islandData={islandData}  
+                             shipLocation={this.props.gameMapState.shipLocation} distanceFromShip={this.calcDist.bind(this)(selectedCords, true)}/>
                 <Stage ref={'canvas'}
                        onWheel={stageMouse.scroll}
                        onMouseMove={stageMouse.move}
                        width={window.innerWidth}
                        height={window.innerHeight}
-                       onContextMenu={e=>e.evt.preventDefault()}>
+                       onContextMenu={e => e.evt.preventDefault()}>
                     {islandsLayer}
                     {dataLayer}
                 </Stage>

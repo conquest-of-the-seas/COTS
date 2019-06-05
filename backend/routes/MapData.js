@@ -2,6 +2,8 @@ var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
 let timeModel = require('../models/TimeModel');
+const {PlayerModel} = require("../models/PlayerModel");
+let ConditionModel = require("../models/ConditionsModel")
 const {findPlayerInDbAndCheckCookie} = require('../models/RequestModel');
 // Connecting to the Database
 // Added { useNewUrlParser: true } because the old parser is going to be deprecated in newer versions
@@ -11,7 +13,7 @@ let db = mongoose.connection;
 let map = JSON.parse(require('fs').readFileSync('./models/jsonSettings/map2.json', 'utf8'));
 // Check connection to db
 db.once("open", function () {
-    console.log("Connected to MongoDb",);
+    console.log("Connected to MongoDb for route MapData",);
 });
 
 // Check for db errors
@@ -19,8 +21,7 @@ db.on("error", function (err) {
     console.log(err);
 });
 
-// Bringing in model
-let ConditionModel = require("../models/ConditionsModel")
+
 
 const defaultOceanConditions = {
     /*wind direction can take any value (0-7)
@@ -51,25 +52,45 @@ const defaultOceanConditions = {
 router.post('/', (req, res, next) => {
     let reqData = req.body
 
-    findPlayerInDbAndCheckCookie(req, res, (obj) => {
+    findPlayerInDbAndCheckCookie(req, res, (player) => {
+        ConditionModel.findOne({day: timeModel.getCurrentDay()}, (err, conditions) => {
+            if (err) {
+                console.log(err);
+            }
+            switch (reqData.action) {
+                case 'TRAVEL_ISLAND_MAP':
+                    
+                    let dist = calcDist(player.shipLocation.cords, reqData.cords)
+                  
+                    player.shipLocation = {x:reqData.cords[0],y:reqData.cords[1],cords:reqData.cords}
+                    PlayerModel.updateOne({nickname: player.nickname}, player, (err) => {
+                        if (err) console.log(err);
+                        else res.send({shipLocation: player.shipLocation,errMsg:'Ship moved successful!'})
+
+                    })
+                    break;
+                case'GET_CONDITIONS_MAP':
+                    // Displaying raw data from the DB
+                    res.send({conditions: conditions, map: map, shipLocation: player.shipLocation});
+                    break;
+                case "":
+                    break;
+                default:
+                    break;
+            }
+
+        })
 
 
-        switch (reqData.action) {
-            case 'TRAVEL_ISLAND_MAP':
-
-                break;
-            case'GET_CONDITIONS_MAP':
-                // Displaying raw data from the DB
-                ConditionModel.findOne({day: timeModel.getCurrentDay()}, (err, obj) => {
-                    if (err) console.log(err);
-                    res.send({conditions: obj, map: map});
-                })
-        }
     });
 
 });
 
 module.exports = router;
+
+function calcDist(start, end) {
+    return Math.sqrt((Math.pow(start[0] - end[0], 2) + Math.pow(start[1] - end[1], 2)))
+}
 
 let createCondition = () => {
     console.log('creating condition')

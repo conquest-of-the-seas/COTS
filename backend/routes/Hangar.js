@@ -13,7 +13,7 @@ let db = mongoose.connection;
 
 // Check connection to db
 db.once("open", function () {
-    console.log("Connected to MongoDb");
+    console.log("Connected to MongoDb for route Hangar");
 });
 
 // Check for db errors

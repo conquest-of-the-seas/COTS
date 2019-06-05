@@ -21,11 +21,15 @@ export function fetchRequest(path, additionalBody = {},dispatch, callback) {
             });
             return cookie.remove('cots');
         }
-        console.log(j)
+   
         if (j.cookie) {
             cookie.save('cots', j.cookie);
             j.cookie = true;
         }
+        dispatch({
+            type: additionalBody.action,
+            payload: j
+        })
         if (callback) callback(j);
     })
 }

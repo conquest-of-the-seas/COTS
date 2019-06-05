@@ -13,7 +13,7 @@ const {findPlayerInDbAndCheckCookie} = require('../models/RequestModel');
 
 // Check connection to db
 db.once("open", function () {
-    console.log("Connected to MongoDb");
+    console.log("Connected to MongoDb for route TrainingGrounds");
 });
 
 // Check for db errors
@@ -27,15 +27,15 @@ db.on("error", function (err) {
 router.post('/', (req, res, next) => {
     let reqData = req.body;
 
-    findPlayerInDbAndCheckCookie(req, res, (obj) => {
-        let skillToTrain = obj.crew.find(a => a.number === reqData.crewMember.number).skills.find(a => a.shortName === reqData.skill.shortName);
+    findPlayerInDbAndCheckCookie(req, res, (player) => {
+        let skillToTrain = player.crew.find(a => a.number === reqData.crewMember.number).skills.find(a => a.shortName === reqData.skill.shortName);
         skillToTrain.value++;
-        multiplyParameters(obj.parameters, obj.crew);
-        updateParameters(obj.parameters, obj.ship);
+        multiplyParameters(player.parameters, player.crew);
+        updateParameters(player.parameters, player.ship);
 
-        PlayerModel.updateOne({nickname: obj.nickname}, obj, (err) => {
+        PlayerModel.updateOne({nickname: player.nickname}, player, (err) => {
             if (err) console.log(err);
-            else res.send({crew: obj.crew})
+            else res.send({crew: player.crew})
 
         })
     })

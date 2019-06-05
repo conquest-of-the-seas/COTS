@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 
-import * as actionFunctions from "../../../REDUXactions";
+import * as actionFunctions from "../../../REDUXactions";//todo create actions file in the right directory
 import connect from "react-redux/es/connect/connect";
 
 
 //todo change component name
 class DefaultTemplate extends Component {
-    constructor(){
-        super()
+    constructor(props) {
+        super(props)
+        this.state = {}
     }
 
     //todo add component functionality
@@ -16,9 +17,9 @@ class DefaultTemplate extends Component {
 //todo add component view
         return (
             <div>
-            PageTest
+                PageTest
             </div>
-    );
+        );
     }
 }
 

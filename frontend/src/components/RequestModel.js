@@ -33,7 +33,6 @@ class RequestModel extends Component {
                 this.setState({redirect: '/login'});
                 return cookie.remove('cots');
             }
-            console.log(j)
             if (j.cookie) {
                 cookie.save('cots', j.cookie);
                 j.cookie = true;
