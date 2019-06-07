@@ -14,7 +14,7 @@ export default function (state = initialState, action) {
             }
         case 'CHANGE_FIELD_LOGIN':
             state[action.payload.field] =action.payload.value;
-            return state
+            return state;
         default:
             return state;
     }

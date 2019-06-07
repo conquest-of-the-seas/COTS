@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import cookie from 'react-cookies';
 import {FaBold} from "react-icons/fa";
 import {FaItalic} from "react-icons/fa";
 import {FaImage} from "react-icons/fa";
@@ -11,13 +12,13 @@ import RequestModel from "../../RequestModel";
 import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
 import {isMobile} from 'react-device-detect';
+import * as articleEditorActions from '../../../REDUXactions/thePub/articleEditorActions';
+import connect from "react-redux/es/connect/connect";
 
-export default class ArticleEditor extends RequestModel {
+class ArticleEditor extends RequestModel {
     constructor(props) {
         super(props)
         this.state = {
-            text: '',
-            title: '',
             requestMsg: '',
             customIcons: {
                 categories: {
@@ -75,29 +76,13 @@ export default class ArticleEditor extends RequestModel {
         }
     }
 
-    postArticle() {
-        fetch(`http://${window.location.hostname}:4004/articles`, {
-            method: "post",
-            body: JSON.stringify({
-                text: this.state.text,
-                title: this.state.title
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }).then(res => res.text()).then(t => {
-            this.setState({requestMsg: t})
-            //this.props.refetch()
-        })
-    }
-
     render() {
         return (
             <div className="text-center">
                 <h5>{this.state.requestMsg}</h5>
                 <div className="m-20">
-                    <input placeholder={'title'} value={this.state.title}
-                           onChange={(e) => this.setState({title: e.target.value})}/><br/>
+                    <input placeholder={'title'} 
+                        onChange={(e) => this.props.changeField('title', e)}/><br/>
                 </div>
                 <div className="article-textarea-container">
                     <div>
@@ -111,7 +96,7 @@ export default class ArticleEditor extends RequestModel {
                             <button className="text" title="image" value="[img=URL][/img]"><FaImage/></button>
                         </div>
                         <textarea id="Description" cols="60" rows="8" 
-                                onChange={(e) => this.setState({text: e.target.value})} value={this.state.text}
+                                onChange={(e) => this.props.changeField('text', e)} 
                                 placeholder={'write your articles here'}/>
                         <br/>
                     </div>
@@ -123,9 +108,14 @@ export default class ArticleEditor extends RequestModel {
                             onSelect={(el) => this.emoteInTextarea.call(this, document.querySelector("#Description"), el.native)}/>
                     </div>
                 </div>
-                <button onClick={this.postArticle.bind(this)}>Submit</button>
+                <button onClick={() => this.props.postArticle({"title": this.props.articleEditorState.title, "text": this.props.articleEditorState.text})}>Submit</button>
             </div>
         );
     }
 }
 
+const mapStateToProps = state => ({
+    articleEditorState: state.articleEditorState
+});
+
+export default connect(mapStateToProps, articleEditorActions)(ArticleEditor);

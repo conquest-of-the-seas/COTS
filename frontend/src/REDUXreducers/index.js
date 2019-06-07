@@ -50,7 +50,7 @@ const thePub = {
 }
 
 
-export default combineReducers(Object.assign({},basic,gameRelated, myPlaces, thePub))
+export default combineReducers(Object.assign({},basic,gameRelated, myPlaces, thePub));
 
 
 

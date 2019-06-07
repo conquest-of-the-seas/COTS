@@ -4,13 +4,14 @@ export function fetchRequest(path, additionalBody = {},dispatch, callback) {
     let defaultBody = {
         cookie: cookie.load('cots')
     };
+    console.log(defaultBody);
     let body = Object.assign({}, defaultBody, additionalBody);
 
     fetch(`http://${window.location.hostname}:4004/${path}`, {
         method: "post",
         body: JSON.stringify(body),
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         }
     }).then(res => res.json()).then(j => {
         console.log(j);
@@ -21,11 +22,7 @@ export function fetchRequest(path, additionalBody = {},dispatch, callback) {
             });
             return cookie.remove('cots');
         }
-<<<<<<< HEAD
-        console.log(j);
-=======
    
->>>>>>> cb364a5c2a3da59aa33e98767229f23d4fb7d7b3
         if (j.cookie) {
             cookie.save('cots', j.cookie);
             j.cookie = true;

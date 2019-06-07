@@ -3,11 +3,10 @@ import {composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './REDUXreducers/index';
 
-const initialState = {}
+const initialState = {};
 
 //todo try removing thunk later
-const middleware = [thunk]
-
+const middleware = [thunk];
 
 const store = createStore(rootReducer,
     middleware,
@@ -17,4 +16,4 @@ const store = createStore(rootReducer,
 )
 
 
-export default store
+export default store;

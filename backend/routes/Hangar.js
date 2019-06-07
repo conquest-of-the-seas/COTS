@@ -27,7 +27,6 @@ db.on("error", function (err) {
 router.post('/', (req, res, next) => {
     let reqData = req.body;
 
-
     switch (reqData.action) {
         case 'GET_PLAYER_HANGAR':
             findPlayerInDbAndCheckCookie(req, res, (obj) => res.send({ship: obj.ship, hangar: obj.hangar}));

@@ -16,7 +16,7 @@ function createCookie(nickname, id) {
         id: id,
     }
     let jsonStr = JSON.stringify(jsonObj);
-    let cookie = cryptoJS.AES.encrypt(jsonStr,secretKey);
+    let cookie = cryptoJS.AES.encrypt(jsonStr,secretKey);    
     return cookie.toString();
 }
 

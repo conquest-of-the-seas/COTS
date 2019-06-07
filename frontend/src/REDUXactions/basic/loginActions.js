@@ -7,9 +7,8 @@ export const loginPlayer = (fetchBody = {}) => dispatch => {
     })
 }
 
-
 export const changeField = (field,event) => dispatch => {
-    
+    console.log('changing')
     //todo use bot protection!!!
     let action = 'CHANGE_FIELD_LOGIN';
     dispatch({

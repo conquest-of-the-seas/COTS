@@ -30,22 +30,32 @@ router.get('/', (req, res, next) => {
         res.send(arr);
     });
 }).post('/', function (req, res, next) {
-    console.log(req.headers.cookie);
-    findPlayerInDbAndCheckCookie(req, res, (playerData) =>  {
-        let newArticle = new ArticleModel();
-        newArticle.text = req.body.text;
-        newArticle.title = req.body.title;
-
-        ArticleModel.find({}, function (err, arr) {
-            let items = arr.length;
-            newArticle.number= items;
-            newArticle.save().then(() => { 
-                res.send('New Article Created');
-            }).catch((err)=>{
-                console.log('An error while created article was caught');
+    console.log(req.body);
+    let reqData = req.body;
+    
+    switch (reqData.action) {
+        case "POST_ARTICLE":
+            findPlayerInDbAndCheckCookie(req, res, (playerData) =>  {
+                let newArticle = new ArticleModel();
+                newArticle.text = req.body.text;
+                newArticle.title = req.body.title;
+        
+                ArticleModel.find({}, function (err, arr) {
+                    let items = arr.length;
+                    newArticle.number = items;
+                    newArticle.save().then(() => { 
+                        res.send({message: 'New Article Created'});
+                    }).catch((err)=>{
+                        console.log('An error while created article was caught');
+                    });
+                });
             });
-        });
-    });
+        break;
+    
+        default:
+            break;
+    }
+    
 });
 
 module.exports = router;

@@ -8,6 +8,10 @@ const SaltRounds = 10;
 const {createCookie} = require('../models/AuthModel');
 const {findPlayerInDbAndCheckCookie} = require('../models/RequestModel');
 
+
+let cookieParser = require('cookie-parser');
+const secretKey = 'This Is My Secret Key';
+
 // Connecting to the Database
 mongoose.connect("mongodb://localhost/CotSdb");
 let db = mongoose.connection;
@@ -31,7 +35,7 @@ let {PlayerModel} = require("../models/PlayerModel");
 router.get('/', (req, res, next) => {
 }).post('/', (req, res, next) => {
     let loginData = req.body;
-
+    
     PlayerModel.findOne({nickname: loginData.nickname}, (err, obj) => {
         if (err) console.log(err);
         if (obj !== null) {
@@ -39,14 +43,17 @@ router.get('/', (req, res, next) => {
                 if (err) console.log(err);
                 if (match) {
                     obj.cookie = createCookie(obj.nickname, obj._id);
-                    res.send({cookie: obj.cookie, errMsg: 'Login successful!',redirect:'/'});
+
+                    res.send({cookie: obj.cookie, errMsg: 'Login successful!', redirect:'/'});
+                    
                     let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
                     if (obj.ips.indexOf(ip) === -1) obj.ips.push(ip);
-                    //delete obj._id
+                    // delete obj._id
 
                     PlayerModel.updateOne({nickname: obj.nickname}, obj, (err) => {
                         if (err) console.log(err);
-                    })
+                    });
+
                 }
                 else {
                     res.send({errMsg: 'Wrong Password!'})
@@ -54,7 +61,7 @@ router.get('/', (req, res, next) => {
             });
         }
         else res.send({errMsg: 'No such username in database!'})
-    })
+    });
 
 });
 
