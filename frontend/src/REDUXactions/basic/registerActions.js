@@ -19,7 +19,8 @@ export const registerPlayer = (state) => dispatch => {
             nickname: state.nickname,
             password: state.password,
             faction: state.faction,
-            email: state.email
+            email: state.email,
+            action: action
         }
         fetchRequest('register', regObj,dispatch,json => {
         })

@@ -6,6 +6,7 @@ import woodImg from '../../../images/mapImages/woodIsland.png'
 import metalImg from '../../../images/mapImages/metalIsland.png'
 import goldImg from '../../../images/mapImages/goldIsland.png'
 import foodImg from '../../../images/mapImages/foodIsland.png'
+import shipImg from '../../../images/mapImages/ship.png';
 import Konva from 'konva';
 import useImage from 'use-image'
 import {Stage, Layer, Image, Text, Group, Rect} from 'react-konva';
@@ -22,6 +23,7 @@ class GameMap extends Component {
         //used for canvas stuff only!!!!
         this.state = {
             drag: {x: 0, y: 0},
+            isNotDragging: true,
             //stores click data
             selected: '',
             //size of a square island/water
@@ -39,6 +41,10 @@ class GameMap extends Component {
         this.props.getConditions()
     }
 
+    componentWillUnmount(){
+        this.props.clearTimeouts()
+    }
+    
     capitaliseFirstLetter(txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     }
@@ -65,12 +71,13 @@ class GameMap extends Component {
             let islandsLayerDrag = {
                 start: (e) => {
                     this.setState({
-                        drag: {x: this.state.drag.x, y: this.state.drag.y}
+                        drag: {x: this.state.drag.x, y: this.state.drag.y},
+                        isNotDragging: false
                     });
                 },
                 end: (e) => {
 
-                    this.setState({drag: {x: e.target.x(), y: e.target.y()}})
+                    this.setState({isNotDragging: true, drag: {x: e.target.x(), y: e.target.y()}})
                 }
             }
 
@@ -227,10 +234,21 @@ class GameMap extends Component {
             let islandCords = this.state.mouseOver.split(';');
             let selectedCords = this.state.selected.split(';');
             let islandData = this.props.gameMapState.map[islandCords[0]][islandCords[1]];
-            let selectedData 
-            if (this.state.selected) selectedData= this.props.gameMapState.map[selectedCords[0]][selectedCords[1]];
+            let selectedData
+            if (this.state.selected) selectedData = this.props.gameMapState.map[selectedCords[0]][selectedCords[1]];
             let dataLayer
             let islandDist = (this.state.selected) ? (this.calcDist.bind(this)(islandCords)) : ('No Island Selected');
+            let shipCords = this.props.gameMapState.shipLocation.cords
+            let shipsLayer
+            if (this.state.isNotDragging) shipsLayer = (<Layer>
+                <Image
+                    x={(shipCords[0]+.8) * this.state.pixelSize + this.state.drag.x}
+                    y={(shipCords[1]+.8) * this.state.pixelSize + this.state.drag.y}
+                    width={this.state.pixelSize / 3}
+                    height={this.state.pixelSize / 3}
+                    image={this.refs.ship}
+                />
+            </Layer>)
             let shipDist = this.calcDist.bind(this)(islandCords, true)
             if (shipDist === 0) shipDist = 'Your ship is here'
             if (islandData) dataLayer = <Layer x={this.state.mousePos.x + 5} y={this.state.mousePos.y + 5}>
@@ -252,8 +270,9 @@ class GameMap extends Component {
                 </Group>
             </Layer>
             return (<div>
-                <MapSideMenu selectedData={selectedData} islandData={islandData}  
-                             shipLocation={this.props.gameMapState.shipLocation} distanceFromShip={this.calcDist.bind(this)(selectedCords, true)}/>
+                <MapSideMenu selectedData={selectedData} islandData={islandData}
+                             shipLocation={this.props.gameMapState.shipLocation}
+                             distanceFromShip={this.calcDist.bind(this)(selectedCords, true)}/>
                 <Stage ref={'canvas'}
                        onWheel={stageMouse.scroll}
                        onMouseMove={stageMouse.move}
@@ -262,6 +281,7 @@ class GameMap extends Component {
                        onContextMenu={e => e.evt.preventDefault()}>
                     {islandsLayer}
                     {dataLayer}
+                    {shipsLayer}
                 </Stage>
                 <img src={islandImg} ref={'none'} style={{display: 'none'}}/>
                 <img src={waterImg} ref={'water'} style={{display: 'none'}}/>
@@ -270,6 +290,7 @@ class GameMap extends Component {
                 <img src={woodImg} ref={'wood'} style={{display: 'none'}}/>
                 <img src={foodImg} ref={'food'} style={{display: 'none'}}/>
                 <img src={metalImg} ref={'metal'} style={{display: 'none'}}/>
+                <img src={shipImg} ref={'ship'} style={{display: 'none'}}/>
             </div>);
         }
         else return <h1>Map couldn't load</h1>

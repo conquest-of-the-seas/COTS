@@ -14,13 +14,13 @@ let map = JSON.parse(require('fs').readFileSync('./models/jsonSettings/map2.json
 // Check connection to db
 db.once("open", function () {
     console.log("Connected to MongoDb for route MapData",);
+    //todo once the DB loads foreach all players and start travel timer
 });
 
 // Check for db errors
 db.on("error", function (err) {
     console.log(err);
 });
-
 
 
 const defaultOceanConditions = {
@@ -47,6 +47,9 @@ const defaultOceanConditions = {
     visibility: 4
 }
 
+let traveilingShips = {}
+const timePerDistance = 60 * 1000 // ms from island to island
+const updateRate = 2 * 1000// ms for interval
 
 /* GET home page. */
 router.post('/', (req, res, next) => {
@@ -59,15 +62,54 @@ router.post('/', (req, res, next) => {
             }
             switch (reqData.action) {
                 case 'TRAVEL_ISLAND_MAP':
-                    
-                    let dist = calcDist(player.shipLocation.cords, reqData.cords)
-                  
-                    player.shipLocation = {x:reqData.cords[0],y:reqData.cords[1],cords:reqData.cords}
-                    PlayerModel.updateOne({nickname: player.nickname}, player, (err) => {
-                        if (err) console.log(err);
-                        else res.send({shipLocation: player.shipLocation,errMsg:'Ship moved successful!'})
 
-                    })
+                    let dist = calcDist(player.shipLocation.cords, reqData.cords)
+                    console.log(dist)
+                    let travelData = {
+                        current: player.shipLocation.cords,
+                        end: reqData.cords
+                    }
+                    travelData.turnDelta = calcDeltaCords(travelData.current, travelData.end);
+                    player.shipLocation = {
+                        x: tinyRound(travelData.current[0]),
+                        y: tinyRound(travelData.current[1]),
+                        cords: travelData.current,
+                        travelData: travelData,
+                        updateRate: updateRate
+                    }
+                    if (traveilingShips[player._id]) clearInterval(traveilingShips[player._id]);
+                    traveilingShips[player._id] = setInterval(() => {
+                        travelData.current[0] = travelData.current[0] - travelData.turnDelta[0];
+                        travelData.current[1] = travelData.current[1] - travelData.turnDelta[1];
+                        console.log(travelData.current[0] + ' ; ' + travelData.current[1])
+                        if (tinyRound(travelData.current[0]) === travelData.end[0] && tinyRound(travelData.current[1]) === travelData.end[1]) {
+                            console.log('should clear')
+                            clearInterval(traveilingShips[player._id])
+                            player.shipLocation = {
+                                x: tinyRound(travelData.current[0]),
+                                y: tinyRound(travelData.current[1]),
+                                cords: [tinyRound(travelData.current[0]),tinyRound(travelData.current[1])],
+                                travelData: false,
+
+                            }
+                        }
+                        else {
+                            player.shipLocation = {
+                                x: tinyRound(travelData.current[0]),
+                                y: tinyRound(travelData.current[1]),
+                                cords: [tinyRound(travelData.current[0]),tinyRound(travelData.current[1])],
+                                travelData: travelData,
+                                updateRate: updateRate
+                            }
+                        }
+                        PlayerModel.updateOne({nickname: player.nickname}, player, (err) => {
+                            if (err) console.log(err);
+                        })
+
+                    }, updateRate)
+                    res.send({shipLocation: player.shipLocation, errMsg: 'Ship moved successful!'})
+
+
                     break;
                 case'GET_CONDITIONS_MAP':
                     // Displaying raw data from the DB
@@ -131,6 +173,29 @@ let createCondition = () => {
         }
     })
 }
+
+function calcDeltaCords(start, end) {
+    let deltaX = start[0] - end[0];
+    let deltaY = start[1] - end[1];
+    let totalDist = calcDist(start, end);
+    console.log(totalDist)
+    let repeatInterval = totalDist * timePerDistance / updateRate
+    let singleX = deltaX / repeatInterval;
+    console.log(deltaX)
+    let singleY = deltaY / repeatInterval;
+    console.log(deltaY)
+    return [singleX, singleY];
+}
+
+function tinyRound(number) {
+
+    if (Math.abs(Math.round(number) - number) < 0.025) return Math.round(number)
+    else {
+        //console.log(Math.abs(Math.round(number) - number))
+        return number
+    }
+}
+
 createCondition()
 setInterval(createCondition, 1000 * 60 * 60 * 24);
 
