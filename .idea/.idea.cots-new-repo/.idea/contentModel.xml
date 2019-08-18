@@ -37,6 +37,7 @@
         <e p="mongoose" t="IncludeRecursive" />
         <e p="morgan" t="IncludeRecursive" />
         <e p="nodemon" t="IncludeRecursive" />
+        <e p="socket.io" t="IncludeRecursive" />
       </e>
       <e p="frontend\node_modules" t="ExcludeRecursive">
         <e p="@types" t="IncludeRecursive">
@@ -62,6 +63,7 @@
         <e p="redux-devtools-extension" t="IncludeRecursive" />
         <e p="redux-thunk" t="IncludeRecursive" />
         <e p="remote-redux-devtools" t="IncludeRecursive" />
+        <e p="socket.io-client" t="IncludeRecursive" />
         <e p="use-image" t="IncludeRecursive" />
       </e>
     </e>

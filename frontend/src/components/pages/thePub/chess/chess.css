@@ -1,0 +1,154 @@
+.white {
+    background: wheat;
+    width: 66px;
+    height: 66px;
+    float: left;
+}
+
+.black {
+    background: #4c0000;
+    width: 66px;
+    height: 66px;
+    float: left;
+}
+.white div {
+    
+    width: 66px;
+    height: 66px;
+    float: left;
+}
+
+.black div {
+    width: 66px;
+    height: 66px;
+    float: left;
+}
+
+.board{
+    width: calc(8 * 66px);
+}
+
+.rookWhite{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 55px);
+    background-position: 11px -40px;
+}
+.horseWhite{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 55px);
+    background-position: -54px -40px;
+}
+
+.bishopWhite{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 55px);
+    background-position: -122px -40px;
+}
+
+.kingWhite{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 55px);
+    background-position: -189px -40px;
+}
+
+.queenWhite{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 58px);
+    background-position: -269px -43px;
+}
+
+.pawnWhite{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 58px);
+    background-position: -412px -46px;
+}
+
+.rookBlack{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 55px);
+    background-position: 11px -114px;
+}
+.horseBlack{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 55px);
+    background-position: -54px -114px;
+}
+
+.bishopBlack{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 55px);
+    background-position: -122px -114px;
+}
+
+.kingBlack{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 55px);
+    background-position: -189px -114px;
+}
+
+.queenBlack{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 58px);
+    background-position: -269px -121px;
+}
+
+.pawnBlack{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../../../images/chessImages/figures.png");
+    background-repeat: no-repeat;
+    background-size: calc(8 * 58px);
+    background-position: -412px -123px;
+}
+
+.checkboxChess{
+    width: 30px;
+    height: 30px;
+}
+
+.board{
+    
+}
+
+.possible {
+    -webkit-box-shadow: inset 0px 0px 14px 3px rgba(19, 213, 0, 0.75);
+    -moz-box-shadow: inset 0px 0px 14px 3px rgba(19, 213, 0, 0.75);
+    box-shadow: inset 0px 0px 14px 3px rgba(19, 213, 0, 0.75);
+}
+
+.impossible {
+    
+}

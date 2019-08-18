@@ -114,8 +114,8 @@ class Hangar extends Component {
     }
 
     render() {
-        if (this.props.hangarState.redirect==='/login') window.location.pathname = '/login'
-        else if (this.props.hangarState.redirect) return <Redirect to={this.props.hangarState.redirect}/>;
+        //if (this.props.hangarState.redirect==='/login') window.location.pathname = '/login'
+         if (this.props.hangarState.redirect) return <Redirect to={this.props.hangarState.redirect}/>;
         console.log('rendering')
         console.log(this.props.hangarState)
         let items = this.props.hangarState.hangar.map((item, index) => {

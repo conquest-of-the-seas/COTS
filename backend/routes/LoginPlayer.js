@@ -35,17 +35,18 @@ let {PlayerModel} = require("../models/PlayerModel");
 router.get('/', (req, res, next) => {
 }).post('/', (req, res, next) => {
     let loginData = req.body;
-    
+
     PlayerModel.findOne({nickname: loginData.nickname}, (err, obj) => {
         if (err) console.log(err);
         if (obj !== null) {
             bcrypt.compare(loginData.password, obj.password, (err, match) => {
                 if (err) console.log(err);
                 if (match) {
-                    obj.cookie = createCookie(obj.nickname, obj._id);
+                    obj.cookie = createCookie(obj.nickname, obj._id, req.cookies.ua);
+                    res.cookie('cots', obj.cookie, {maxAge: 999999999, httpOnly: true});
+                    res.cookie('loggedIn', Date.now(), {maxAge: 999999999});
+                    res.send({errMsg: 'Login successful!', redirect: '/'});
 
-                    res.send({cookie: obj.cookie, errMsg: 'Login successful!', redirect:'/'});
-                    
                     let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
                     if (obj.ips.indexOf(ip) === -1) obj.ips.push(ip);
                     // delete obj._id
