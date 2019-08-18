@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom'
 import {Navbar, NavDropdown, Nav} from 'react-bootstrap'
-import RequestModel from "../RequestModel";
 import cookie from 'react-cookies'
 
 export default class Header extends Component {

@@ -5,9 +5,7 @@ import cookie from "react-cookies";
 import * as actionFunctions from "../../../REDUXactions/basic/loginActions";
 
 class Login extends Component {
-    constructor() {
-        super();
-    }
+
 
     render() {
         if (cookie.load('cots')) return <Redirect to={'/'}/>
@@ -16,11 +14,11 @@ class Login extends Component {
             <div style={{textAlign:'center'}}>
                 <h1>Log In</h1>
                 {this.props.loginState.errMsg}<br/>
-                <label htmlFor='nick'>Nickname:</label><br/>
-                <input id='nick' type='text'
+                <label htmlFor='loginNick'>Nickname:</label><br/>
+                <input id='loginNick' type='text'
                        onChange={(e) => this.props.changeField('nickname', e)}/><br/>
-                <label htmlFor='pw'>Password:</label><br/>
-                <input id='pw' type='password'
+                <label htmlFor='loginPw'>Password:</label><br/>
+                <input id='loginPw' type='password'
                        onChange={(e) => this.props.changeField('password', e)}/><br/>
                 <input type="button" value={'Log in'} onClick={()=> this.props.loginPlayer({nickname: this.props.loginState.nickname, password: this.props.loginState.password})}/>
             </div>

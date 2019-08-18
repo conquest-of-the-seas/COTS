@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
 
 
 
-export default class Tutorial extends RequestModel {
+export default class Tutorial extends Component {
     constructor(){
         super()
         this.state={

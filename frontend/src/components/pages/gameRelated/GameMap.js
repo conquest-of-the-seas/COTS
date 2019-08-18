@@ -7,8 +7,6 @@ import metalImg from '../../../images/mapImages/metalIsland.png'
 import goldImg from '../../../images/mapImages/goldIsland.png'
 import foodImg from '../../../images/mapImages/foodIsland.png'
 import shipImg from '../../../images/mapImages/ship.png';
-import Konva from 'konva';
-import useImage from 'use-image'
 import {Stage, Layer, Image, Text, Group, Rect} from 'react-konva';
 import MapSideMenu from '../MapRelated/MapSideMenu'
 import Redirect from "react-router/es/Redirect";
@@ -283,14 +281,14 @@ class GameMap extends Component {
                     {dataLayer}
                     {shipsLayer}
                 </Stage>
-                <img src={islandImg} ref={'none'} style={{display: 'none'}}/>
-                <img src={waterImg} ref={'water'} style={{display: 'none'}}/>
-                <img src={stoneImg} ref={'stone'} style={{display: 'none'}}/>
-                <img src={goldImg} ref={'gold'} style={{display: 'none'}}/>
-                <img src={woodImg} ref={'wood'} style={{display: 'none'}}/>
-                <img src={foodImg} ref={'food'} style={{display: 'none'}}/>
-                <img src={metalImg} ref={'metal'} style={{display: 'none'}}/>
-                <img src={shipImg} ref={'ship'} style={{display: 'none'}}/>
+                <img src={islandImg} ref={'none'} alt={'none'} style={{display: 'none'}}/>
+                <img src={waterImg} ref={'water'} alt={'water'} style={{display: 'none'}}/>
+                <img src={stoneImg} ref={'stone'} alt={'stone'} style={{display: 'none'}}/>
+                <img src={goldImg} ref={'gold'} alt={'gold'} style={{display: 'none'}}/>
+                <img src={woodImg} ref={'wood'} alt={'wood'} style={{display: 'none'}}/>
+                <img src={foodImg} ref={'food'} alt={'food'} style={{display: 'none'}}/>
+                <img src={metalImg} ref={'metal'} alt={'metal'} style={{display: 'none'}}/>
+                <img src={shipImg} ref={'ship'} alt={'ship'} style={{display: 'none'}}/>
             </div>);
         }
         else return <h1>Map couldn't load</h1>

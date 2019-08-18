@@ -16,8 +16,6 @@ export const handleClick = (e, figId, state, socket) => dispatch => {
     }
 
     let displayMoves = (e, figId) => {
-
-        let sBoard = state.board;
         let pMoves = []
         console.log(figureData);
         let name;
@@ -265,8 +263,8 @@ export const setState = (newState) => dispatch => {
     console.log(newState)
     dispatch({type: action, payload: newState})
 }
-
+/*
 export const checkForCheck = () => dispatch => {
     let action = "CHECK_CHECK_MATE";
     
-}
+}*/

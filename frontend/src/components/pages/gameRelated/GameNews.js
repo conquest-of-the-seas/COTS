@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
 
 
 
-export default class GameNews extends RequestModel {
+export default class GameNews extends Component {
     constructor(){
         super()
         this.state={

@@ -6,10 +6,7 @@ import connect from "react-redux/es/connect/connect";
 
 //todo change component name
 class Quests extends Component {
-    constructor(){
-        super()
-    }
-
+   
     //todo add component functionality
 
     render() {

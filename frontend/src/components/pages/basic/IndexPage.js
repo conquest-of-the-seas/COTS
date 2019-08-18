@@ -7,9 +7,7 @@ import Register from './Register'
 
 //todo change component name
 class IndexPage extends Component {
-    constructor(){
-        super()
-    }
+
 
     //todo add component functionality
 

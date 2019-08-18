@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
 
 
-
-export default class Auctions extends RequestModel {
+export default class Auctions extends Component {
     constructor(){
         super()
         this.state={
