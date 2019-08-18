@@ -2,9 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f85c41fe-852e-41e5-8a83-40b0af36cdd2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/socketHandler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/REDUXactions/thePub/chessActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/REDUXreducers/thePub/chessReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/pages/thePub/chess/Chess.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/pages/thePub/chess/chess.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/images/chessImages/figures.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/images/mapImages/ship.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.cots-new-repo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.idea.cots-new-repo/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/templates/default.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/templates/default.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/REDUXactions/.partials/mainFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/REDUXactions/.partials/mainFunctions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/REDUXreducers/basic/indexPageReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/REDUXreducers/basic/indexPageReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/REDUXreducers/basic/loginReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/REDUXreducers/basic/loginReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/REDUXreducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/REDUXreducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/REDUXreducers/thePub/pubReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/REDUXreducers/thePub/pubReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/RequestModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/RequestModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/pages/thePub/Articles.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/pages/thePub/Articles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/partials/Router.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/partials/Router.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -60,28 +80,23 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="697847862">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/users.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/www">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -96,15 +111,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
               <caret line="22" selection-start-line="22" selection-end-line="22" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/routes/BasicData.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -156,9 +162,6 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/node_modules" />
-  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/package.json" />
@@ -197,7 +200,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../razpisanieAPI" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -227,11 +230,12 @@
       <updated>1551530470116</updated>
       <workItem from="1551530471270" duration="7321000" />
       <workItem from="1551711419871" duration="1291000" />
+      <workItem from="1563630986778" duration="627000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8612000" />
+    <option name="totallyTimeSpent" value="9239000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -275,28 +279,15 @@
     <entry file="file://$PROJECT_DIR$/views/error.hbs">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa1508.8986/backEnd/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa1508.8986/backEnd/package.json" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa1508.4592/app.js" />
-    <entry file="file://$PROJECT_DIR$/routes/users.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js" />
+    <entry file="file://$PROJECT_DIR$/routes/index.js" />
+    <entry file="file://$PROJECT_DIR$/routes/BasicData.js" />
     <entry file="file://$PROJECT_DIR$/bin/www">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -321,13 +312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/BasicData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
         </state>
       </provider>
     </entry>

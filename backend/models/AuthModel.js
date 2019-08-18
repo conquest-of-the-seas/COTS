@@ -9,14 +9,15 @@ const secretKey = 'This Is My Secret Key';
 /** classes above */
 /** functions below */
 
-function createCookie(nickname, id) {
+function createCookie(nickname, id, userAgent) {
     let jsonObj = {
         nickname: nickname,
-        timeStamp:Date.now().toString(),
+        timeStamp: Date.now().toString(),
         id: id,
+        userAgent: userAgent
     }
     let jsonStr = JSON.stringify(jsonObj);
-    let cookie = cryptoJS.AES.encrypt(jsonStr,secretKey);    
+    let cookie = cryptoJS.AES.encrypt(jsonStr, secretKey);
     return cookie.toString();
 }
 

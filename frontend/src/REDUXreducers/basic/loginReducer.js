@@ -2,7 +2,7 @@ const initialState = {
     nickname: '',
     password: '',
     errMsg: ''
-}
+};
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 ...action.payload
-            }
+            };
         case 'CHANGE_FIELD_LOGIN':
             state[action.payload.field] =action.payload.value;
             return state;

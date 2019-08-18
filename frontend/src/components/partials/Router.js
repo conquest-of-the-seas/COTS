@@ -14,6 +14,7 @@ import Hangar from "../pages/myPlaces/Hangar";
 import Cabins from '../pages/myPlaces/Cabins';
 import PlayerData from "../pages/myPlaces/PlayerData";
 import RequestModel from "../RequestModel";
+import Chess from "../pages/thePub/chess/Chess";
 
 
 export default class Router extends Component {
@@ -36,6 +37,7 @@ export default class Router extends Component {
                 <Route path="/gameMap" exact component={()=><GameMap/>}/>
                 <Route path="/train" exact component={()=><TrainingGrounds/>}/>
                 <Route path="/quests" exact component={()=><Quests/>}/>
+                <Route path="/chess" exact component={()=><Chess/>}/>
                 <Route path="/register" exact component={() => <IndexPage/>}/>
                 <Route path="/login" exact component={() => <IndexPage/>}/>
                 <Route path="/articles/editor" exact component={() => <IndexPage/>}/>

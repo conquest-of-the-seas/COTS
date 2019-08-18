@@ -44,10 +44,9 @@ router.get('/', (req, res, next) => {
     newPlayer.registerDate = timeModel.getCurrentDay();
     newPlayer.lastSeen = timeModel.getCurrentDay();
     newPlayer.ips.push(req.headers['x-forwarded-for'] || req.connection.remoteAddress);
-    newPlayer.cookie = createCookie(newPlayer.nickname, newPlayer._id);
+    newPlayer.cookie = createCookie(newPlayer.nickname, newPlayer._id,req.cookies.ua);
 
-    PlayerModel.find({}, (err, arr) => {
-        let number = arr.length;
+    PlayerModel.countDocuments({}, (err, number) => {
         newPlayer.number = number;
         newPlayer.ship = new Ship(number);
         newPlayer.crew.push(...defaultCrew());
@@ -77,8 +76,8 @@ router.get('/', (req, res, next) => {
                 newPlayer.password = hash;
                 newPlayer.save().then(() => {
                     console.timeEnd('start');
+                    res.cookie('cots',newPlayer.cookie, {maxAge: 999999999, httpOnly: true})
                     res.send({
-                        cookie: newPlayer.cookie,
                         errMsg: 'New PlayerData Created', redirect: '/'
                     })
                 }).catch((err) => {

@@ -18,7 +18,7 @@ export default class Header extends Component {
 
             return (<Redirect to={this.state.redirect}/>)
         }
-        if (cookie.load('cots')) {
+        if (cookie.load('loggedIn')) {
             return (
                 <div>
                     <Navbar sticky="top">
@@ -38,7 +38,8 @@ export default class Header extends Component {
                                 <NavDropdown.Item onClick={() => this.setState({redirect: '/player'})}> Player
                                     Data </NavDropdown.Item>
                                 <NavDropdown.Item onClick={() => {
-                                    cookie.remove('cots')
+                                    cookie.remove('loggedIn')
+                                    //todo send logout request
                                     window.location.pathname = '/login'
                                 }}> Logout </NavDropdown.Item>
                                 <NavDropdown.Divider/>

@@ -15,7 +15,7 @@ export default class Articles extends RequestModel {
         this.fetchArticles()
     }
 
-    fetchArticles = () => fetch(`http://${window.location.hostname}:4004/articles`).then(res => res.json()).then(j => this.setState({articleList: j}))
+    fetchArticles = () => fetch(`http://${window.location.hostname}:3004/articles`).then(res => res.json()).then(j => this.setState({articleList: j}))
 
     render() {
 

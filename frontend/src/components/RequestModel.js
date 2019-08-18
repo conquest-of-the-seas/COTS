@@ -21,7 +21,7 @@ class RequestModel extends Component {
         };
         let body = Object.assign({}, defaultBody, additionalBody);
 
-        fetch(`http://${window.location.hostname}:4004/${path}`, {
+        fetch(`http://${window.location.hostname}:3004/${path}`, {
             method: "post",
             body: JSON.stringify(body),
             headers: {
