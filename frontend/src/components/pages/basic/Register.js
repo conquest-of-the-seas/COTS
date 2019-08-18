@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom';
 import connect from "react-redux/es/connect/connect";
 import * as actionFunctions from '../../../REDUXactions/basic/registerActions'
 import cookie from "react-cookies";
+import hoistNonReactStatics from 'hoist-non-react-statics';
 
 class Register extends Component {
     render() {
@@ -94,7 +95,7 @@ class Register extends Component {
         }
 
         return (
-            <div>
+            <div id="register-form" className="cots-custom-window-wrapper overflow-auto" style={{display:'none'}}>
                 <form style={{textAlign: 'center'}}>
                     <h1>Register</h1>
                     <h4>{this.props.registerState.errMsg}</h4>
@@ -120,7 +121,7 @@ class Register extends Component {
                     </select><br/>
                     {factionInfo}
                     <br/>
-                    <input type="button" value={'register'} onClick={()=>this.props.registerPlayer(this.props.registerState)}/>
+                    <input type="button" className="cots-button" value={'register'} onClick={()=>this.props.registerPlayer(this.props.registerState)}/>
                 </form>
             </div>
         );

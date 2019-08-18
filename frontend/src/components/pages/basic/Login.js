@@ -13,7 +13,7 @@ class Login extends Component {
         if (cookie.load('cots')) return <Redirect to={'/'}/>
 
         return (
-            <div style={{textAlign:'center'}}>
+            <div id="login-form" className="cots-custom-window-wrapper" style={{textAlign:'center'}}>
                 <h1>Log In</h1>
                 {this.props.loginState.errMsg}<br/>
                 <label htmlFor='nick'>Nickname:</label><br/>
@@ -22,7 +22,7 @@ class Login extends Component {
                 <label htmlFor='pw'>Password:</label><br/>
                 <input id='pw' type='password'
                        onChange={(e) => this.props.changeField('password', e)}/><br/>
-                <input type="button" value={'Log in'} onClick={()=> this.props.loginPlayer({nickname: this.props.loginState.nickname, password: this.props.loginState.password})}/>
+                <input type="button" className="cots-button" value={'Log in'} onClick={()=> this.props.loginPlayer({nickname: this.props.loginState.nickname, password: this.props.loginState.password})}/>
             </div>
         );
     }

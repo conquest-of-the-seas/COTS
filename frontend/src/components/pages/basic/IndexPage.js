@@ -14,15 +14,37 @@ class IndexPage extends Component {
     //todo add component functionality
 
     render() {
-//todo add component view
+
+    var toggleBetweenForms = function toggleBetweenForms(e) {
+        var callerButton = e.currentTarget;
+        
+        // TODO [GM]: fix function
+
+        var loginForm = document.getElementById("login-form");
+        var registerForm = document.getElementById("register-form");
+
+        if(loginForm.style.display === "none" && callerButton.textContent === "Login") {
+            loginForm.style.display = "block";
+            registerForm.style.display = "none";
+        } else if(registerForm.style.display === "none" && callerButton.textContent === "Register") {
+            registerForm.style.display = "block";
+            loginForm.style.display = "none";
+        }
+    };
+
+    //todo add component view
         if (cookie.load('cots')){
-            return <div> Welcome!! </div>
+            return <div className="cots-index-container"> Welcome!! </div>
         }
         else {
             return (
-                <div>
-                    <Login/> <br/>
-                    <Register/>
+                <div className="cots-index-container">
+                    <div className="cots-index-options-wrapper">
+                        <button className="cots-button" onClick={(e) => toggleBetweenForms(e)}>Login</button>
+                        <button className="cots-button" onClick={(e) => toggleBetweenForms(e)}>Register</button>
+                    </div>
+                    <Login/>
+                    <Register/> 
                 </div>
             );
         }
