@@ -9,6 +9,7 @@ import ClickingDemo from "../pages/ClickingDemo";
 import Register from "../pages/basic/Register";
 import Login from "../pages/basic/Login";
 import Articles from "../pages/thePub/Articles";
+import ArticleDetails from "../pages/thePub/Articles/ArticleDetails";
 import Hangar from "../pages/myPlaces/Hangar";
 import Cabins from '../pages/myPlaces/Cabins';
 import PlayerData from "../pages/myPlaces/PlayerData";
@@ -37,6 +38,8 @@ export default class Router extends Component {
                 <Route path="/quests" exact component={()=><Quests/>}/>
                 <Route path="/register" exact component={() => <IndexPage/>}/>
                 <Route path="/login" exact component={() => <IndexPage/>}/>
+                <Route path="/articles/editor" exact component={() => <IndexPage/>}/>
+                <Route path="/articles/details/:id" exact component={() => <ArticleDetails/>}/>
                 <Route path="/articles" exact component={Articles}/>
                 <Route path="/hangar" exact component={() => <Hangar/>}/>
                 <Route path="/cabins" exact component={() => <Cabins/>}/>

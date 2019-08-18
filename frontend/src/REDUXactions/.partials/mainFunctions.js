@@ -1,4 +1,25 @@
 import cookie from 'react-cookies';
+import { GiWoodenClogs } from 'react-icons/gi';
+
+export function fetchGetRequest(path, additionalBody = {}, dispatch, callback) {
+    let defaultBody = {
+        cookie: cookie.load('cots')
+    };
+    
+    let body = Object.assign({}, defaultBody, additionalBody);
+
+   return fetch(`http://${window.location.hostname}:4004/${path}`, {
+        method: "get",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => {
+        return res.json();
+    }).then(j => {
+        return j;
+    });
+}
+
 
 export function fetchRequest(path, additionalBody = {},dispatch, callback) {
     let defaultBody = {

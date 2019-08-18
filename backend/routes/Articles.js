@@ -26,7 +26,8 @@ let tempReq = undefined;
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-    ArticleModel.find({}, function (err, arr) {
+    ArticleModel.find({_id: req.query._id}, function (err, arr) {
+        console.log(arr);
         res.send(arr);
     });
 }).post('/', function (req, res, next) {
@@ -52,6 +53,15 @@ router.get('/', (req, res, next) => {
             });
         break;
     
+        case "FETCH_ARTICLE":
+            findPlayerInDbAndCheckCookie(req, res, (playerData) =>  {
+                console.log(req);
+                ArticleModel.find({_id:'5cfadf25b9d82f0bd8c88b16'}, function(err, items){
+                    console.log(items);
+                    return items;
+                });
+            })
+        break;
         default:
             break;
     }

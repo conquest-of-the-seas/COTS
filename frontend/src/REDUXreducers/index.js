@@ -15,6 +15,7 @@ import pubReducer from "./thePub/pubReducer";
 import statisticsReducer from "./thePub/statisticsReducer";
 import registerReducer from "./basic/registerReducer";
 import gameMapReducer from "./gameRelated/gameMapReducer";
+import articleDetailsReducer from './thePub/articleDetailsReducer';
 
 
 const partials = {
@@ -43,6 +44,7 @@ const myPlaces = {
 
 const thePub = {
     articlesState: articlesReducer,
+    articleDetailsState: articleDetailsReducer,
     articleEditorState: articleEditorReducer,
     marketState: marketReducer,
     pubState: pubReducer,
