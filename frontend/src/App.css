@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
+@import url('./css/button.css');
+@import url('./css/footer.css');
 
 * {
     margin: 0;
@@ -12,6 +14,55 @@ html {
     font-size: 16px;
 }
 
+.cots-nav {
+    background-color: #fff;
+}
+
+.App {
+    height: 100vh;
+}
+
+.App-bg {
+    background-image: url('/images/siteImages/bg-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cots-index-options-wrapper {
+    background-color: #fff;
+    position: absolute;
+    top: 12rem;
+    left:0;
+    right:0;
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+.cots-index-options-wrapper > button {
+    width: 50%;
+}
+
+.cots-index-container {
+    height: 40rem;
+}
+
+.cots-custom-window-wrapper {
+    background-color: #fff;
+    position: absolute;
+    height: 30rem;
+    top: 15rem;
+    left:0;
+    right:0;
+    width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+/* article page stuff */
 #Description{
     resize: none;
     border-radius: 5px;
@@ -27,6 +78,14 @@ html {
     justify-content: space-between;
     flex: 1 1 auto;
 }  
+
+@media screen and (max-width: 600px) {
+
+    #Emoji-Container{
+        display: none;
+    }
+}
+/* article page stuff */
 
 .usedParts {
     background: green;
@@ -45,6 +104,7 @@ html {
 
 }
 
+/* common stuff */
 .mx-auto {
     margin: 0px auto;
 }
@@ -64,10 +124,4 @@ html {
 .m-20 {
     margin: 20px;
 }
-
-@media screen and (max-width: 600px) {
-
-    #Emoji-Container{
-        display: none;
-    }
-}
+/* common stuff */

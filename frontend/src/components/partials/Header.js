@@ -20,7 +20,7 @@ export default class Header extends Component {
         if (cookie.load('loggedIn')) {
             return (
                 <div>
-                    <Navbar sticky="top">
+                    <Navbar className="cots-nav" sticky="top">
                         <Navbar.Brand href="/">CotS</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                         <Navbar.Collapse id="basic-navbar-nav">
@@ -63,7 +63,7 @@ export default class Header extends Component {
         else {
             return (
                 <div>
-                    <Navbar sticky="top">
+                    <Navbar className="cots-nav" sticky="top">
                         <Navbar.Brand href="/">CotS</Navbar.Brand>
 
                     </Navbar>

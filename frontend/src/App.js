@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Router from "./components/partials/Router";
 import Header from "./components/partials/Header";
+import Footer from "./components/partials/Footer";
 import {Provider} from 'react-redux';
 
 
@@ -23,9 +24,10 @@ class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <div className="App">
+                <div className="App App-bg">
                     <Header/>
                     <Router/>
+                    <Footer/>
                 </div>
             </Provider>
         );

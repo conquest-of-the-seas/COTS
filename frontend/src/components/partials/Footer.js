@@ -13,11 +13,11 @@ class Footer extends Component {
     //todo add component functionality
 
     render() {
-//todo add component view
+    //todo add component view
         return (
-            <div>
-                PageTest
-            </div>
+            <footer className="cots-main-footer">
+                All Rights Reserverd COTS Ent. 2019
+            </footer>
         );
     }
 }
