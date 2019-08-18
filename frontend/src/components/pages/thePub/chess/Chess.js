@@ -2,16 +2,11 @@ import React, {Component} from 'react';
 import './chess.css'
 //import * as actionFunctions from "../../../../REDUXactions";//todo create actions file in the right directory
 import connect from "react-redux/es/connect/connect";
-import figures from "../../../../images/chessImages/figures.png"
 import io from "socket.io-client"
 import * as actionFunctions from '../../../../REDUXactions/thePub/chessActions';
 
 //todo change component name
 class Chess extends Component {
-    constructor(props) {
-        super(props)
-
-    }
 
     componentWillUnmount() {
         this.socket.disconnect()
@@ -41,7 +36,7 @@ class Chess extends Component {
     }
 
     handleClick(e, figId) {
-        this.props.handleClick(e,figId,this.props.chessState,this.socket)
+        this.props.handleClick(e, figId, this.props.chessState, this.socket)
     }
 
 
@@ -138,6 +133,8 @@ class Chess extends Component {
                 return this.displayMsg('Your opponent has left the game');
             case 'playing':
                 return this.setBoard();
+            default :
+                break;
         }
 
         return (

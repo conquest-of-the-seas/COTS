@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import RequestModel from "../RequestModel";
 
 
-
-export default class SidebarLeft extends RequestModel {
+export default class SidebarLeft extends Component {
     constructor(){
         super()
         this.state={

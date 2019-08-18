@@ -3,7 +3,6 @@ import './App.css';
 import Router from "./components/partials/Router";
 import Header from "./components/partials/Header";
 import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
 
 
 import store from './store'

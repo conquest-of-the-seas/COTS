@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
 
 
 
-export default class Elections extends RequestModel {
+
+export default class Elections extends Component {
     constructor(){
         super()
         this.state={

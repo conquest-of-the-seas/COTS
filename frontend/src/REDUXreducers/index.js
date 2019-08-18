@@ -1,5 +1,4 @@
 import {combineReducers} from 'redux';
-import cookie from "react-cookies";
 import hangarReducer from "./myPlaces/hangarReducer";
 import cabinsReducer from "./myPlaces/cabinsReducer";
 import trainingGroundsReducer from "./myPlaces/trainingGroundsReducer";
@@ -24,13 +23,12 @@ const partials = {
 
 const basic = {
     loginState: loginReducer,
-    registerState:registerReducer
+    registerState: registerReducer
 }
 
 const gameRelated = {
     gameMapState: gameMapReducer
 }
-
 
 
 const myPlaces = {
@@ -43,7 +41,7 @@ const myPlaces = {
 }
 
 const thePub = {
-    chessState:chessReducer,
+    chessState: chessReducer,
     articlesState: articlesReducer,
     articleEditorState: articleEditorReducer,
     marketState: marketReducer,
@@ -52,7 +50,7 @@ const thePub = {
 }
 
 
-export default combineReducers(Object.assign({},basic,gameRelated, myPlaces, thePub));
+export default combineReducers(Object.assign({}, basic, gameRelated, myPlaces, thePub, partials));
 
 
 

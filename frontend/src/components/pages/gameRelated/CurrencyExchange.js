@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
 
 
 
-export default class CurrencyExchange extends RequestModel {
+
+export default class CurrencyExchange extends Component {
     constructor(){
         super()
         this.state={

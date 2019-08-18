@@ -1,5 +1,4 @@
 import {fetchRequest,validateEmail} from "../.partials/mainFunctions";
-import cookie from "react-cookies";
 
 export const registerPlayer = (state) => dispatch => {
     let action = "DISPLAY_ERR_MSG"

@@ -1,19 +1,18 @@
-import {applyMiddleware, createStore, compose} from "redux";
+import {applyMiddleware, createStore} from "redux";
 import {composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './REDUXreducers/index';
 
-const initialState = {};
 
 //todo try removing thunk later
 const middleware = [thunk];
 
-const store = createStore(rootReducer,
-    middleware,
-    composeWithDevTools(
-        applyMiddleware(...middleware)
-    )
-)
+
+const composeEnhancers = composeWithDevTools({ realtime: true, port: 8000 });
+const store = createStore(rootReducer, /* preloadedState, */ composeEnhancers(
+    applyMiddleware(...middleware),
+    // other store enhancers if any
+));
 
 
 export default store;

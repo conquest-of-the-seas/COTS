@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import RequestModel from "../../RequestModel";
 import Redirect from "react-router/es/Redirect";
 import connect from "react-redux/es/connect/connect";
 import * as actionFunctions from "../../../REDUXactions/myPlaces/trainingGroundsActions";
 
- class TrainingGrounds extends RequestModel {
+ class TrainingGrounds extends Component {
     constructor() {
         super()
         this.state = {

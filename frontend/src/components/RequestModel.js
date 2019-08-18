@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import cookie from 'react-cookies';
-import {Redirect} from 'react-router-dom';
 
 class RequestModel extends Component {
     constructor(props) {
